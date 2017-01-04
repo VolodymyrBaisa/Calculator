@@ -1,0 +1,60 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="layout">
+        <item name="android:padding">1dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    
+    <style name="screen">
+        <item name="android:background">@drawable/screen_style</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:minLines">2</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:padding">6dp</item>
+        <item name="android:inputType">textMultiLine</item>
+    </style>
+
+    <style name="keyboard_layout">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_marginBottom">1dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="button">
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/buttonColor</item>
+    </style>
+
+    <style name="button_teal" parent="button">
+        <item name="android:background">@drawable/teal_button_selector</item>
+    </style>
+
+    <style name="button_blue_grey" parent="button">
+        <item name="android:background">@drawable/blue_grey_button_selector</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="button_deep_orange" parent="button">
+        <item name="android:background">@drawable/deep_orange_button_selector</item>
+    </style>
+
+    <style name="button_indigo" parent="button">
+        <item name="android:background">@drawable/indigo_button_selector</item>
+    </style>
+
+    <style name="button_black" parent="button">
+        <item name="android:background">@drawable/black_button_selector</item>
+    </style>
+
+</resources>
