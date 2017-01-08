@@ -1,4 +1,4 @@
-package ua.bios.mvvm.viewmodel;
+package ua.bios.utils;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;

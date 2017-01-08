@@ -1,4 +1,4 @@
-package ua.bios.mvvm.viewmodel;
+package ua.bios.utils;
 
 import java.util.LinkedList;
 

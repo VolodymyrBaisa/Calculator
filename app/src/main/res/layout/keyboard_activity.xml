@@ -80,7 +80,7 @@
                 android:padding="10dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/backspace"
-                android:onClick="@{buttonHandlers.onClickButton}" />
+                android:onClick="@{buttonHandlers.onClickBackspace}" />
 
             <Button
                 android:id="@+id/reset"
@@ -88,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="C"
-                android:onClick="@{buttonHandlers.onClickButton}" />
+                android:onClick="@{buttonHandlers.onClickClear}" />
         </LinearLayout>
 
         <LinearLayout
@@ -201,7 +201,7 @@
                 style="@style/button_blue_grey"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="⨯"
+                android:text="×"
                 android:onClick="@{buttonHandlers.onClickButton}" />
         </LinearLayout>
 
@@ -271,7 +271,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="="
-                android:onClick="@{buttonHandlers.onClickButton}" />
+                android:onClick="@{buttonHandlers.onClickEquals}" />
 
             <Button
                 android:id="@+id/plus"
@@ -305,7 +305,7 @@
 
             <Button
                 android:id="@+id/left_parenthesis"
-                style="@style/button_black"
+                style="@style/button_blue_grey"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="("

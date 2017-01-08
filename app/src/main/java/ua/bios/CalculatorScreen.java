@@ -1,8 +1,7 @@
-package ua.bios.mvvm.viewmodel;
+package ua.bios;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.text.Editable;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.widget.EditText;
@@ -20,11 +19,11 @@ public class CalculatorScreen extends EditText {
         init();
     }
 
-    private void init(){
+    private void init() {
         styles();
     }
 
-    private void styles(){
+    private void styles() {
         super.setTextIsSelectable(true);
         super.setAllCaps(false);
         super.setGravity(Gravity.CENTER);
@@ -32,12 +31,21 @@ public class CalculatorScreen extends EditText {
         super.setVerticalFadingEdgeEnabled(true);
     }
 
-    public void setFont(String fontPath){
+    public void setFont(String fontPath) {
         Typeface fontsStyle = Typeface.createFromAsset(context.getAssets(), fontPath);
         this.setTypeface(fontsStyle, Typeface.NORMAL);
     }
 
-    public void setText(String value) {
+    public void addText(String value) {
         super.getText().insert(getSelectionStart(), value);
+    }
+
+    public void setText(String value) {
+        super.getText().clear();
+        super.getText().insert(getSelectionStart(), value);
+    }
+
+    public void delete(int st, int end) {
+        super.getText().delete(st, end);
     }
 }

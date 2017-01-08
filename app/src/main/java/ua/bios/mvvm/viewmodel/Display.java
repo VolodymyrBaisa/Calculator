@@ -2,8 +2,7 @@ package ua.bios.mvvm.viewmodel;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
-
-import ua.bios.BR;
+import android.databinding.ObservableField;
 
 
 /**
@@ -12,7 +11,10 @@ import ua.bios.BR;
 
 public class Display extends BaseObservable {
     private static volatile Display display;
-    private String value = "";
+    @Bindable
+    public final ObservableField<String> value = new ObservableField<>("");
+    @Bindable
+    public final ObservableField<String> zero = new ObservableField<>("0");
 
     private Display() {
     }
@@ -25,15 +27,5 @@ public class Display extends BaseObservable {
         } else {
             return display;
         }
-    }
-
-    @Bindable
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-        display.notifyPropertyChanged(BR.value);
     }
 }

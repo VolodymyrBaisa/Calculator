@@ -4,6 +4,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import ua.bios.CalculatorScreen;
+import ua.bios.R;
+
 
 /**
  * Created by BIOS on 12/26/2016.
@@ -12,16 +15,35 @@ import android.widget.ImageButton;
 public class ButtonHandlers {
 
     public void onClickButton(View v) {
-        Display display = Display.getInstance();
 
-        String value = "";
         if (v instanceof Button) {
-            value = ((Button) v).getText().toString();
+            display(((Button) v).getText().toString());
         } else if (v instanceof ImageButton) {
-            value = v.getContentDescription().toString();
+            display(v.getContentDescription().toString());
         }
+    }
 
-       // String screen = Formatter.stringFormat(expressionBuilder.getExpression());
-        display.setValue(value);
+    public void onClickClear(View v) {
+        Display display = Display.getInstance();
+        display.zero.set("0");
+        display.zero.notifyChange();
+    }
+
+    public void onClickBackspace(View v) {
+        CalculatorScreen calculatorScreen = (CalculatorScreen) v.getRootView().findViewById(R.id.screen);
+        int cursor = calculatorScreen.getSelectionStart();
+        if (cursor > 0) {
+            calculatorScreen.delete(cursor - 1, cursor);
+        }
+    }
+
+    public void onClickEquals(View v){
+
+    }
+
+    private void display(String value) {
+        Display display = Display.getInstance();
+        display.value.set(value);
+        display.value.notifyChange();
     }
 }
