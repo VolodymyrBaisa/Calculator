@@ -4,8 +4,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-import ua.bios.CalculatorScreen;
+import ua.bios.display.CalculatorScreen;
 import ua.bios.R;
+import ua.bios.mvvm.model.CalculatorModel;
 
 
 /**
@@ -38,7 +39,12 @@ public class ButtonHandlers {
     }
 
     public void onClickEquals(View v){
+        CalculatorScreen calculatorScreen = (CalculatorScreen) v.getRootView().findViewById(R.id.screen);
+        CalculatorModel calculatorModel = new CalculatorModel();
+        Double result = calculatorModel.calculate(calculatorScreen.getText().toString());
 
+        Display display = Display.getInstance();
+        display.value.set("=".concat(String.valueOf(result)));
     }
 
     private void display(String value) {

@@ -1,4 +1,4 @@
-package ua.bios;
+package ua.bios.display;
 
 import android.content.Context;
 import android.graphics.Typeface;

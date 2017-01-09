@@ -12,7 +12,7 @@
         style="@style/layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-            <ua.bios.CalculatorScreen
+            <ua.bios.display.CalculatorScreen
                 android:id="@+id/screen"
                 style="@style/screen"
                 android:layout_width="match_parent"
