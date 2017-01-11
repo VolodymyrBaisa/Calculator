@@ -1,4 +1,4 @@
-package ua.bios.utils;
+package ua.bios.mvvm.viewmodel;
 
 import java.util.LinkedList;
 
@@ -78,8 +78,11 @@ public class ValidationArguments {
         return String.valueOf(value.charAt(value.length() - 1)).equals(dot);
     }
 
-    public boolean isFractional(String text) {
-        String dot = ".";
-        return text.contains(dot);
+    public boolean isFractional(String value) {
+        return value.contains(".");
+    }
+
+    public boolean isContainsEquals(String value){
+        return value.contains("=");
     }
 }
