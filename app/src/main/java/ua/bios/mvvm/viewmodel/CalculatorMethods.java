@@ -2,6 +2,8 @@ package ua.bios.mvvm.viewmodel;
 
 import android.view.View;
 
+import java.util.LinkedList;
+
 import ua.bios.R;
 import ua.bios.display.CalculatorScreen;
 import ua.bios.mvvm.model.Calculator;
@@ -49,13 +51,16 @@ public class CalculatorMethods {
         String result = calculatorModel.calculate(value);
 
         Display display = Display.getInstance();
-        display.value.set("=".concat(result));
+        display.value.set("=".concat(result).concat("\n"));
     }
 
     public void validationEnterArguments(View v, String value){
         ValidationArguments validationArguments = ValidationArguments.getInstance();
         CalculatorScreen calculatorScreen = (CalculatorScreen) v.getRootView().findViewById(R.id.screen);
-        if (validationArguments.validate(Parser.parse(calculatorScreen.getText().toString()), value)) {
+        LinkedList<String> expList = Parser.parse(calculatorScreen.getText().toString());
+        Formatter formatter = Formatter.getInstance();
+        formatter.stringFormat(expList);
+        if (validationArguments.validate(expList, value)) {
             display(value);
         }
     }
