@@ -21,6 +21,7 @@ public class CalculatorScreen extends EditText {
 
     private void init() {
         styles();
+        addText("0");
     }
 
     private void styles() {
@@ -40,12 +41,20 @@ public class CalculatorScreen extends EditText {
         super.getText().insert(getSelectionStart(), value);
     }
 
-    public void setText(String value) {
-        super.getText().clear();
-        super.getText().insert(getSelectionStart(), value);
+    @Override
+    public void setText(CharSequence text, BufferType type) {
+        super.setText(text, type);
+        super.setSelection(getText().length());
     }
 
-    public void delete(int st, int end) {
-        super.getText().delete(st, end);
+    public void delete() {
+        int cursor = super.getSelectionStart();
+        if (cursor > 0) {
+            super.getText().delete(cursor - 1, cursor);
+        }
+    }
+
+    public void clear() {
+        super.setText("");
     }
 }

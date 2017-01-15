@@ -11,22 +11,22 @@ import android.view.MenuItem;
 
 import ua.bios.R;
 import ua.bios.databinding.MainLayoutBinding;
-import ua.bios.mvvm.viewmodel.ButtonHandlers;
-import ua.bios.mvvm.viewmodel.Display;
+import ua.bios.display.CalcInterface;
+import ua.bios.mvvm.viewmodel.CalculatorImpl;
 
 /**
  * Created by BIOS on 12/26/2016.
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CalcInterface{
+    private MainLayoutBinding mainLayoutBinding;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        MainLayoutBinding mainLayoutBinding = DataBindingUtil.setContentView(this, R.layout.main_layout);
-        Display display = Display.getInstance();
-        mainLayoutBinding.screenActivity.setDisplay(display);
-        mainLayoutBinding.keyboardActivity.setButtonHandlers(new ButtonHandlers());
+        mainLayoutBinding = DataBindingUtil.setContentView(this, R.layout.main_layout);
+        mainLayoutBinding.keyboardActivity.setKeykeyboard(new CalculatorImpl(this));
     }
 
     @Override
@@ -38,10 +38,36 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.about){
+        if (item.getItemId() == R.id.about) {
             Intent intent = new Intent(MainActivity.this, AboutActivity.class);
             this.startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public String getText() {
+        return mainLayoutBinding.screenActivity.screen.getText().toString();
+    }
+
+    @Override
+    public void setText(String value) {
+        mainLayoutBinding.screenActivity.screen.setText(value);
+    }
+
+    @Override
+    public void addText(String value) {
+        mainLayoutBinding.screenActivity.screen.addText(value);
+    }
+
+    @Override
+    public void clear() {
+        mainLayoutBinding.screenActivity.screen.clear();
+    }
+
+    @Override
+    public void delete() {
+        mainLayoutBinding.screenActivity.screen.delete();
     }
 }

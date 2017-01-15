@@ -9,21 +9,6 @@ import ua.bios.mvvm.model.Operators;
  */
 
 public class ValidationArguments {
-    private static volatile ValidationArguments validationArguments;
-
-    private ValidationArguments() {
-    }
-
-    public static ValidationArguments getInstance() {
-        if (validationArguments == null) {
-            synchronized (ValidationArguments.class) {
-                return validationArguments = new ValidationArguments();
-            }
-        } else {
-            return validationArguments;
-        }
-    }
-
     public boolean validate(LinkedList<String> exp, String nextValue) {
         if (!exp.isEmpty()) {
             String value = exp.getLast();
@@ -40,7 +25,7 @@ public class ValidationArguments {
                 return false;
             }
 
-            if (isEqualsZero(value) && isEqualsZero(nextValue)) {
+            if (isMatchesZero(value) && isMatchesZero(nextValue)) {
                 return false;
             }
         }
@@ -66,23 +51,26 @@ public class ValidationArguments {
         return false;
     }
 
-    public boolean isEqualsZero(String value) {
-        if (!value.isEmpty() && value.equals("0")) {
-            return true;
-        }
-        return false;
+    public boolean isMatchesZero(String value) {
+        return value.matches("^0+");
     }
 
     public boolean ifLastIndexIsDot(String value) {
-        String dot = ".";
-        return String.valueOf(value.charAt(value.length() - 1)).equals(dot);
+        if(!value.isEmpty()) {
+            return String.valueOf(value.charAt(value.length() - 1)).equals(".");
+        }
+        return false;
     }
 
     public boolean isFractional(String value) {
         return value.contains(".");
     }
 
-    public boolean isContainsEquals(String value){
+    public boolean isContainsEquals(String value) {
         return value.contains("=");
+    }
+
+    public boolean isLeadingZeros(String value, String nextValue){
+        return isMatchesZero(value) && !isFractional(nextValue);
     }
 }

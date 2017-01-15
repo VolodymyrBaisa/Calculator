@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="CalculatorScreen">
-        <attr name="addText" format="string" />
-        <attr name="setText" format="string" />
         <attr name="setFont" format="string" />
-        <attr name="delete" format="integer" />
     </declare-styleable>
 </resources>

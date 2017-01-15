@@ -9,12 +9,12 @@ import java.util.regex.Pattern;
  */
 
 public class Parser {
-    private static final String regex = "(\\d+\\.\\d+)|(^-\\d+\\.\\d+)|(\\d+)|([+-÷×///^])|([/(/)])";
+
 
     private Parser() {
     }
 
-    public static LinkedList<String> parse(String exp) {
+    public static LinkedList<String> parse(String exp, String regex) {
         LinkedList<String> list = new LinkedList<>();
 
         Matcher matcher = Pattern.compile(regex).matcher(exp);
