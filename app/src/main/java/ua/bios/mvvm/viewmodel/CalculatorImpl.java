@@ -4,10 +4,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 import ua.bios.display.CalcInterface;
 import ua.bios.mvvm.model.Calculator;
+import ua.bios.mvvm.model.ErrorMessages;
+import ua.bios.utils.ArrayUtils;
 
 /**
  * Created by BIOS on 1/10/2017.
@@ -37,16 +40,30 @@ public class CalculatorImpl {
         delete();
     }
 
+    public void onClickPercentage(View v){
+        setValue("%");
+    }
+
+    public void onClickSquareRoot(View v){
+        setValue("√");
+    }
+
+    public void onClickSquareOpposite(View v){
+
+    }
+
     public void onClickEquals(View v) {
         equals();
     }
 
     private void setValue(String value) {
+        ExpressionParser expressionParser = ExpressionParser.getInstance();
+        expressionParser.clearErrorMsg(ErrorMessages.getError());
+        String expression = getText();
+        LinkedList<String> expList = expressionParser.getPart(expression);
         ValidationArguments validationArguments = new ValidationArguments();
-        LinkedList<String> expList = ExpressionParser.getPart(getText());
-
         if (!expList.isEmpty()) {
-            if (validationArguments.isLeadingZeros(expList.getLast(), value)) {
+            if (validationArguments.isLeadingZeros(ArrayUtils.arrayToString(expList), value)) {
                 clear();
             }
         }
@@ -58,13 +75,16 @@ public class CalculatorImpl {
 
     private void equals() {
         Calculator calculatorModel = new Calculator();
-        LinkedList<String> expList = ExpressionParser.getExpressionPart(getText());
-        String exp = "";
+        ExpressionParser expressionParser = ExpressionParser.getInstance();
+        //Get expression from calculator screen, split if find '\n', also remove '=' and result.
+        String expressionScreen = getText();
+        String expressionResult = "";
+        LinkedList<String> expList = expressionParser.getExpressionPart(expressionScreen);
         for (String values : expList) {
             String result = calculatorModel.calculate(values);
-            exp += values.concat("=").concat(result).concat("\n");
+            expressionResult += values.concat("=").concat(result).concat("\n");
         }
-        setText(exp);
+        setText(expressionResult);
     }
 
     private void addText(String value) {

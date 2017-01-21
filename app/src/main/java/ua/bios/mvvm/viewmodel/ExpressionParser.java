@@ -3,6 +3,7 @@ package ua.bios.mvvm.viewmodel;
 import java.util.Arrays;
 import java.util.LinkedList;
 
+import ua.bios.mvvm.model.ErrorMessages;
 import ua.bios.utils.Parser;
 
 /**
@@ -10,24 +11,42 @@ import ua.bios.utils.Parser;
  */
 
 public class ExpressionParser {
+    private static volatile ExpressionParser expressionParser;
 
-    public static LinkedList<String> getPart(String value) {
-        String regex = "(\\d+\\.\\d+)|(^-\\d+\\.\\d+)|(\\d+)|([+-÷×///^])|([/(/)])";
-        return Parser.parse(value, regex);
+    private ExpressionParser() {
     }
 
-    public static LinkedList<String> getExpressionPart(String exp){
-        LinkedList<String> splitList = Parser.parse(exp, "[\\d+-÷×()=]+");
-        LinkedList<String> expressionList = new LinkedList<>();
+    public static ExpressionParser getInstance() {
+        if (expressionParser == null) {
+            synchronized (ExpressionParser.class) {
+                return expressionParser = new ExpressionParser();
+            }
+        } else {
+            return expressionParser;
+        }
+    }
 
-        for(String value : splitList){
-            if(!value.matches("^.*=[-\\d]+$") && !value.matches("^[-\\d]+$")){
+    public LinkedList<String> getPart(String value) {
+        String regex = "(^-[\\d.]+)|([\\d.%√]+)|([()+-÷×/^])";
+        return Parser.find(value, regex);
+    }
+
+    public LinkedList<String> getExpressionPart(String exp) {
+        LinkedList<String> expressionList = new LinkedList<>();
+        LinkedList<String> splitList = Parser.find(exp, "[\\d.+-÷×()√%=]+");
+
+        for (String value : splitList) {
+            if (!value.matches("^.*=[-\\d.]+$") && !value.matches("^[-\\d.]+$")) {
                 expressionList.addAll(Arrays.asList(value.split("=")));
             } else {
-                expressionList.add(value.replaceAll("=[-\\d]+$", ""));
+                expressionList.add(value.replaceAll("=[-\\d.]+$", ""));
             }
         }
 
         return expressionList;
+    }
+
+    public String clearErrorMsg(String exp) {
+        return exp.replaceAll(ErrorMessages.getError(), "");
     }
 }

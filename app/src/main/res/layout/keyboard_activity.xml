@@ -60,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="%"
-                android:onClick="@{keykeyboard.onClickButton}" />
+                android:onClick="@{keykeyboard.onClickPercentage}" />
 
             <Button
                 android:id="@+id/square_root"
@@ -68,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="√x"
-                android:onClick="@{keykeyboard.onClickButton}" />
+                android:onClick="@{keykeyboard.onClickSquareRoot}" />
 
             <ImageButton
                 android:id="@+id/backspace"
