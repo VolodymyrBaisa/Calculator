@@ -62,6 +62,21 @@ public class MainActivity extends AppCompatActivity implements CalculatorInterfa
     }
 
     @Override
+    public int getCursorPosition() {
+        return mainLayoutBinding.screenActivity.screen.getSelectionStart();
+    }
+
+    @Override
+    public char getChatAt(int i) {
+        return mainLayoutBinding.screenActivity.screen.getChatAt(i);
+    }
+
+    @Override
+    public CharSequence getSubSequence() {
+        return mainLayoutBinding.screenActivity.screen.getSubSequence();
+    }
+
+    @Override
     public void clear() {
         mainLayoutBinding.screenActivity.screen.clear();
     }

@@ -9,6 +9,13 @@ public interface CalculatorInterface {
 
     void addText(String value);
 
+
+    int getCursorPosition();
+
+    char getChatAt(int i);
+
+    CharSequence getSubSequence();
+
     void clear();
 
     void delete();
