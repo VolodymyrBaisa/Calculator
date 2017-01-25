@@ -41,14 +41,8 @@ public class CalculatorScreen extends EditText {
         super.getText().insert(getSelectionStart(), value);
     }
 
-    @Override
-    public void setText(CharSequence text, BufferType type) {
-        super.setText(text, type);
-        super.setSelection(getText().length());
-    }
-
     public void delete() {
-        int cursor = super.getSelectionStart();
+        int cursor = getSelectionStart();
         if (cursor > 0) {
             super.getText().delete(cursor - 1, cursor);
         }

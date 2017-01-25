@@ -17,7 +17,6 @@ public enum Operators {
         return operator;
     }
 
-
     @Override
     public String toString() {
         return operator;

@@ -47,8 +47,8 @@ public class ValidationArguments {
         return false;
     }
 
-    public boolean isMatchesZero(String value) {
-        return value.matches("^0+");
+    public boolean isEqualsZero(String value) {
+        return value.equals("0");
     }
 
     public boolean ifLastIndexIsDot(String value) {
@@ -66,7 +66,7 @@ public class ValidationArguments {
         return value.contains("=");
     }
 
-    public boolean isLeadingZeros(String value, String nextValue){
-        return isMatchesZero(value) && !isFractional(nextValue) && !isEqualsOperator(nextValue);
+    public boolean isLeadingZero(String value, String nextValue){
+        return isEqualsZero(value) && !isFractional(nextValue) && !isEqualsOperator(nextValue);
     }
 }

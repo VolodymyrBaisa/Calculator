@@ -14,25 +14,25 @@ public class Parser {
     private Parser() {
     }
 
-    public static LinkedList<String> find(String exp, String regex) {
-        LinkedList<String> list = new LinkedList<>();
+    public static LinkedList<String> findElement(String exp, String regex) {
+        LinkedList<String> elementList = new LinkedList<>();
 
         Matcher matcher = Pattern.compile(regex).matcher(exp);
         while (matcher.find()) {
-            list.add(matcher.group());
+            elementList.add(matcher.group());
         }
-        return list;
+        return elementList;
     }
 
-    public static LinkedList<String> groupSplitter(String exp, String regex) {
-        LinkedList<String> list = new LinkedList<>();
+    public static LinkedList<String> findGroupElement(String exp, String regex) {
+        LinkedList<String> elementList = new LinkedList<>();
 
         Matcher matcher = Pattern.compile(regex).matcher(exp);
         while (matcher.find()) {
-            for (int i = 1; i <= matcher.groupCount(); i++) {
-                list.add(matcher.group(i));
+            for (int index = 1; index <= matcher.groupCount(); index++) {
+                elementList.add(matcher.group(index));
             }
         }
-        return list;
+        return elementList;
     }
 }

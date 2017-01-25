@@ -11,22 +11,27 @@ import android.view.MenuItem;
 
 import ua.bios.R;
 import ua.bios.databinding.MainLayoutBinding;
-import ua.bios.display.CalcInterface;
-import ua.bios.mvvm.viewmodel.CalculatorImpl;
+import ua.bios.display.CalculatorInterface;
+import ua.bios.mvvm.model.CalculatorScreenCommunication;
+import ua.bios.mvvm.viewmodel.CalculatorHandler;
 
 /**
  * Created by BIOS on 12/26/2016.
  */
 
-public class MainActivity extends AppCompatActivity implements CalcInterface{
+public class MainActivity extends AppCompatActivity implements CalculatorInterface {
     private MainLayoutBinding mainLayoutBinding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         mainLayoutBinding = DataBindingUtil.setContentView(this, R.layout.main_layout);
-        mainLayoutBinding.keyboardActivity.setKeykeyboard(new CalculatorImpl(this));
+        setKeyboardHandler();
+        CalculatorScreenCommunication.init(this);
+    }
+
+    private void setKeyboardHandler() {
+        mainLayoutBinding.keyboardActivity.setKeyboard(new CalculatorHandler());
     }
 
     @Override
@@ -49,11 +54,6 @@ public class MainActivity extends AppCompatActivity implements CalcInterface{
     @Override
     public String getText() {
         return mainLayoutBinding.screenActivity.screen.getText().toString();
-    }
-
-    @Override
-    public void setText(String value) {
-        mainLayoutBinding.screenActivity.screen.setText(value);
     }
 
     @Override

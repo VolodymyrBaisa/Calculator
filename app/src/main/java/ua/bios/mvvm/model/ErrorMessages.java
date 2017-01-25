@@ -6,11 +6,16 @@ package ua.bios.mvvm.model;
 
 public class ErrorMessages {
     private final static String error = "Error";
+    private final static String errorDivisionByZero = "Division by zero!";
 
     private ErrorMessages() {
     }
 
     public static String getError(){
         return error;
+    }
+
+    public static String getErrorDivisionByZero(){
+        return errorDivisionByZero;
     }
 }
