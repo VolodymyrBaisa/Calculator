@@ -47,8 +47,7 @@ public class CalculatorHandler {
     }
 
     public void onClickOpposite(View v) {
-        CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
-        calculatorScreenCommunication.toString();
+
     }
 
     public void onClickEquals(View v) {
