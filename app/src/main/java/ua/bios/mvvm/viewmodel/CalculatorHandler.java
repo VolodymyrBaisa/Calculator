@@ -45,7 +45,7 @@ public class CalculatorHandler {
     }
 
     public void onClickOpposite(View v) {
-        opposite();
+        changeOppositeOperator();
     }
 
     public void onClickEquals(View v) {
@@ -63,7 +63,7 @@ public class CalculatorHandler {
         calculatorScreenCommunication.delete();
     }
 
-    private void opposite() {
+    private void changeOppositeOperator() {
         CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
         int cursorPosition = calculatorScreenCommunication.getCursorPosition();
         if (cursorPosition != 0) {
@@ -71,23 +71,23 @@ public class CalculatorHandler {
                 char charAt = calculatorScreenCommunication.getChatAt(indexCursorPosition);
 
                 if (charAt == Operators.DIVIDE.toString().charAt(0)) {
-                    oppositeOperators(calculatorScreenCommunication, indexCursorPosition, indexCursorPosition + 1, Operators.MULTIPLY.toString());
+                    oppositeOperatorReplacer(calculatorScreenCommunication, indexCursorPosition, indexCursorPosition + 1, Operators.MULTIPLY.toString());
                     break;
                 } else if (charAt == Operators.MULTIPLY.toString().charAt(0)) {
-                    oppositeOperators(calculatorScreenCommunication, indexCursorPosition, indexCursorPosition + 1, Operators.DIVIDE.toString());
+                    oppositeOperatorReplacer(calculatorScreenCommunication, indexCursorPosition, indexCursorPosition + 1, Operators.DIVIDE.toString());
                     break;
                 } else if (charAt == Operators.SUBTRACT.toString().charAt(0)) {
-                    oppositeOperators(calculatorScreenCommunication, indexCursorPosition, indexCursorPosition + 1, Operators.PLUS.toString());
+                    oppositeOperatorReplacer(calculatorScreenCommunication, indexCursorPosition, indexCursorPosition + 1, Operators.PLUS.toString());
                     break;
                 } else if (charAt == Operators.PLUS.toString().charAt(0)) {
-                    oppositeOperators(calculatorScreenCommunication, indexCursorPosition, indexCursorPosition + 1, Operators.SUBTRACT.toString());
+                    oppositeOperatorReplacer(calculatorScreenCommunication, indexCursorPosition, indexCursorPosition + 1, Operators.SUBTRACT.toString());
                     break;
                 }
             }
         }
     }
 
-    private void oppositeOperators(CalculatorScreenCommunication calculatorScreenCommunication, int indexCursorPosition, int end, String value) {
+    private void oppositeOperatorReplacer(CalculatorScreenCommunication calculatorScreenCommunication, int indexCursorPosition, int end, String value) {
         calculatorScreenCommunication.delete(indexCursorPosition, end);
         calculatorScreenCommunication.insertText(indexCursorPosition, value);
     }
@@ -105,7 +105,29 @@ public class CalculatorHandler {
 
     @NonNull
     private boolean checkSyntaxErrorOnAlgebraicExpression(ValidationArguments validationArguments, CalculatorScreenCommunication calculatorScreenCommunication, String nextValue) {
-        return validationArguments.validate(ExpressionParser.getExpressionAsGroupedList(calculatorScreenCommunication.toString()), nextValue);
+        String value = getStringPartAtCursorPosition(calculatorScreenCommunication);
+        return validationArguments.validate(value, nextValue);
+    }
+
+    @NonNull
+    private String getStringPartAtCursorPosition(CalculatorScreenCommunication calculatorScreenCommunication) {
+        int cursorPosition = calculatorScreenCommunication.getCursorPosition();
+        String value = "";
+        if (cursorPosition != 0) {
+            for(int indexCursorPosition = cursorPosition - 1; indexCursorPosition >= 0; indexCursorPosition--) {
+                char charAt = calculatorScreenCommunication.getChatAt(indexCursorPosition);
+                value += String.valueOf(calculatorScreenCommunication.getChatAt(indexCursorPosition));
+                if(charAt == Operators.DIVIDE.toString().charAt(0)
+                        || charAt == Operators.MULTIPLY.toString().charAt(0)
+                        || charAt == Operators.PLUS.toString().charAt(0)
+                        || charAt == Operators.SUBTRACT.toString().charAt(0)
+                        || charAt == Operators.EQUAL.toString().charAt(0)
+                        || charAt == Operators.NEW_LINE.toString().charAt(0)) {
+                    break;
+                }
+            }
+        }
+        return value;
     }
 
     private void ifLandingZero(ValidationArguments validationArguments, CalculatorScreenCommunication calculatorScreenCommunication, String nextValue) {

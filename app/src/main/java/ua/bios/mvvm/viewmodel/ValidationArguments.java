@@ -1,7 +1,5 @@
 package ua.bios.mvvm.viewmodel;
 
-import java.util.LinkedList;
-
 import ua.bios.mvvm.model.Operators;
 
 /**
@@ -9,9 +7,8 @@ import ua.bios.mvvm.model.Operators;
  */
 
 public class ValidationArguments {
-    public boolean validate(LinkedList<String> exp, String nextValue) {
-        if (!exp.isEmpty()) {
-            String value = exp.getLast();
+    public boolean validate(String value, String nextValue) {
+        if (!value.isEmpty()) {
 
             if ((isContainsDot(value) || isEqualsOperator(value)) && isContainsDot(nextValue)) {
                 return false;
@@ -24,8 +21,15 @@ public class ValidationArguments {
             if (isEqualsOperator(value) && isEqualsOperator(nextValue)) {
                 return false;
             }
-        }
+        } else {
+            if (isContainsSubtract(nextValue)) {
+                return true;
+            }
 
+            if (isEqualsOperator(nextValue) || isContainsDot(nextValue)) {
+                return false;
+            }
+        }
         return true;
     }
 
@@ -52,7 +56,7 @@ public class ValidationArguments {
     }
 
     public boolean ifLastIndexIsDot(String value) {
-        if(!value.isEmpty()) {
+        if (!value.isEmpty()) {
             return String.valueOf(value.charAt(value.length() - 1)).equals(".");
         }
         return false;
@@ -62,11 +66,12 @@ public class ValidationArguments {
         return value.contains(".");
     }
 
-    public boolean isContainsEquals(String value) {
-        return value.contains("=");
+    public boolean isContainsSubtract(String value) {
+        String subtract = Operators.SUBTRACT.getOperator();
+        return value.contains(subtract);
     }
 
-    public boolean isLeadingZero(String value, String nextValue){
+    public boolean isLeadingZero(String value, String nextValue) {
         return isEqualsZero(value) && !isFractional(nextValue) && !isEqualsOperator(nextValue);
     }
 }
