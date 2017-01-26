@@ -9,6 +9,7 @@ public interface CalculatorInterface {
 
     void addText(String value);
 
+    void insertText(int cursor, String value);
 
     int getCursorPosition();
 
@@ -19,4 +20,6 @@ public interface CalculatorInterface {
     void clear();
 
     void delete();
+
+    void delete(int start, int end);
 }

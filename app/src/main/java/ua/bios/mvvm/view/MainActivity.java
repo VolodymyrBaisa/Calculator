@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements CalculatorInterfa
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
     public String getText() {
         return mainLayoutBinding.screenActivity.screen.getText().toString();
@@ -59,6 +58,11 @@ public class MainActivity extends AppCompatActivity implements CalculatorInterfa
     @Override
     public void addText(String value) {
         mainLayoutBinding.screenActivity.screen.addText(value);
+    }
+
+    @Override
+    public void insertText(int cursor, String value) {
+        mainLayoutBinding.screenActivity.screen.insertText(cursor, value);
     }
 
     @Override
@@ -84,5 +88,10 @@ public class MainActivity extends AppCompatActivity implements CalculatorInterfa
     @Override
     public void delete() {
         mainLayoutBinding.screenActivity.screen.delete();
+    }
+
+    @Override
+    public void delete(int start, int end) {
+        mainLayoutBinding.screenActivity.screen.delete(start, end);
     }
 }

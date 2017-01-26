@@ -31,8 +31,12 @@ public class CalculatorScreenCommunication {
         return calculatorInterface.getText();
     }
 
-    public void addExpression(String value) {
+    public void addText(String value) {
         calculatorInterface.addText(value);
+    }
+
+    public void insertText(int cursor, String value) {
+        calculatorInterface.insertText(cursor, value);
     }
 
     public int getSize() {
@@ -47,8 +51,24 @@ public class CalculatorScreenCommunication {
         return calculatorInterface.getText().contains(value);
     }
 
+    public int getCursorPosition() {
+        return calculatorInterface.getCursorPosition();
+    }
+
+    public char getChatAt(int i) {
+        return calculatorInterface.getChatAt(i);
+    }
+
+    public CharSequence getSubSequence() {
+        return calculatorInterface.getSubSequence();
+    }
+
     public void delete() {
         calculatorInterface.delete();
+    }
+
+    public void delete(int start, int end) {
+        calculatorInterface.delete(start, end);
     }
 
     public void clear() {

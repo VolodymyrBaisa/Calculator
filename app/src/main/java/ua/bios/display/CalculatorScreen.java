@@ -41,6 +41,10 @@ public class CalculatorScreen extends EditText {
         super.getText().insert(getSelectionStart(), value);
     }
 
+    public void insertText(int cursor, String value){
+        super.getText().insert(cursor, value);
+    }
+
     public char getChatAt(int i){
         return super.getText().charAt(i);
     }
@@ -54,6 +58,10 @@ public class CalculatorScreen extends EditText {
         if (cursor > 0) {
             super.getText().delete(cursor - 1, cursor);
         }
+    }
+
+    public void delete(int start, int end){
+        super.getText().delete(start, end);
     }
 
     public void clear() {
