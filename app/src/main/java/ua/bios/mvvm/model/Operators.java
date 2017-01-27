@@ -5,7 +5,7 @@ package ua.bios.mvvm.model;
  */
 
 public enum Operators {
-    PLUS("+"), DIVIDE("÷"), MULTIPLY("×"), SUBTRACT("-"), PERCENTAGE("%"), SQUARE_ROOT("√"), EQUAL("="), NEW_LINE("\n");
+    PLUS("+"), DIVIDE("÷"), MULTIPLY("×"), SUBTRACT("-");
 
     private String operator;
 

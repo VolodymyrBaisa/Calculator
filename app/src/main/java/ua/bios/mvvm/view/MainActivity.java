@@ -13,6 +13,7 @@ import ua.bios.R;
 import ua.bios.databinding.MainLayoutBinding;
 import ua.bios.display.CalculatorInterface;
 import ua.bios.mvvm.model.CalculatorScreenCommunication;
+import ua.bios.mvvm.viewmodel.BindableGrandTotalScreen;
 import ua.bios.mvvm.viewmodel.CalculatorHandler;
 
 /**
@@ -27,7 +28,13 @@ public class MainActivity extends AppCompatActivity implements CalculatorInterfa
         super.onCreate(savedInstanceState);
         mainLayoutBinding = DataBindingUtil.setContentView(this, R.layout.main_layout);
         setKeyboardHandler();
+        setGrandTotalHandler();
         CalculatorScreenCommunication.init(this);
+    }
+
+    private void setGrandTotalHandler() {
+        BindableGrandTotalScreen bindableGrandTotalScreen = BindableGrandTotalScreen.getInstance();
+        mainLayoutBinding.screenActivity.setGrandTotalScreen(bindableGrandTotalScreen);
     }
 
     private void setKeyboardHandler() {

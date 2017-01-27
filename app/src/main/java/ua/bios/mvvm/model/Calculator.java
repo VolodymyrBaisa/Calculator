@@ -5,7 +5,7 @@ import net.objecthunter.exp4j.ExpressionBuilder;
 import net.objecthunter.exp4j.function.Function;
 
 import ua.bios.utils.Formatter;
-import ua.bios.utils.OperatorReplacer;
+import ua.bios.utils.OperatorAndSymbolsReplacer;
 
 /**
  * Created by BIOS on 12/8/2016.
@@ -13,7 +13,7 @@ import ua.bios.utils.OperatorReplacer;
 
 public class Calculator {
     public String calculate(String expr) {
-        String operatorsReplacedExpression = OperatorReplacer.replaseOperator(expr);
+        String operatorsReplacedExpression = OperatorAndSymbolsReplacer.replaceOperatorAndSymbols(expr);
         try {
             Expression expression = new ExpressionBuilder(operatorsReplacedExpression).functions(getFunctionsArray()).build();
             if (expression.validate().isValid()) {

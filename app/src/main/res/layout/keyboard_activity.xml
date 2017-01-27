@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="GT"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickGrandTotal}" />
 
             <Button
                 android:id="@+id/rate"
