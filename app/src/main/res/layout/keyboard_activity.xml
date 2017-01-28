@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
         <variable
             name="keyboard"
             type="ua.bios.mvvm.viewmodel.CalculatorHandler" />
+
+        <variable
+            name="grandTotalScreen"
+            type="ua.bios.mvvm.viewmodel.BindableGrandTotalScreen" />
     </data>
 
     <LinearLayout
@@ -21,32 +26,33 @@
                 style="@style/button_teal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="GT"
-                android:onClick="@{keyboard.onClickGrandTotal}" />
+                android:clickable="@{grandTotalScreen.activate}"
+                android:onClick="@{keyboard.onClickGrandTotal}"
+                android:text="GT" />
 
             <Button
                 android:id="@+id/rate"
                 style="@style/button_teal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="RATE"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="RATE" />
 
             <Button
                 android:id="@+id/tax_minus"
                 style="@style/button_teal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="TAX-"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="TAX-" />
 
             <Button
                 android:id="@+id/tax_plus"
                 style="@style/button_teal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="TAX+"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="TAX+" />
         </LinearLayout>
 
         <LinearLayout
@@ -59,16 +65,16 @@
                 style="@style/button_blue_grey"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="%"
-                android:onClick="@{keyboard.onClickPercentage}" />
+                android:onClick="@{keyboard.onClickPercentage}"
+                android:text="%" />
 
             <Button
                 android:id="@+id/square_root"
                 style="@style/button_blue_grey"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="√x"
-                android:onClick="@{keyboard.onClickSquareRoot}" />
+                android:onClick="@{keyboard.onClickSquareRoot}"
+                android:text="√x" />
 
             <ImageButton
                 android:id="@+id/backspace"
@@ -77,18 +83,18 @@
                 android:layout_height="match_parent"
                 android:contentDescription="backspace"
                 android:gravity="center"
+                android:onClick="@{keyboard.onClickBackspace}"
                 android:padding="10dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/backspace"
-                android:onClick="@{keyboard.onClickBackspace}" />
+                android:src="@drawable/backspace" />
 
             <Button
                 android:id="@+id/reset"
                 style="@style/button_deep_orange"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="C"
-                android:onClick="@{keyboard.onClickClear}" />
+                android:onClick="@{keyboard.onClickClear}"
+                android:text="C" />
         </LinearLayout>
 
         <LinearLayout
@@ -101,32 +107,32 @@
                 style="@style/button_indigo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="MC"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="MC" />
 
             <Button
                 android:id="@+id/mr"
                 style="@style/button_indigo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="MR"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="MR" />
 
             <Button
                 android:id="@+id/m_minus"
                 style="@style/button_indigo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="M-"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="M-" />
 
             <Button
                 android:id="@+id/m_plus"
                 style="@style/button_indigo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="M+"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="M+" />
         </LinearLayout>
 
         <LinearLayout
@@ -139,32 +145,32 @@
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="7"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="7" />
 
             <Button
                 android:id="@+id/eight"
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="8"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="8" />
 
             <Button
                 android:id="@+id/nine"
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="9"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="9" />
 
             <Button
                 android:id="@+id/divide"
                 style="@style/button_blue_grey"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="÷"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="÷" />
         </LinearLayout>
 
         <LinearLayout
@@ -177,32 +183,32 @@
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="4"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="4" />
 
             <Button
                 android:id="@+id/five"
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="5"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="5" />
 
             <Button
                 android:id="@+id/six"
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="6"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="6" />
 
             <Button
                 android:id="@+id/multiply"
                 style="@style/button_blue_grey"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="×"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="×" />
         </LinearLayout>
 
         <LinearLayout
@@ -215,8 +221,8 @@
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="1"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="1" />
 
 
             <Button
@@ -224,24 +230,24 @@
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="2"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="2" />
 
             <Button
                 android:id="@+id/tree"
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="3"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="3" />
 
             <Button
                 android:id="@+id/subtract"
                 style="@style/button_blue_grey"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="-"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="-" />
         </LinearLayout>
 
         <LinearLayout
@@ -254,32 +260,32 @@
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="."
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="." />
 
             <Button
                 android:id="@+id/zero"
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="0"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="0" />
 
             <Button
                 android:id="@+id/equal"
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="="
-                android:onClick="@{keyboard.onClickEquals}" />
+                android:onClick="@{keyboard.onClickEquals}"
+                android:text="=" />
 
             <Button
                 android:id="@+id/plus"
                 style="@style/button_blue_grey"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="+"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="+" />
         </LinearLayout>
 
         <LinearLayout
@@ -292,32 +298,32 @@
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="+/-"
-                android:onClick="@{keyboard.onClickOpposite}" />
+                android:onClick="@{keyboard.onClickOpposite}"
+                android:text="+/-" />
 
             <Button
                 android:id="@+id/double_zero"
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="00"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="00" />
 
             <Button
                 android:id="@+id/left_parenthesis"
                 style="@style/button_blue_grey"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="("
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text="(" />
 
             <Button
                 android:id="@+id/right_parenthesis"
                 style="@style/button_blue_grey"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text=")"
-                android:onClick="@{keyboard.onClickButton}" />
+                android:onClick="@{keyboard.onClickButton}"
+                android:text=")" />
         </LinearLayout>
     </LinearLayout>
 </layout>

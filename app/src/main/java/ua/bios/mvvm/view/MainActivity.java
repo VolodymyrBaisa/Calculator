@@ -15,6 +15,7 @@ import ua.bios.display.CalculatorInterface;
 import ua.bios.mvvm.model.CalculatorScreenCommunication;
 import ua.bios.mvvm.viewmodel.BindableGrandTotalScreen;
 import ua.bios.mvvm.viewmodel.CalculatorHandler;
+import ua.bios.mvvm.viewmodel.CalculatorScreenHandler;
 
 /**
  * Created by BIOS on 12/26/2016.
@@ -28,13 +29,19 @@ public class MainActivity extends AppCompatActivity implements CalculatorInterfa
         super.onCreate(savedInstanceState);
         mainLayoutBinding = DataBindingUtil.setContentView(this, R.layout.main_layout);
         setKeyboardHandler();
-        setGrandTotalHandler();
+        setGrandTotalBindable();
+        setCalculatorScreenHandler();
         CalculatorScreenCommunication.init(this);
     }
 
-    private void setGrandTotalHandler() {
+    private void setCalculatorScreenHandler() {
+        mainLayoutBinding.screenActivity.setCalculatorScreenHandler(new CalculatorScreenHandler());
+    }
+
+    private void setGrandTotalBindable() {
         BindableGrandTotalScreen bindableGrandTotalScreen = BindableGrandTotalScreen.getInstance();
         mainLayoutBinding.screenActivity.setGrandTotalScreen(bindableGrandTotalScreen);
+        mainLayoutBinding.keyboardActivity.setGrandTotalScreen (bindableGrandTotalScreen);
     }
 
     private void setKeyboardHandler() {

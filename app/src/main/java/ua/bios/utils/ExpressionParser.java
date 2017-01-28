@@ -7,11 +7,13 @@ import java.util.LinkedList;
  */
 
 public class ExpressionParser {
-    private static final String regex = "[\\d.+-÷×()√%=]+";
-
     private ExpressionParser(){}
 
     public static LinkedList<String> getExpressionAsGroupedList(String expression) {
-        return Parser.findElement(expression, regex);
+        return Parser.findElement(expression, "[\\d.+-÷×()√%=]+");
+    }
+
+    public static LinkedList<String> getResultsList(String expression) {
+        return Parser.findGroupElement(expression, "=([-\\d.]+)");
     }
 }

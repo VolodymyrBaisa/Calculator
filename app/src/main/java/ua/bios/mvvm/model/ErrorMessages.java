@@ -5,17 +5,22 @@ package ua.bios.mvvm.model;
  */
 
 public class ErrorMessages {
-    private final static String error = "Error";
-    private final static String errorDivisionByZero = "Division by zero!";
+    private final static String ERROR = "Error";
+    private final static String ERROR_DIVISION_BY_ZERO = "Division by zero!";
+    private final static String NAN = "NaN";
 
     private ErrorMessages() {
     }
 
     public static String getError(){
-        return error;
+        return ERROR;
     }
 
     public static String getErrorDivisionByZero(){
-        return errorDivisionByZero;
+        return ERROR_DIVISION_BY_ZERO;
+    }
+
+    public static String getErrorNaN(){
+        return NAN;
     }
 }

@@ -30,8 +30,8 @@ public class CalculatorHandler {
         }
     }
 
-    public void onClickGrandTotal(View v){
-         calculateGTResult(getGTExpression());
+    public void onClickGrandTotal(View v) {
+        calculateGTResult(getGTExpression());
     }
 
     public void onClickClear(View v) {
@@ -63,14 +63,19 @@ public class CalculatorHandler {
     private StringBuilder getGTExpression() {
         ResultStorage resultStorage = ResultStorage.getInstance();
         StringBuilder summaryResults = new StringBuilder("0");
-        for(int index = 0; ; index++){
-            if(resultStorage.getSize() - 1 > index) {
-                summaryResults.append(resultStorage.get(index)).append(Operators.PLUS.toString());
+        for (int index = 0; ; index++) {
+            if (resultStorage.getSize() > 0) {
+                if (resultStorage.getSize() - 1 > index) {
+                    summaryResults.append(resultStorage.get(index)).append(Operators.PLUS.toString());
+                } else {
+                    summaryResults.append(resultStorage.get(index));
+                    break;
+                }
             } else {
-                summaryResults.append(resultStorage.get(index));
                 break;
             }
         }
+        resultStorage.clear();
         return summaryResults;
     }
 
@@ -144,10 +149,10 @@ public class CalculatorHandler {
         int cursorPosition = calculatorScreenCommunication.getCursorPosition();
         String value = "";
         if (cursorPosition != 0) {
-            for(int indexCursorPosition = cursorPosition - 1; indexCursorPosition >= 0; indexCursorPosition--) {
+            for (int indexCursorPosition = cursorPosition - 1; indexCursorPosition >= 0; indexCursorPosition--) {
                 char charAt = calculatorScreenCommunication.getChatAt(indexCursorPosition);
                 value += String.valueOf(calculatorScreenCommunication.getChatAt(indexCursorPosition));
-                if(charAt == Operators.DIVIDE.toString().charAt(0)
+                if (charAt == Operators.DIVIDE.toString().charAt(0)
                         || charAt == Operators.MULTIPLY.toString().charAt(0)
                         || charAt == Operators.PLUS.toString().charAt(0)
                         || charAt == Operators.SUBTRACT.toString().charAt(0)
@@ -170,40 +175,33 @@ public class CalculatorHandler {
 
     private void equals() {
         CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
-        String expression = calculatorScreenCommunication.toString();
 
+        String expression = calculatorScreenCommunication.toString();
         expression = cleanerErrorMessagesAndFunctionNames(expression);
 
         Calculator calculator = new Calculator();
         calculatorScreenCommunication.clear();
 
-        calculateAllExpressionGroup(calculatorScreenCommunication, expression, calculator);
+        StringBuilder expressionWithResults = calculateAllExpressionGroup(expression, calculator);
+        setResultsForGrandTotal(expressionWithResults.toString());
+        calculatorScreenCommunication.addText(expressionWithResults.toString());
     }
 
-    private void calculateAllExpressionGroup(CalculatorScreenCommunication calculatorScreenCommunication, String expression, Calculator calculator) {
-        ResultStorage resultStorage = ResultStorage.getInstance();
-        resultStorage.clear();
-
+    private StringBuilder calculateAllExpressionGroup(String expression, Calculator calculator) {
         LinkedList<String> expressionWithoutEquals = removeAllEqualFromExpression(expression);
+        StringBuilder expressionWithResults = new StringBuilder();
         for (String expr : expressionWithoutEquals) {
             String result = String.valueOf(calculator.calculate(expr));
-            calculatorScreenCommunication.addText(expr.concat("=").concat(result).concat("\n"));
-
-            setResultsForGrandTotal(resultStorage, result);
+            expressionWithResults.append(expr).append("=").append(result).append("\n");
         }
+        return expressionWithResults;
     }
 
-    private void setResultsForGrandTotal(ResultStorage resultStorage, String result) {
-        resultStorage.add(result);
-        checkSizeOfResultStorageAndActivateGTScreen(resultStorage);
-    }
-
-    private void checkSizeOfResultStorageAndActivateGTScreen(ResultStorage resultStorage) {
-        BindableGrandTotalScreen bindableGrandTotalScreen = BindableGrandTotalScreen.getInstance();
-        if(resultStorage.getSize() > 0){
-            bindableGrandTotalScreen.setActivate(true);
-        } else {
-            bindableGrandTotalScreen.setActivate(false);
+    private void setResultsForGrandTotal(String expression) {
+        ResultStorage resultStorage = ResultStorage.getInstance();
+        LinkedList<String> results = ExpressionParser.getResultsList(expression);
+        for (String result : results) {
+            resultStorage.add(result);
         }
     }
 
@@ -215,6 +213,7 @@ public class CalculatorHandler {
     private String cleanerErrorMessagesAndFunctionNames(String expression) {
         expression = ExpressionCleaner.cleanerErrorMsg(expression, ErrorMessages.getError());
         expression = ExpressionCleaner.cleanerErrorMsg(expression, ErrorMessages.getErrorDivisionByZero());
+        expression = ExpressionCleaner.cleanerErrorMsg(expression, ErrorMessages.getErrorNaN());
         expression = ExpressionCleaner.extractGTExpression(expression, FunctionNames.getGrandTotal());
         return expression;
     }
