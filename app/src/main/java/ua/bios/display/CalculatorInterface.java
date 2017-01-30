@@ -13,7 +13,9 @@ public interface CalculatorInterface {
 
     int getCursorPosition();
 
-    char getChatAt(int i);
+    void setCursorPosition(int value);
+
+    char getCharAt(int i);
 
     CharSequence getSubSequence();
 

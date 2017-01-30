@@ -1,6 +1,6 @@
 package ua.bios.mvvm.viewmodel;
 
-import ua.bios.mvvm.model.ResultStorage;
+import ua.bios.mvvm.model.ResultData;
 
 /**
  * Created by BIOS on 1/27/2017.
@@ -12,12 +12,12 @@ public class CalculatorScreenHandler {
     }
 
     private void checkSizeOfResultStorageAndActivateGTScreen() {
-        ResultStorage resultStorage = ResultStorage.getInstance();
-        BindableGrandTotalScreen bindableGrandTotalScreen = BindableGrandTotalScreen.getInstance();
-        if(resultStorage.getSize() > 0){
-            bindableGrandTotalScreen.setActivate(true);
+        ResultData resultData = ResultData.getInstance();
+        GrandTotalViewModel grandTotalViewModel = GrandTotalViewModel.getInstance();
+        if(resultData.getSize() > 0){
+            grandTotalViewModel.setActivate(true);
         } else {
-            bindableGrandTotalScreen.setActivate(false);
+            grandTotalViewModel.setActivate(false);
         }
     }
 }

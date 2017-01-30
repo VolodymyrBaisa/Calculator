@@ -10,15 +10,15 @@ public class ValidationArguments {
     public boolean validate(String value, String nextValue) {
         if (!value.isEmpty()) {
 
-            if ((isContainsDot(value) || isEqualsOperator(value)) && isContainsDot(nextValue)) {
+            if ((isContainsDot(value) || isContainsOperator(value)) && isContainsDot(nextValue)) {
                 return false;
             }
 
-            if (ifLastIndexIsDot(value) && isEqualsOperator(nextValue)) {
+            if (ifLastIndexIsDot(value) && isContainsOperator(nextValue)) {
                 return false;
             }
 
-            if (isEqualsOperator(value) && isEqualsOperator(nextValue)) {
+            if (isContainsOperator(value) && isContainsOperator(nextValue)) {
                 return false;
             }
         } else {
@@ -26,7 +26,7 @@ public class ValidationArguments {
                 return true;
             }
 
-            if (isEqualsOperator(nextValue) || isContainsDot(nextValue)) {
+            if (isContainsOperator(nextValue) || isContainsDot(nextValue)) {
                 return false;
             }
         }
@@ -38,14 +38,14 @@ public class ValidationArguments {
         return value.contains(dot);
     }
 
-    public boolean isEqualsOperator(String value) {
+    public boolean isContainsOperator(String value) {
         String divide = Operators.DIVIDE.getOperator();
         String multiply = Operators.MULTIPLY.getOperator();
         String subtract = Operators.SUBTRACT.getOperator();
         String plus = Operators.PLUS.getOperator();
 
-        if (value.equals(divide) || value.equals(multiply) ||
-                value.equals(subtract) || value.equals(plus)) {
+        if (value.contains(divide) || value.contains(multiply) ||
+                value.contains(subtract) || value.contains(plus)) {
             return true;
         }
         return false;
@@ -72,6 +72,6 @@ public class ValidationArguments {
     }
 
     public boolean isLeadingZero(String value, String nextValue) {
-        return isEqualsZero(value) && !isFractional(nextValue) && !isEqualsOperator(nextValue);
+        return isEqualsZero(value) && !isFractional(nextValue) && !isContainsOperator(nextValue);
     }
 }

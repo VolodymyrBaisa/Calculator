@@ -13,9 +13,10 @@ import ua.bios.R;
 import ua.bios.databinding.MainLayoutBinding;
 import ua.bios.display.CalculatorInterface;
 import ua.bios.mvvm.model.CalculatorScreenCommunication;
-import ua.bios.mvvm.viewmodel.BindableGrandTotalScreen;
+import ua.bios.mvvm.viewmodel.GrandTotalViewModel;
 import ua.bios.mvvm.viewmodel.CalculatorHandler;
 import ua.bios.mvvm.viewmodel.CalculatorScreenHandler;
+import ua.bios.mvvm.viewmodel.TaxRateViewModel;
 
 /**
  * Created by BIOS on 12/26/2016.
@@ -29,8 +30,9 @@ public class MainActivity extends AppCompatActivity implements CalculatorInterfa
         super.onCreate(savedInstanceState);
         mainLayoutBinding = DataBindingUtil.setContentView(this, R.layout.main_layout);
         setKeyboardHandler();
-        setGrandTotalBindable();
+        setGrandTotalViewModel();
         setCalculatorScreenHandler();
+        setTaxRateViewModel();
         CalculatorScreenCommunication.init(this);
     }
 
@@ -38,10 +40,15 @@ public class MainActivity extends AppCompatActivity implements CalculatorInterfa
         mainLayoutBinding.screenActivity.setCalculatorScreenHandler(new CalculatorScreenHandler());
     }
 
-    private void setGrandTotalBindable() {
-        BindableGrandTotalScreen bindableGrandTotalScreen = BindableGrandTotalScreen.getInstance();
-        mainLayoutBinding.screenActivity.setGrandTotalScreen(bindableGrandTotalScreen);
-        mainLayoutBinding.keyboardActivity.setGrandTotalScreen (bindableGrandTotalScreen);
+    private void setGrandTotalViewModel() {
+        GrandTotalViewModel grandTotalViewModel = GrandTotalViewModel.getInstance();
+        mainLayoutBinding.screenActivity.setGrandTotalScreen(grandTotalViewModel);
+        mainLayoutBinding.keyboardActivity.setGrandTotalScreen(grandTotalViewModel);
+    }
+
+    private void setTaxRateViewModel() {
+        TaxRateViewModel taxRateViewModel = TaxRateViewModel.getInstance();
+        mainLayoutBinding.screenActivity.setTaxRateScreen(taxRateViewModel);
     }
 
     private void setKeyboardHandler() {
@@ -85,8 +92,14 @@ public class MainActivity extends AppCompatActivity implements CalculatorInterfa
     }
 
     @Override
-    public char getChatAt(int i) {
-        return mainLayoutBinding.screenActivity.screen.getChatAt(i);
+    public void setCursorPosition(int value) {
+        mainLayoutBinding.screenActivity.screen.setSelection(value);
+    }
+
+
+    @Override
+    public char getCharAt(int i) {
+        return mainLayoutBinding.screenActivity.screen.getCharAt(i);
     }
 
     @Override

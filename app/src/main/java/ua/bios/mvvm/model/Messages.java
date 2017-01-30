@@ -4,12 +4,12 @@ package ua.bios.mvvm.model;
  * Created by BIOS on 1/8/2017.
  */
 
-public class ErrorMessages {
+public class Messages {
     private final static String ERROR = "Error";
     private final static String ERROR_DIVISION_BY_ZERO = "Division by zero!";
     private final static String NAN = "NaN";
 
-    private ErrorMessages() {
+    private Messages() {
     }
 
     public static String getError(){

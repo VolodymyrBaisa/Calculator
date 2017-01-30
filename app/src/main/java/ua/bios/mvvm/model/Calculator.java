@@ -20,13 +20,13 @@ public class Calculator {
                 try {
                     return Formatter.doubleToString(expression.evaluate());
                 } catch (ArithmeticException e) {
-                    return ErrorMessages.getErrorDivisionByZero();
+                    return Messages.getErrorDivisionByZero();
                 }
             } else {
-                return ErrorMessages.getError();
+                return Messages.getError();
             }
         } catch (IllegalArgumentException e) {
-            return ErrorMessages.getError();
+            return Messages.getError();
         }
     }
 

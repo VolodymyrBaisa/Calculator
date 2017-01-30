@@ -55,8 +55,12 @@ public class CalculatorScreenCommunication {
         return calculatorInterface.getCursorPosition();
     }
 
-    public char getChatAt(int i) {
-        return calculatorInterface.getChatAt(i);
+    public void setCursorPosition(int value){
+        calculatorInterface.setCursorPosition(value);
+    }
+
+    public char getCharAt(int i) {
+        return calculatorInterface.getCharAt(i);
     }
 
     public CharSequence getSubSequence() {

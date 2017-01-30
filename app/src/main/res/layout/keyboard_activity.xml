@@ -8,7 +8,7 @@
 
         <variable
             name="grandTotalScreen"
-            type="ua.bios.mvvm.viewmodel.BindableGrandTotalScreen" />
+            type="ua.bios.mvvm.viewmodel.GrandTotalViewModel" />
     </data>
 
     <LinearLayout
@@ -35,7 +35,7 @@
                 style="@style/button_teal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:onClick="@{keyboard.onClickButton}"
+                android:onClick="@{keyboard.onClickRate}"
                 android:text="RATE" />
 
             <Button

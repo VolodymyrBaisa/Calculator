@@ -3,9 +3,6 @@ package ua.bios.utils;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-import ua.bios.mvvm.model.FunctionNames;
-import ua.bios.mvvm.model.MathSymbols;
-
 /**
  * Created by BIOS on 1/22/2017.
  */
@@ -33,9 +30,9 @@ public class ExpressionCleaner {
         return expression;
     }
 
-    public static String extractGTExpression(String expression, String gtExpression){
-        if(expression.contains(gtExpression)){
-            return expression.replaceAll(FunctionNames.getGrandTotal().concat("=[-\\d.]+"),"");
+    public static String extractGTExpression(String expression, String gtExpression) {
+        if (expression.contains(gtExpression)) {
+            return expression.replaceAll("GT=[-\\d.]+|GT=|GT", "");
         }
         return expression;
     }

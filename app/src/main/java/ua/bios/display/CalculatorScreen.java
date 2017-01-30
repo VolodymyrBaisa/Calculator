@@ -45,8 +45,12 @@ public class CalculatorScreen extends EditText {
         super.getText().insert(cursor, value);
     }
 
-    public char getChatAt(int i){
+    public char getCharAt(int i){
         return super.getText().charAt(i);
+    }
+
+    public void setCursorPosition(int value){
+        super.setSelection(value);
     }
 
     public CharSequence getSubSequence(){

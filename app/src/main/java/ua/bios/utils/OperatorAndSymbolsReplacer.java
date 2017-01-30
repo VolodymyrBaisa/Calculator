@@ -44,7 +44,7 @@ public class OperatorAndSymbolsReplacer {
         String[] splitExpression = expression.split("(?<=%)(\\D)");
         for (String expr : splitExpression) {
             if (expr.contains(MathSymbols.PERCENTAGE.toString())) {
-                String[] splitExpressionWithPercentage = expr.split("\\D(?=[\\d.]+%)");
+                LinkedList<String> splitExpressionWithPercentage = Parser.findGroupElement(expr, "([\\d.]+[\\d.%]+)");
                 expression = collectPctFunction(expression, splitExpressionWithPercentage);
             }
 
@@ -52,7 +52,7 @@ public class OperatorAndSymbolsReplacer {
         return expression;
     }
 
-    private static String collectPctFunction(String expression, String[] splitExpressionWithPercentage) {
+    private static String collectPctFunction(String expression, LinkedList<String> splitExpressionWithPercentage) {
         StringBuilder pct = new StringBuilder("pct(");
         for (String value : splitExpressionWithPercentage) {
             if (!value.contains(MathSymbols.PERCENTAGE.toString())) {

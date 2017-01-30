@@ -6,20 +6,20 @@ import java.util.ArrayList;
  * Created by BIOS on 1/26/2017.
  */
 
-public class ResultStorage {
+public class ResultData {
     private final ArrayList<String> resultStorageArray = new ArrayList<>();
-    private static volatile ResultStorage resultStorage;
+    private static volatile ResultData resultData;
 
-    private ResultStorage() {
+    private ResultData() {
     }
 
-    public static ResultStorage getInstance() {
-        if (resultStorage == null) {
-            synchronized (ResultStorage.class) {
-                return resultStorage = new ResultStorage();
+    public static ResultData getInstance() {
+        if (resultData == null) {
+            synchronized (ResultData.class) {
+                return resultData = new ResultData();
             }
         } else {
-            return resultStorage;
+            return resultData;
         }
     }
 

@@ -8,19 +8,19 @@ import com.android.databinding.library.baseAdapters.BR;
  * Created by BIOS on 1/26/2017.
  */
 
-public class BindableGrandTotalScreen extends BaseObservable {
-    private static volatile BindableGrandTotalScreen bindableGrandTotalScreen;
+public class GrandTotalViewModel extends BaseObservable {
+    private static volatile GrandTotalViewModel grandTotalViewModel;
     private boolean isActivate = false;
 
-    private BindableGrandTotalScreen(){}
+    private GrandTotalViewModel(){}
 
-    public static BindableGrandTotalScreen getInstance(){
-        if(bindableGrandTotalScreen == null){
-            synchronized (BindableGrandTotalScreen.class){
-                return bindableGrandTotalScreen = new BindableGrandTotalScreen();
+    public static GrandTotalViewModel getInstance(){
+        if(grandTotalViewModel == null){
+            synchronized (GrandTotalViewModel.class){
+                return grandTotalViewModel = new GrandTotalViewModel();
             }
         }else{
-            return bindableGrandTotalScreen;
+            return grandTotalViewModel;
         }
     }
 
