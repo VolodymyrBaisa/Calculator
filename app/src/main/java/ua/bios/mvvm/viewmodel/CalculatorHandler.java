@@ -37,6 +37,14 @@ public class CalculatorHandler {
         setRate();
     }
 
+    public void onClickTaxPlus(View v){
+        taxPlus();
+    }
+
+    public void onClickTaxMinus(View v){
+        taxMinus();
+    }
+
     public void onClickClear(View v) {
         clear();
     }
@@ -141,12 +149,19 @@ public class CalculatorHandler {
     //RATE
     private void setRate() {
         CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
-        System.out.println(getNumberAtCursorPosition(calculatorScreenCommunication));
+        TaxRateViewModel taxRateViewModel = TaxRateViewModel.getInstance();
+        taxRateViewModel.setValue(getNumberAtCursorPosition(calculatorScreenCommunication));
     }
 
     //Tax+
+    private void taxPlus(){
+
+    }
 
     //Tax-
+    private void taxMinus(){
+
+    }
     //==============================================================================================
 
     //============================GrandTotal========================================================
