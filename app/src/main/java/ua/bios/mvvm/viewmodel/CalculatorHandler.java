@@ -37,11 +37,11 @@ public class CalculatorHandler {
         setRate();
     }
 
-    public void onClickTaxPlus(View v){
+    public void onClickTaxPlus(View v) {
         taxPlus();
     }
 
-    public void onClickTaxMinus(View v){
+    public void onClickTaxMinus(View v) {
         taxMinus();
     }
 
@@ -116,9 +116,9 @@ public class CalculatorHandler {
         return value;
     }
 
-    private String getTwoCharAtCursorPosition(CalculatorScreenCommunication calculatorScreenCommunication){
+    private String getTwoCharAtCursorPosition(CalculatorScreenCommunication calculatorScreenCommunication) {
         int cursorPosition = calculatorScreenCommunication.getCursorPosition();
-        String value="";
+        String value = "";
         if (cursorPosition != 0) {
             if (cursorPosition == calculatorScreenCommunication.getSize()) {
                 value = String.valueOf(calculatorScreenCommunication.getCharAt(cursorPosition - 1));
@@ -150,17 +150,48 @@ public class CalculatorHandler {
     private void setRate() {
         CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
         TaxRateViewModel taxRateViewModel = TaxRateViewModel.getInstance();
-        taxRateViewModel.setValue(getNumberAtCursorPosition(calculatorScreenCommunication));
+        String taxRate = getNumberAtCursorPosition(calculatorScreenCommunication);
+        taxRateViewModel.setValue(taxRate != "" ? taxRate : "0");
     }
 
     //Tax+
-    private void taxPlus(){
+    private void taxPlus() {
+        equals();
+        CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
+        System.out.println(getResultAtCursorPosition(calculatorScreenCommunication));
 
     }
 
     //Tax-
-    private void taxMinus(){
+    private void taxMinus() {
 
+    }
+
+    private String getResultAtCursorPosition(CalculatorScreenCommunication calculatorScreenCommunication) {
+        int cursorPosition = calculatorScreenCommunication.getCursorPosition();
+        String value = "";
+        int indexCursorPosition = cursorPosition - 2;
+
+        for (; indexCursorPosition > 0; indexCursorPosition--) {
+            char charAt = calculatorScreenCommunication.getCharAt(indexCursorPosition);
+            if (charAt == '\n') break;
+        }
+
+        boolean wasEqual = false;
+        for (indexCursorPosition += 1; indexCursorPosition < calculatorScreenCommunication.getSize(); indexCursorPosition++) {
+            char charAt = calculatorScreenCommunication.getCharAt(indexCursorPosition);
+            if (wasEqual) {
+                value += String.valueOf(charAt);
+                if (charAt == '\n') break;
+            }
+
+            if (charAt == '=') {
+                wasEqual = true;
+            }
+
+        }
+
+        return value;
     }
     //==============================================================================================
 
