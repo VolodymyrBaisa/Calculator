@@ -14,6 +14,7 @@ import ua.bios.utils.OperatorAndSymbolsReplacer;
 public class Calculator {
     public String calculate(String expr) {
         String operatorsReplacedExpression = OperatorAndSymbolsReplacer.replaceOperatorAndSymbols(expr);
+        System.out.println(operatorsReplacedExpression);
         try {
             Expression expression = new ExpressionBuilder(operatorsReplacedExpression).functions(getFunctionsArray()).build();
             if (expression.validate().isValid()) {

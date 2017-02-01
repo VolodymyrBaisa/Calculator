@@ -9,8 +9,8 @@ import java.util.LinkedList;
 
 import ua.bios.mvvm.model.Calculator;
 import ua.bios.mvvm.model.CalculatorScreenCommunication;
-import ua.bios.mvvm.model.Operators;
 import ua.bios.mvvm.model.GrandTotalData;
+import ua.bios.mvvm.model.Operators;
 import ua.bios.mvvm.model.TaxRateData;
 import ua.bios.utils.ExpressionCleaner;
 import ua.bios.utils.ExpressionParser;
@@ -145,7 +145,7 @@ public class CalculatorHandler {
     }
 
     //==============================================================================================
-    
+
     //============================TAX===============================================================
     //RATE
     private void setRate() {
@@ -336,6 +336,8 @@ public class CalculatorHandler {
         String expression = calculatorScreenCommunication.toString();
         calculatorScreenCommunication.clear();
 
+        expression = clearMessageAfterEqual(expression);
+
         Calculator calculator = new Calculator();
         StringBuilder expressionWithResults = calculateAllExpressionGroup(expression, calculator);
         clearResultStorage();
@@ -347,7 +349,7 @@ public class CalculatorHandler {
         LinkedList<String> cleanedExpression = removeResultFromExpression(expression);
         StringBuilder processedExpression = new StringBuilder();
         for (String expr : cleanedExpression) {
-            if(ExpressionTest.isExpression(expr)) {
+            if (ExpressionTest.isExpression(expr)) {
                 String result = String.valueOf(calculator.calculate(expr));
                 processedExpression.append(expr).append("=").append(result).append("\n");
             } else {
@@ -368,6 +370,10 @@ public class CalculatorHandler {
     private LinkedList<String> removeResultFromExpression(String expression) {
         LinkedList<String> groupedExpression = ExpressionParser.getExpressionAsGroupedList(expression);
         return ExpressionCleaner.removeResultFromExpression(groupedExpression);
+    }
+
+    private String clearMessageAfterEqual(String expression){
+        return ExpressionCleaner.clearMessageAfterEqual(expression);
     }
     //==============================================================================================
 }

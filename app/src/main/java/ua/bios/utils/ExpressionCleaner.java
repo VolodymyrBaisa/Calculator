@@ -15,15 +15,19 @@ public class ExpressionCleaner {
         LinkedList<String> clearExpressionOfEqual = new LinkedList<>();
         for (String value : groupedExpression) {
             if (ExpressionTest.isExpression(value)) {
-                if (!value.matches("^.*=[-\\d.\\D]+$") && !value.matches("^[-\\d.\\D]+$")) {
+                if (!value.matches("^.*=[-\\d.]+$") && !value.matches("^[-\\d.]+$")) {
                     clearExpressionOfEqual.addAll(Arrays.asList(value.split("=")));
                 } else {
-                    clearExpressionOfEqual.add(value.replaceAll("=[-\\d.\\D]+$", ""));
+                    clearExpressionOfEqual.add(value.replaceAll("=[-\\d.]+$", ""));
                 }
             } else {
                 clearExpressionOfEqual.add(value);
             }
         }
         return clearExpressionOfEqual;
+    }
+
+    public static String clearMessageAfterEqual(String expression){
+        return expression.replaceAll("=\\D+", "");
     }
 }
