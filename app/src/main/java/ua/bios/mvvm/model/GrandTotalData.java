@@ -6,20 +6,20 @@ import java.util.ArrayList;
  * Created by BIOS on 1/26/2017.
  */
 
-public class ResultData {
+public class GrandTotalData {
     private final ArrayList<String> resultStorageArray = new ArrayList<>();
-    private static volatile ResultData resultData;
+    private static volatile GrandTotalData grandTotalData;
 
-    private ResultData() {
+    private GrandTotalData() {
     }
 
-    public static ResultData getInstance() {
-        if (resultData == null) {
-            synchronized (ResultData.class) {
-                return resultData = new ResultData();
+    public static GrandTotalData getInstance() {
+        if (grandTotalData == null) {
+            synchronized (GrandTotalData.class) {
+                return grandTotalData = new GrandTotalData();
             }
         } else {
-            return resultData;
+            return grandTotalData;
         }
     }
 

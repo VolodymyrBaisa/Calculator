@@ -6,7 +6,7 @@ package ua.bios.mvvm.model;
 
 public class TaxRateData {
     private static volatile TaxRateData taxRateData;
-    private String tax;
+    private String tax = "0";
 
     private TaxRateData(){}
 

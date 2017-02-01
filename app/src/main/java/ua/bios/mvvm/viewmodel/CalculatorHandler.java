@@ -9,11 +9,12 @@ import java.util.LinkedList;
 
 import ua.bios.mvvm.model.Calculator;
 import ua.bios.mvvm.model.CalculatorScreenCommunication;
-import ua.bios.mvvm.model.Messages;
 import ua.bios.mvvm.model.Operators;
-import ua.bios.mvvm.model.ResultData;
+import ua.bios.mvvm.model.GrandTotalData;
+import ua.bios.mvvm.model.TaxRateData;
 import ua.bios.utils.ExpressionCleaner;
 import ua.bios.utils.ExpressionParser;
+import ua.bios.utils.ExpressionTest;
 
 /**
  * Created by BIOS on 1/10/2017.
@@ -149,22 +150,53 @@ public class CalculatorHandler {
     //RATE
     private void setRate() {
         CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
-        TaxRateViewModel taxRateViewModel = TaxRateViewModel.getInstance();
+
         String taxRate = getNumberAtCursorPosition(calculatorScreenCommunication);
-        taxRateViewModel.setValue(taxRate != "" ? taxRate : "0");
+        taxRate = taxRate != "" ? taxRate : "0";
+
+        TaxRateViewModel taxRateViewModel = TaxRateViewModel.getInstance();
+        taxRateViewModel.setValue(taxRate);
+
+        TaxRateData taxRateData = TaxRateData.getInstance();
+        taxRateData.setTax(taxRate);
     }
 
     //Tax+
     private void taxPlus() {
         equals();
-        CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
-        System.out.println(getResultAtCursorPosition(calculatorScreenCommunication));
 
+        CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
+        String value = getResultAtCursorPosition(calculatorScreenCommunication);
+
+        TaxRateData taxRateData = TaxRateData.getInstance();
+        String taxPercentage = taxRateData.getTax();
+
+        Calculator calculator = new Calculator();
+        String total = calculator.calculate(value.concat("+").concat(taxPercentage).concat("%"));
+
+        String tax = calculator.calculate(total.concat("-").concat(value));
+
+        calculatorScreenCommunication.addText("Tax=".concat(tax).concat("\n"));
+        calculatorScreenCommunication.addText("Total=".concat(total).concat("\n"));
     }
 
     //Tax-
     private void taxMinus() {
+        equals();
 
+        CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
+        String value = getResultAtCursorPosition(calculatorScreenCommunication);
+
+        TaxRateData taxRateData = TaxRateData.getInstance();
+        String taxPercentage = taxRateData.getTax();
+
+        Calculator calculator = new Calculator();
+        String total = calculator.calculate(value.concat("/").concat("(1+").concat(taxPercentage).concat("/100)"));
+
+        String tax = calculator.calculate(value.concat("-").concat(total));
+
+        calculatorScreenCommunication.addText("Tax=".concat(tax).concat("\n"));
+        calculatorScreenCommunication.addText("Total=".concat(total).concat("\n"));
     }
 
     private String getResultAtCursorPosition(CalculatorScreenCommunication calculatorScreenCommunication) {
@@ -204,21 +236,21 @@ public class CalculatorHandler {
 
     @NonNull
     private StringBuilder getGTExpression() {
-        ResultData resultData = ResultData.getInstance();
+        GrandTotalData grandTotalData = GrandTotalData.getInstance();
         StringBuilder summaryResults = new StringBuilder("0");
         for (int index = 0; ; index++) {
-            if (resultData.getSize() > 0) {
-                if (resultData.getSize() - 1 > index) {
-                    summaryResults.append(resultData.get(index)).append(Operators.PLUS.toString());
+            if (grandTotalData.getSize() > 0) {
+                if (grandTotalData.getSize() - 1 > index) {
+                    summaryResults.append(grandTotalData.get(index)).append(Operators.PLUS.toString());
                 } else {
-                    summaryResults.append(resultData.get(index));
+                    summaryResults.append(grandTotalData.get(index));
                     break;
                 }
             } else {
                 break;
             }
         }
-        resultData.clear();
+        grandTotalData.clear();
         return summaryResults;
     }
 
@@ -250,8 +282,8 @@ public class CalculatorHandler {
     }
 
     private void clearResultStorage() {
-        ResultData resultData = ResultData.getInstance();
-        resultData.clear();
+        GrandTotalData grandTotalData = GrandTotalData.getInstance();
+        grandTotalData.clear();
     }
 
     //==============================================================================================
@@ -301,7 +333,6 @@ public class CalculatorHandler {
         CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
 
         String expression = calculatorScreenCommunication.toString();
-        expression = cleanerErrorMessagesAndFunctionNames(expression);
         calculatorScreenCommunication.clear();
 
         Calculator calculator = new Calculator();
@@ -312,34 +343,30 @@ public class CalculatorHandler {
     }
 
     private StringBuilder calculateAllExpressionGroup(String expression, Calculator calculator) {
-        LinkedList<String> expressionWithoutEquals = removeAllEqualFromExpression(expression);
-        StringBuilder expressionWithResults = new StringBuilder();
-        for (String expr : expressionWithoutEquals) {
-            String result = String.valueOf(calculator.calculate(expr));
-            expressionWithResults.append(expr).append("=").append(result).append("\n");
+        LinkedList<String> cleanedExpression = removeResultFromExpression(expression);
+        StringBuilder processedExpression = new StringBuilder();
+        for (String expr : cleanedExpression) {
+            if(ExpressionTest.isExpression(expr)) {
+                String result = String.valueOf(calculator.calculate(expr));
+                processedExpression.append(expr).append("=").append(result).append("\n");
+            } else {
+                processedExpression.append(expr).append("\n");
+            }
         }
-        return expressionWithResults;
+        return processedExpression;
     }
 
     private void setResultsForGrandTotal(String expression) {
-        ResultData resultData = ResultData.getInstance();
+        GrandTotalData grandTotalData = GrandTotalData.getInstance();
         LinkedList<String> results = ExpressionParser.getResultsList(expression);
         for (String result : results) {
-            resultData.add(result);
+            grandTotalData.add(result);
         }
     }
 
-    private LinkedList<String> removeAllEqualFromExpression(String expression) {
+    private LinkedList<String> removeResultFromExpression(String expression) {
         LinkedList<String> groupedExpression = ExpressionParser.getExpressionAsGroupedList(expression);
-        return ExpressionCleaner.removeAllEqualFromExpression(groupedExpression);
-    }
-
-    private String cleanerErrorMessagesAndFunctionNames(String expression) {
-        expression = ExpressionCleaner.cleanerErrorMsg(expression, Messages.getError());
-        expression = ExpressionCleaner.cleanerErrorMsg(expression, Messages.getErrorDivisionByZero());
-        expression = ExpressionCleaner.cleanerErrorMsg(expression, Messages.getErrorNaN());
-        expression = ExpressionCleaner.extractGTExpression(expression, "GT");
-        return expression;
+        return ExpressionCleaner.removeResultFromExpression(groupedExpression);
     }
     //==============================================================================================
 }

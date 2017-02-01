@@ -11,29 +11,19 @@ public class ExpressionCleaner {
     private ExpressionCleaner() {
     }
 
-    public static LinkedList<String> removeAllEqualFromExpression(LinkedList<String> groupedExpression) {
+    public static LinkedList<String> removeResultFromExpression(LinkedList<String> groupedExpression) {
         LinkedList<String> clearExpressionOfEqual = new LinkedList<>();
         for (String value : groupedExpression) {
-            if (!value.matches("^.*=[-\\d.]+$") && !value.matches("^[-\\d.]+$")) {
-                clearExpressionOfEqual.addAll(Arrays.asList(value.split("=")));
+            if (ExpressionTest.isExpression(value)) {
+                if (!value.matches("^.*=[-\\d.\\D]+$") && !value.matches("^[-\\d.\\D]+$")) {
+                    clearExpressionOfEqual.addAll(Arrays.asList(value.split("=")));
+                } else {
+                    clearExpressionOfEqual.add(value.replaceAll("=[-\\d.\\D]+$", ""));
+                }
             } else {
-                clearExpressionOfEqual.add(value.replaceAll("=[-\\d.]+$", ""));
+                clearExpressionOfEqual.add(value);
             }
         }
         return clearExpressionOfEqual;
-    }
-
-    public static String cleanerErrorMsg(String expression, String error) {
-        if (expression.contains(error)) {
-            return expression.replaceAll("=".concat(error), "");
-        }
-        return expression;
-    }
-
-    public static String extractGTExpression(String expression, String gtExpression) {
-        if (expression.contains(gtExpression)) {
-            return expression.replaceAll("GT=[-\\d.]+|GT=|GT", "");
-        }
-        return expression;
     }
 }
