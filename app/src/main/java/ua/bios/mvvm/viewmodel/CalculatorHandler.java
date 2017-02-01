@@ -24,9 +24,9 @@ public class CalculatorHandler {
 
     public void onClickButton(View v) {
         if (v instanceof Button) {
-            setValue(((Button) v).getText().toString());
+            addAndCheckValue(((Button) v).getText().toString());
         } else if (v instanceof ImageButton) {
-            setValue(v.getContentDescription().toString());
+            addAndCheckValue(v.getContentDescription().toString());
         }
     }
 
@@ -55,11 +55,11 @@ public class CalculatorHandler {
     }
 
     public void onClickPercentage(View v) {
-        setValue("%");
+        addAndCheckValue("%");
     }
 
     public void onClickSquareRoot(View v) {
-        setValue("√");
+        addAndCheckValue("√");
     }
 
     public void onClickOpposite(View v) {
@@ -70,8 +70,8 @@ public class CalculatorHandler {
         equals();
     }
 
-    //============================SetValue==========================================================
-    private void setValue(String value) {
+    //============================SetValidatedValue=================================================
+    private void addAndCheckValue(String value) {
         CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
 
         ValidationArguments validationArguments = new ValidationArguments();
@@ -145,7 +145,7 @@ public class CalculatorHandler {
     }
 
     //==============================================================================================
-
+    
     //============================TAX===============================================================
     //RATE
     private void setRate() {
@@ -163,38 +163,39 @@ public class CalculatorHandler {
 
     //Tax+
     private void taxPlus() {
-        equals();
+        String taxPercentage = getTaxRate();
 
         CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
         String value = getResultAtCursorPosition(calculatorScreenCommunication);
-
-        TaxRateData taxRateData = TaxRateData.getInstance();
-        String taxPercentage = taxRateData.getTax();
-
         Calculator calculator = new Calculator();
         String total = calculator.calculate(value.concat("+").concat(taxPercentage).concat("%"));
 
         String tax = calculator.calculate(total.concat("-").concat(value));
 
-        calculatorScreenCommunication.addText("Tax=".concat(tax).concat("\n"));
-        calculatorScreenCommunication.addText("Total=".concat(total).concat("\n"));
+        printTax(calculatorScreenCommunication, total, tax);
     }
 
     //Tax-
     private void taxMinus() {
-        equals();
+        String taxPercentage = getTaxRate();
 
         CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
         String value = getResultAtCursorPosition(calculatorScreenCommunication);
-
-        TaxRateData taxRateData = TaxRateData.getInstance();
-        String taxPercentage = taxRateData.getTax();
-
         Calculator calculator = new Calculator();
         String total = calculator.calculate(value.concat("/").concat("(1+").concat(taxPercentage).concat("/100)"));
 
         String tax = calculator.calculate(value.concat("-").concat(total));
 
+        printTax(calculatorScreenCommunication, total, tax);
+    }
+
+    private String getTaxRate() {
+        equals();
+        TaxRateData taxRateData = TaxRateData.getInstance();
+        return taxRateData.getTax();
+    }
+
+    private void printTax(CalculatorScreenCommunication calculatorScreenCommunication, String total, String tax) {
         calculatorScreenCommunication.addText("Tax=".concat(tax).concat("\n"));
         calculatorScreenCommunication.addText("Total=".concat(total).concat("\n"));
     }
@@ -278,7 +279,7 @@ public class CalculatorHandler {
     private void clearResultAndReset() {
         CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
         calculatorScreenCommunication.clear();
-        setValue("0");
+        addAndCheckValue("0");
     }
 
     private void clearResultStorage() {
