@@ -10,15 +10,15 @@ public class ValidationArguments {
     public boolean validate(String value, String nextValue) {
         if (!value.isEmpty()) {
 
-            if ((isContainsDot(value) || isContainsOperator(value)) && isContainsDot(nextValue)) {
+            if ((isContainsDot(value) || isEqualsOperator(value)) && isContainsDot(nextValue)) {
                 return false;
             }
 
-            if (ifLastIndexIsDot(value) && isContainsOperator(nextValue)) {
+            if (ifLastIndexIsDot(value) && isEqualsOperator(nextValue)) {
                 return false;
             }
 
-            if (isContainsOperator(value) && isContainsOperator(nextValue)) {
+            if (isEqualsOperator(value) && isEqualsOperator(nextValue)) {
                 return false;
             }
         } else {
@@ -26,7 +26,7 @@ public class ValidationArguments {
                 return true;
             }
 
-            if (isContainsOperator(nextValue) || isContainsDot(nextValue)) {
+            if (isEqualsOperator(nextValue) || isContainsDot(nextValue)) {
                 return false;
             }
         }
@@ -38,7 +38,7 @@ public class ValidationArguments {
         return value.contains(dot);
     }
 
-    public boolean isContainsOperator(String value) {
+    public boolean isEqualsOperator(String value) {
         String divide = Operators.DIVIDE.getOperator();
         String multiply = Operators.MULTIPLY.getOperator();
         String subtract = Operators.SUBTRACT.getOperator();
@@ -72,6 +72,6 @@ public class ValidationArguments {
     }
 
     public boolean isLeadingZero(String value, String nextValue) {
-        return isEqualsZero(value) && !isFractional(nextValue) && !isContainsOperator(nextValue);
+        return isEqualsZero(value) && !isFractional(nextValue) && !isEqualsOperator(nextValue);
     }
 }
