@@ -13,9 +13,9 @@ import ua.bios.R;
 import ua.bios.databinding.MainLayoutBinding;
 import ua.bios.display.CalculatorInterface;
 import ua.bios.mvvm.model.CalculatorScreenCommunication;
-import ua.bios.mvvm.viewmodel.GrandTotalViewModel;
 import ua.bios.mvvm.viewmodel.CalculatorHandler;
 import ua.bios.mvvm.viewmodel.CalculatorScreenHandler;
+import ua.bios.mvvm.viewmodel.GrandTotalViewModel;
 import ua.bios.mvvm.viewmodel.TaxRateViewModel;
 
 /**

@@ -19,10 +19,8 @@ public class CalculatorScreenCommunication {
     }
 
     public static void init(CalculatorInterface calculatorInterface) {
-        if (calculatorScreenCommunication == null) {
-            synchronized (CalculatorScreenCommunication.class) {
-                calculatorScreenCommunication = new CalculatorScreenCommunication(calculatorInterface);
-            }
+        synchronized (CalculatorScreenCommunication.class) {
+            calculatorScreenCommunication = new CalculatorScreenCommunication(calculatorInterface);
         }
     }
 
@@ -55,7 +53,7 @@ public class CalculatorScreenCommunication {
         return calculatorInterface.getCursorPosition();
     }
 
-    public void setCursorPosition(int value){
+    public void setCursorPosition(int value) {
         calculatorInterface.setCursorPosition(value);
     }
 

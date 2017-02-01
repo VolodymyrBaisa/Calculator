@@ -1,6 +1,8 @@
 package ua.bios.mvvm.model;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by BIOS on 1/26/2017.
@@ -33,6 +35,14 @@ public class GrandTotalData {
 
     public int getSize() {
         return resultStorageArray.size();
+    }
+
+    public String[] getArrayString() {
+        return resultStorageArray.toArray(new String[resultStorageArray.size()]);
+    }
+
+    public void addAll(String[] array){
+        resultStorageArray.addAll(Arrays.asList(array));
     }
 
     public void clear() {
