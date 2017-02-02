@@ -10,6 +10,7 @@ import java.util.LinkedList;
 import ua.bios.mvvm.model.Calculator;
 import ua.bios.mvvm.model.CalculatorScreenCommunication;
 import ua.bios.mvvm.model.GrandTotalData;
+import ua.bios.mvvm.model.MemoryData;
 import ua.bios.mvvm.model.Operators;
 import ua.bios.mvvm.model.TaxRateData;
 import ua.bios.utils.ExpressionCleaner;
@@ -62,6 +63,22 @@ public class CalculatorHandler {
         addAndCheckValue("√");
     }
 
+    public void onClickMemoryClear(View v) {
+        memoryClear();
+    }
+
+    public void onClickMemoryRecall(View v) {
+        memoryRecall();
+    }
+
+    public void onClickMemorySubtract(View v) {
+        memorySubtract();
+    }
+
+    public void onClickMemoryAdd(View v) {
+        memoryAdd();
+    }
+
     public void onClickOpposite(View v) {
         changeOperatorToOpposite();
     }
@@ -70,7 +87,7 @@ public class CalculatorHandler {
         equals();
     }
 
-    //============================SetValidatedValue=================================================
+    //============================Set Validated Value===============================================
     private void addAndCheckValue(String value) {
         CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
 
@@ -97,57 +114,9 @@ public class CalculatorHandler {
         return validationArguments.validate(value, nextValue) && validationArguments.validate(twoChar, nextValue);
     }
 
-    @NonNull
-    private String getNumberAtCursorPosition(CalculatorScreenCommunication calculatorScreenCommunication) {
-        int cursorPosition = calculatorScreenCommunication.getCursorPosition();
-        String value = "";
-        if (cursorPosition != 0) {
-            int indexCursorPosition = cursorPosition - 1;
-            for (; indexCursorPosition >= 0; indexCursorPosition--) {
-                char charAt = calculatorScreenCommunication.getCharAt(indexCursorPosition);
-                if (isBarrier(charAt)) break;
-            }
-
-            for (int index = indexCursorPosition + 1; index < calculatorScreenCommunication.getSize(); index++) {
-                char charAt = calculatorScreenCommunication.getCharAt(index);
-                if (isBarrier(charAt)) break;
-                value += String.valueOf(charAt);
-            }
-        }
-        return value;
-    }
-
-    private String getTwoCharAtCursorPosition(CalculatorScreenCommunication calculatorScreenCommunication) {
-        int cursorPosition = calculatorScreenCommunication.getCursorPosition();
-        String value = "";
-        if (cursorPosition != 0) {
-            if (cursorPosition == calculatorScreenCommunication.getSize()) {
-                value = String.valueOf(calculatorScreenCommunication.getCharAt(cursorPosition - 1));
-            } else {
-                char charA = calculatorScreenCommunication.getCharAt(cursorPosition - 1);
-                char charB = calculatorScreenCommunication.getCharAt(cursorPosition);
-                value = String.valueOf(charA + "" + charB);
-            }
-        }
-        return value;
-    }
-
-    private boolean isBarrier(char charAt) {
-        if (charAt == Operators.DIVIDE.toString().charAt(0)
-                || charAt == Operators.MULTIPLY.toString().charAt(0)
-                || charAt == Operators.PLUS.toString().charAt(0)
-                || charAt == Operators.SUBTRACT.toString().charAt(0)
-                || charAt == '='
-                || charAt == '\n') {
-            return true;
-        }
-        return false;
-    }
-
     //==============================================================================================
 
     //============================TAX===============================================================
-    //RATE
     private void setRate() {
         CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
 
@@ -161,7 +130,6 @@ public class CalculatorHandler {
         taxRateData.setTax(taxRate);
     }
 
-    //Tax+
     private void taxPlus() {
         String taxPercentage = getTaxRate();
 
@@ -175,7 +143,6 @@ public class CalculatorHandler {
         printTax(calculatorScreenCommunication, total, tax);
     }
 
-    //Tax-
     private void taxMinus() {
         String taxPercentage = getTaxRate();
 
@@ -199,36 +166,9 @@ public class CalculatorHandler {
         calculatorScreenCommunication.addText("Tax=".concat(tax).concat("\n"));
         calculatorScreenCommunication.addText("Total=".concat(total).concat("\n"));
     }
-
-    private String getResultAtCursorPosition(CalculatorScreenCommunication calculatorScreenCommunication) {
-        int cursorPosition = calculatorScreenCommunication.getCursorPosition();
-        String value = "";
-        int indexCursorPosition = cursorPosition - 2;
-
-        for (; indexCursorPosition > 0; indexCursorPosition--) {
-            char charAt = calculatorScreenCommunication.getCharAt(indexCursorPosition);
-            if (charAt == '\n') break;
-        }
-
-        boolean wasEqual = false;
-        for (indexCursorPosition += 1; indexCursorPosition < calculatorScreenCommunication.getSize(); indexCursorPosition++) {
-            char charAt = calculatorScreenCommunication.getCharAt(indexCursorPosition);
-            if (wasEqual) {
-                value += String.valueOf(charAt);
-                if (charAt == '\n') break;
-            }
-
-            if (charAt == '=') {
-                wasEqual = true;
-            }
-
-        }
-
-        return value;
-    }
     //==============================================================================================
 
-    //============================GrandTotal========================================================
+    //============================Grand Total=======================================================
     private void grandTotal() {
         StringBuilder expression = getGTExpression();
         setCursorToEndOfLine();
@@ -263,11 +203,6 @@ public class CalculatorHandler {
         calculatorScreenCommunication.addText("GT=".concat(result).concat("\n"));
     }
 
-    private void setCursorToEndOfLine() {
-        CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
-        calculatorScreenCommunication.setCursorPosition(calculatorScreenCommunication.getSize());
-    }
-
     //==============================================================================================
 
     //============================Clear=============================================================
@@ -297,7 +232,27 @@ public class CalculatorHandler {
 
     //==============================================================================================
 
-    //============================OperatorToOpposite================================================
+    //============================Memory============================================================
+    private void memoryClear() {
+        MemoryData memoryData = MemoryData.getInstance();
+        memoryData.clear();
+    }
+
+    private void memoryRecall() {
+
+    }
+
+    private void memorySubtract() {
+
+    }
+
+    private void memoryAdd() {
+
+    }
+
+    //==============================================================================================
+
+    //============================Operator To Opposite==============================================
     private void changeOperatorToOpposite() {
         CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
         int cursorPosition = calculatorScreenCommunication.getCursorPosition();
@@ -372,8 +327,88 @@ public class CalculatorHandler {
         return ExpressionCleaner.removeResultFromExpression(groupedExpression);
     }
 
-    private String clearMessageAfterEqual(String expression){
+    private String clearMessageAfterEqual(String expression) {
         return ExpressionCleaner.clearMessageAfterEqual(expression);
     }
     //==============================================================================================
+
+    //============================Auxiliary Working Methods With Calculator Screen==================
+    private String getResultAtCursorPosition(CalculatorScreenCommunication calculatorScreenCommunication) {
+        int cursorPosition = calculatorScreenCommunication.getCursorPosition();
+        String value = "";
+        int indexCursorPosition = cursorPosition - 2;
+
+        for (; indexCursorPosition > 0; indexCursorPosition--) {
+            char charAt = calculatorScreenCommunication.getCharAt(indexCursorPosition);
+            if (charAt == '\n') break;
+        }
+
+        boolean wasEqual = false;
+        for (indexCursorPosition += 1; indexCursorPosition < calculatorScreenCommunication.getSize(); indexCursorPosition++) {
+            char charAt = calculatorScreenCommunication.getCharAt(indexCursorPosition);
+            if (wasEqual) {
+                value += String.valueOf(charAt);
+                if (charAt == '\n') break;
+            }
+
+            if (charAt == '=') {
+                wasEqual = true;
+            }
+
+        }
+
+        return value;
+    }
+
+    private void setCursorToEndOfLine() {
+        CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
+        calculatorScreenCommunication.setCursorPosition(calculatorScreenCommunication.getSize());
+    }
+
+    @NonNull
+    private String getNumberAtCursorPosition(CalculatorScreenCommunication calculatorScreenCommunication) {
+        int cursorPosition = calculatorScreenCommunication.getCursorPosition();
+        String value = "";
+        if (cursorPosition != 0) {
+            int indexCursorPosition = cursorPosition - 1;
+            for (; indexCursorPosition >= 0; indexCursorPosition--) {
+                char charAt = calculatorScreenCommunication.getCharAt(indexCursorPosition);
+                if (isBarrier(charAt)) break;
+            }
+
+            for (int index = indexCursorPosition + 1; index < calculatorScreenCommunication.getSize(); index++) {
+                char charAt = calculatorScreenCommunication.getCharAt(index);
+                if (isBarrier(charAt)) break;
+                value += String.valueOf(charAt);
+            }
+        }
+        return value;
+    }
+
+    private String getTwoCharAtCursorPosition(CalculatorScreenCommunication calculatorScreenCommunication) {
+        int cursorPosition = calculatorScreenCommunication.getCursorPosition();
+        String value = "";
+        if (cursorPosition != 0) {
+            if (cursorPosition == calculatorScreenCommunication.getSize()) {
+                value = String.valueOf(calculatorScreenCommunication.getCharAt(cursorPosition - 1));
+            } else {
+                char charA = calculatorScreenCommunication.getCharAt(cursorPosition - 1);
+                char charB = calculatorScreenCommunication.getCharAt(cursorPosition);
+                value = String.valueOf(charA + "" + charB);
+            }
+        }
+        return value;
+    }
+
+    private boolean isBarrier(char charAt) {
+        if (charAt == Operators.DIVIDE.toString().charAt(0)
+                || charAt == Operators.MULTIPLY.toString().charAt(0)
+                || charAt == Operators.PLUS.toString().charAt(0)
+                || charAt == Operators.SUBTRACT.toString().charAt(0)
+                || charAt == '='
+                || charAt == '\n') {
+            return true;
+        }
+        return false;
+    }
 }

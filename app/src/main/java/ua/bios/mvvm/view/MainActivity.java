@@ -16,6 +16,7 @@ import ua.bios.mvvm.model.CalculatorScreenCommunication;
 import ua.bios.mvvm.viewmodel.CalculatorHandler;
 import ua.bios.mvvm.viewmodel.CalculatorScreenHandler;
 import ua.bios.mvvm.viewmodel.GrandTotalViewModel;
+import ua.bios.mvvm.viewmodel.MemoryViewModel;
 import ua.bios.mvvm.viewmodel.TaxRateViewModel;
 
 /**
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements CalculatorInterfa
         setGrandTotalViewModel();
         setCalculatorScreenHandler();
         setTaxRateViewModel();
+        setMemoryViewModel();
         CalculatorScreenCommunication.init(this);
     }
 
@@ -60,6 +62,11 @@ public class MainActivity extends AppCompatActivity implements CalculatorInterfa
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.main_menu, menu);
         return true;
+    }
+
+    private void setMemoryViewModel() {
+        MemoryViewModel memoryViewModel = MemoryViewModel.getInstance();
+        mainLayoutBinding.screenActivity.setMemoryScreenHandler(memoryViewModel);
     }
 
     @Override
