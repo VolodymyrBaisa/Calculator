@@ -4,20 +4,20 @@
 
     <data>
         <variable
-            name="grandTotalScreen"
+            name="grandTotalSign"
             type="ua.bios.mvvm.viewmodel.GrandTotalViewModel" />
 
         <variable
-            name="taxRateScreen"
+            name="taxRateSign"
             type="ua.bios.mvvm.viewmodel.TaxRateViewModel" />
+
+        <variable
+            name="memorySign"
+            type="ua.bios.mvvm.viewmodel.MemoryViewModel" />
 
         <variable
             name="calculatorScreenHandler"
             type="ua.bios.mvvm.viewmodel.CalculatorScreenHandler" />
-
-        <variable
-            name="memoryScreenHandler"
-            type="ua.bios.mvvm.viewmodel.MemoryViewModel" />
     </data>
 
     <LinearLayout
@@ -35,25 +35,25 @@
                 android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/gtScreen"
-                style="@style/gtScreen"
+                android:id="@+id/gtSign"
+                style="@style/sign"
                 android:layout_width="20dip"
                 android:layout_height="match_parent"
-                android:text="@{grandTotalScreen.activate ? @string/app_gt_sign : ``}" />
+                android:text="@{grandTotalSign.GTActivate ? @string/app_gt_sign : ``}" />
 
             <TextView
-                android:id="@+id/rateScreen"
-                style="@style/rateScreen"
+                android:id="@+id/rateSign"
+                style="@style/sign"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@{@string/app_tax_rate_sign + `(` + taxRateScreen.value +`)`}" />
+                android:text="@{@string/app_tax_rate_sign + `(` + taxRateSign.value +`)`}" />
 
                 <TextView
-                    android:id="@+id/memoryScreen"
-                    style="@style/rateScreen"
+                    android:id="@+id/memSign"
+                    style="@style/sign"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="@{memoryScreenHandler.activate ? @string/app_memory_sign : ``}" />
+                    android:text="@{memorySign.memoryActivate ? @string/app_memory_sign + ` ` + memorySign.getSize : ``}" />
             </LinearLayout>
 
             <ua.bios.display.CalculatorScreen

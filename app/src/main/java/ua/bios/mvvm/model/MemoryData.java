@@ -1,18 +1,22 @@
 package ua.bios.mvvm.model;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 /**
  * Created by BIOS on 2/1/2017.
  */
 
 public class MemoryData {
     private static volatile MemoryData memoryData;
-    private String memory = "";
+    private ArrayList<String> memoryList = new ArrayList<>();
 
-    private MemoryData(){}
+    private MemoryData() {
+    }
 
-    public static MemoryData getInstance(){
-        if(memoryData == null){
-            synchronized (MemoryData.class){
+    public static MemoryData getInstance() {
+        if (memoryData == null) {
+            synchronized (MemoryData.class) {
                 return memoryData = new MemoryData();
             }
         } else {
@@ -20,19 +24,19 @@ public class MemoryData {
         }
     }
 
-    public String getMemory() {
-        return memory;
+    public String get(int index) {
+        return memoryList.get(index);
     }
 
-    public void setMemory(String memory) {
-        this.memory = memory;
+    public void add(String value) {
+        memoryList.add(value);
     }
 
-    public boolean isEmpty(){
-        return memory.isEmpty();
+    public int getLength() {
+        return memoryList.size();
     }
 
-    public void clear(){
-        this.memory = "";
+    public void clear() {
+        memoryList.clear();
     }
 }

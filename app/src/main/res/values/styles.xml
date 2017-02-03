@@ -22,12 +22,7 @@
         <item name="android:inputType">textMultiLine</item>
     </style>
 
-    <style name="gtScreen">
-        <item name="android:textSize">12sp</item>
-        <item name="android:padding">2dp</item>
-    </style>
-
-    <style name="rateScreen">
+    <style name="sign">
         <item name="android:textSize">12sp</item>
         <item name="android:padding">2dp</item>
     </style>

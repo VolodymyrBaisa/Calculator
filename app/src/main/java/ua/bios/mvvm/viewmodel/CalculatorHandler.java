@@ -10,6 +10,7 @@ import java.util.LinkedList;
 import ua.bios.mvvm.model.Calculator;
 import ua.bios.mvvm.model.CalculatorScreenCommunication;
 import ua.bios.mvvm.model.GrandTotalData;
+import ua.bios.mvvm.model.IOperator;
 import ua.bios.mvvm.model.MemoryData;
 import ua.bios.mvvm.model.Operators;
 import ua.bios.mvvm.model.TaxRateData;
@@ -236,23 +237,68 @@ public class CalculatorHandler {
     private void memoryClear() {
         MemoryData memoryData = MemoryData.getInstance();
         memoryData.clear();
+        activateMemorySign();
     }
 
     private void memoryRecall() {
+        setCursorToEndOfLine();
+        calculateMemoryRecallResult();
+    }
 
+    private void calculateMemoryRecallResult() {
+        Calculator calculator = new Calculator();
+        MemoryData memoryData = MemoryData.getInstance();
+        String expression = getExpressionFromMemoryData(memoryData);
+        String result = calculator.calculate(expression);
+        CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
+        calculatorScreenCommunication.addText("MR=".concat(result).concat("\n"));
+    }
+
+    @NonNull
+    private String getExpressionFromMemoryData(MemoryData memoryData) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int index = 0; index < memoryData.getLength(); index++){
+            stringBuilder.append(memoryData.get(index));
+        }
+        return stringBuilder.toString();
     }
 
     private void memorySubtract() {
-
+        addValueToMemory(Operators.SUBTRACT);
+        activateMemorySign();
     }
 
     private void memoryAdd() {
+        addValueToMemory(Operators.PLUS);
+        activateMemorySign();
+    }
 
+    private void addValueToMemory(IOperator operator) {
+        CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
+        CharSequence value = getNumberAtCursorPosition(calculatorScreenCommunication);
+        MemoryData memoryData = MemoryData.getInstance();
+        if(memoryData.getLength() > 0){
+            memoryData.add(operator.toString().concat(value.toString()));
+        } else {
+            memoryData.add(value.toString());
+        }
+    }
+
+    private void activateMemorySign(){
+        MemoryData memoryData = MemoryData.getInstance();
+        MemoryViewModel memoryViewModel = MemoryViewModel.getInstance();
+        if(memoryData.getLength() > 0){
+            memoryViewModel.setMemoryActivate(true);
+            memoryViewModel.setGetSize(memoryData.getLength());
+        } else {
+            memoryViewModel.setMemoryActivate(false);
+            memoryViewModel.setGetSize(memoryData.getLength());
+        }
     }
 
     //==============================================================================================
 
-    //============================Operator To Opposite==============================================
+    //============================IOperator To Opposite==============================================
     private void changeOperatorToOpposite() {
         CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
         int cursorPosition = calculatorScreenCommunication.getCursorPosition();

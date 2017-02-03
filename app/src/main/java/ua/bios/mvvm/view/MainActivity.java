@@ -44,13 +44,18 @@ public class MainActivity extends AppCompatActivity implements CalculatorInterfa
 
     private void setGrandTotalViewModel() {
         GrandTotalViewModel grandTotalViewModel = GrandTotalViewModel.getInstance();
-        mainLayoutBinding.screenActivity.setGrandTotalScreen(grandTotalViewModel);
-        mainLayoutBinding.keyboardActivity.setGrandTotalScreen(grandTotalViewModel);
+        mainLayoutBinding.screenActivity.setGrandTotalSign(grandTotalViewModel);
+        mainLayoutBinding.keyboardActivity.setGrandTotalSign(grandTotalViewModel);
     }
 
     private void setTaxRateViewModel() {
         TaxRateViewModel taxRateViewModel = TaxRateViewModel.getInstance();
-        mainLayoutBinding.screenActivity.setTaxRateScreen(taxRateViewModel);
+        mainLayoutBinding.screenActivity.setTaxRateSign(taxRateViewModel);
+    }
+
+    private void setMemoryViewModel() {
+        MemoryViewModel memoryViewModel = MemoryViewModel.getInstance();
+        mainLayoutBinding.screenActivity.setMemorySign(memoryViewModel);
     }
 
     private void setKeyboardHandler() {
@@ -62,11 +67,6 @@ public class MainActivity extends AppCompatActivity implements CalculatorInterfa
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.main_menu, menu);
         return true;
-    }
-
-    private void setMemoryViewModel() {
-        MemoryViewModel memoryViewModel = MemoryViewModel.getInstance();
-        mainLayoutBinding.screenActivity.setMemoryScreenHandler(memoryViewModel);
     }
 
     @Override

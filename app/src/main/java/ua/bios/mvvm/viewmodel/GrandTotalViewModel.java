@@ -2,6 +2,7 @@ package ua.bios.mvvm.viewmodel;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+
 import com.android.databinding.library.baseAdapters.BR;
 
 /**
@@ -10,27 +11,28 @@ import com.android.databinding.library.baseAdapters.BR;
 
 public class GrandTotalViewModel extends BaseObservable {
     private static volatile GrandTotalViewModel grandTotalViewModel;
-    private boolean isActivate = false;
+    private boolean isGTActivate = false;
 
-    private GrandTotalViewModel(){}
+    private GrandTotalViewModel() {
+    }
 
-    public static GrandTotalViewModel getInstance(){
-        if(grandTotalViewModel == null){
-            synchronized (GrandTotalViewModel.class){
+    public static GrandTotalViewModel getInstance() {
+        if (grandTotalViewModel == null) {
+            synchronized (GrandTotalViewModel.class) {
                 return grandTotalViewModel = new GrandTotalViewModel();
             }
-        }else{
+        } else {
             return grandTotalViewModel;
         }
     }
 
     @Bindable
-    public boolean isActivate() {
-        return isActivate;
+    public boolean isGTActivate() {
+        return isGTActivate;
     }
 
-    public void setActivate(boolean activate) {
-        isActivate = activate;
-        notifyPropertyChanged(BR.activate);
+    public void setGTActivate(boolean gTActivate) {
+        this.isGTActivate = gTActivate;
+        notifyPropertyChanged(BR.gTActivate);
     }
 }

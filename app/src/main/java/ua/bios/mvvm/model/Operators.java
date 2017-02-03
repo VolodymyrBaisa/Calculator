@@ -4,7 +4,7 @@ package ua.bios.mvvm.model;
  * Created by BIOS on 1/2/2017.
  */
 
-public enum Operators {
+public enum Operators implements IOperator {
     PLUS("+"), DIVIDE("÷"), MULTIPLY("×"), SUBTRACT("-");
 
     private String operator;
