@@ -8,16 +8,16 @@ import java.util.regex.Pattern;
  * Created by BIOS on 12/11/2016.
  */
 
-public class Parser {
+class Parser {
 
 
     private Parser() {
     }
 
-    public static LinkedList<String> findElement(String exp, String regex) {
+    public static LinkedList<String> findElement(String exp) {
         LinkedList<String> elementList = new LinkedList<>();
 
-        Matcher matcher = Pattern.compile(regex).matcher(exp);
+        Matcher matcher = Pattern.compile("[\\d.+-÷×()√%=]+").matcher(exp);
         while (matcher.find()) {
             elementList.add(matcher.group());
         }

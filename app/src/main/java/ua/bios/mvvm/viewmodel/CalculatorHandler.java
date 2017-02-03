@@ -108,7 +108,6 @@ public class CalculatorHandler {
         }
     }
 
-    @NonNull
     private boolean checkSyntaxErrorOnAlgebraicExpression(ValidationArguments validationArguments, CalculatorScreenCommunication calculatorScreenCommunication, String nextValue) {
         String value = getNumberAtCursorPosition(calculatorScreenCommunication);
         String twoChar = getTwoCharAtCursorPosition(calculatorScreenCommunication);
@@ -447,14 +446,11 @@ public class CalculatorHandler {
     }
 
     private boolean isBarrier(char charAt) {
-        if (charAt == Operators.DIVIDE.toString().charAt(0)
+        return (charAt == Operators.DIVIDE.toString().charAt(0)
                 || charAt == Operators.MULTIPLY.toString().charAt(0)
                 || charAt == Operators.PLUS.toString().charAt(0)
                 || charAt == Operators.SUBTRACT.toString().charAt(0)
                 || charAt == '='
-                || charAt == '\n') {
-            return true;
-        }
-        return false;
+                || charAt == '\n');
     }
 }

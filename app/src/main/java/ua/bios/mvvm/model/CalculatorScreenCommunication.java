@@ -8,7 +8,7 @@ import ua.bios.display.CalculatorInterface;
 
 public class CalculatorScreenCommunication {
     private static volatile CalculatorScreenCommunication calculatorScreenCommunication;
-    private CalculatorInterface calculatorInterface;
+    private final CalculatorInterface calculatorInterface;
 
     private CalculatorScreenCommunication(CalculatorInterface calculatorInterface) {
         this.calculatorInterface = calculatorInterface;
@@ -45,10 +45,6 @@ public class CalculatorScreenCommunication {
         return calculatorInterface.getText().isEmpty();
     }
 
-    public boolean isContains(String value) {
-        return calculatorInterface.getText().contains(value);
-    }
-
     public int getCursorPosition() {
         return calculatorInterface.getCursorPosition();
     }
@@ -59,10 +55,6 @@ public class CalculatorScreenCommunication {
 
     public char getCharAt(int i) {
         return calculatorInterface.getCharAt(i);
-    }
-
-    public CharSequence getSubSequence() {
-        return calculatorInterface.getSubSequence();
     }
 
     public void delete() {

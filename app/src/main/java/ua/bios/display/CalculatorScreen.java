@@ -11,7 +11,7 @@ import android.widget.EditText;
  */
 
 public class CalculatorScreen extends EditText {
-    private Context context;
+    private final Context context;
 
     public CalculatorScreen(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -47,10 +47,6 @@ public class CalculatorScreen extends EditText {
 
     public char getCharAt(int i){
         return super.getText().charAt(i);
-    }
-
-    public void setCursorPosition(int value){
-        super.setSelection(value);
     }
 
     public CharSequence getSubSequence(){

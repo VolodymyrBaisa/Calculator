@@ -7,14 +7,10 @@ package ua.bios.mvvm.model;
 public enum MathSymbols {
     PERCENTAGE("%"), SQUARE_ROOT("√");
 
-    private String symbols;
+    private final String symbols;
 
     MathSymbols(String symbols){
         this.symbols = symbols;
-    }
-
-    public String getMathSymbols() {
-        return symbols;
     }
 
     @Override

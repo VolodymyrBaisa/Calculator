@@ -7,7 +7,7 @@ package ua.bios.mvvm.model;
 public enum Operators implements IOperator {
     PLUS("+"), DIVIDE("÷"), MULTIPLY("×"), SUBTRACT("-");
 
-    private String operator;
+    private final String operator;
 
     Operators(String operator){
         this.operator = operator;

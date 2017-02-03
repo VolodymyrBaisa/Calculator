@@ -1,7 +1,6 @@
 package ua.bios.mvvm.model;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 /**
  * Created by BIOS on 2/1/2017.
@@ -9,7 +8,7 @@ import java.util.LinkedList;
 
 public class MemoryData {
     private static volatile MemoryData memoryData;
-    private ArrayList<String> memoryList = new ArrayList<>();
+    private final ArrayList<String> memoryList = new ArrayList<>();
 
     private MemoryData() {
     }

@@ -6,7 +6,7 @@ import ua.bios.mvvm.model.Operators;
  * Created by BIOS on 1/2/2017.
  */
 
-public class ValidationArguments {
+class ValidationArguments {
     public boolean validate(String value, String nextValue) {
         if (!value.isEmpty()) {
 
@@ -33,40 +33,34 @@ public class ValidationArguments {
         return true;
     }
 
-    public boolean isContainsDot(String value) {
+    private boolean isContainsDot(String value) {
         String dot = ".";
         return value.contains(dot);
     }
 
-    public boolean isEqualsOperator(String value) {
+    private boolean isEqualsOperator(String value) {
         String divide = Operators.DIVIDE.getOperator();
         String multiply = Operators.MULTIPLY.getOperator();
         String subtract = Operators.SUBTRACT.getOperator();
         String plus = Operators.PLUS.getOperator();
 
-        if (value.contains(divide) || value.contains(multiply) ||
-                value.contains(subtract) || value.contains(plus)) {
-            return true;
-        }
-        return false;
+        return (value.contains(divide) || value.contains(multiply) ||
+                value.contains(subtract) || value.contains(plus));
     }
 
-    public boolean isEqualsZero(String value) {
+    private boolean isEqualsZero(String value) {
         return value.equals("0");
     }
 
-    public boolean ifLastIndexIsDot(String value) {
-        if (!value.isEmpty()) {
-            return String.valueOf(value.charAt(value.length() - 1)).equals(".");
-        }
-        return false;
+    private boolean ifLastIndexIsDot(String value) {
+        return !value.isEmpty() && String.valueOf(value.charAt(value.length() - 1)).equals(".");
     }
 
-    public boolean isFractional(String value) {
+    private boolean isFractional(String value) {
         return value.contains(".");
     }
 
-    public boolean isContainsSubtract(String value) {
+    private boolean isContainsSubtract(String value) {
         String subtract = Operators.SUBTRACT.getOperator();
         return value.contains(subtract);
     }
