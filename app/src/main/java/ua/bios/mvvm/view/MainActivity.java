@@ -15,9 +15,7 @@ import ua.bios.display.CalculatorInterface;
 import ua.bios.mvvm.model.CalculatorScreenCommunication;
 import ua.bios.mvvm.viewmodel.CalculatorHandler;
 import ua.bios.mvvm.viewmodel.CalculatorScreenHandler;
-import ua.bios.mvvm.viewmodel.GrandTotalViewModel;
-import ua.bios.mvvm.viewmodel.MemoryViewModel;
-import ua.bios.mvvm.viewmodel.TaxRateViewModel;
+import ua.bios.mvvm.viewmodel.CalculatorViewModel;
 
 /**
  * Created by BIOS on 12/26/2016.
@@ -31,10 +29,8 @@ public class MainActivity extends AppCompatActivity implements CalculatorInterfa
         super.onCreate(savedInstanceState);
         mainLayoutBinding = DataBindingUtil.setContentView(this, R.layout.main_layout);
         setKeyboardHandler();
-        setGrandTotalViewModel();
+        setCalculatorViewModel();
         setCalculatorScreenHandler();
-        setTaxRateViewModel();
-        setMemoryViewModel();
         CalculatorScreenCommunication.init(this);
     }
 
@@ -42,20 +38,10 @@ public class MainActivity extends AppCompatActivity implements CalculatorInterfa
         mainLayoutBinding.screenActivity.setCalculatorScreenHandler(new CalculatorScreenHandler());
     }
 
-    private void setGrandTotalViewModel() {
-        GrandTotalViewModel grandTotalViewModel = GrandTotalViewModel.getInstance();
-        mainLayoutBinding.screenActivity.setGrandTotalSign(grandTotalViewModel);
-        mainLayoutBinding.keyboardActivity.setGrandTotalSign(grandTotalViewModel);
-    }
-
-    private void setTaxRateViewModel() {
-        TaxRateViewModel taxRateViewModel = TaxRateViewModel.getInstance();
-        mainLayoutBinding.screenActivity.setTaxRateSign(taxRateViewModel);
-    }
-
-    private void setMemoryViewModel() {
-        MemoryViewModel memoryViewModel = MemoryViewModel.getInstance();
-        mainLayoutBinding.screenActivity.setMemorySign(memoryViewModel);
+    private void setCalculatorViewModel() {
+        CalculatorViewModel calculatorViewModel = CalculatorViewModel.getInstance();
+        mainLayoutBinding.screenActivity.setCalculatorViewModel(calculatorViewModel);
+        mainLayoutBinding.keyboardActivity.setCalculatorViewModel(calculatorViewModel);
     }
 
     private void setKeyboardHandler() {
@@ -103,15 +89,9 @@ public class MainActivity extends AppCompatActivity implements CalculatorInterfa
         mainLayoutBinding.screenActivity.screen.setSelection(value);
     }
 
-
     @Override
     public char getCharAt(int i) {
         return mainLayoutBinding.screenActivity.screen.getCharAt(i);
-    }
-
-    @Override
-    public CharSequence getSubSequence() {
-        return mainLayoutBinding.screenActivity.screen.getSubSequence();
     }
 
     @Override

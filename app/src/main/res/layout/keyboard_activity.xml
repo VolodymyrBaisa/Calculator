@@ -7,8 +7,8 @@
             type="ua.bios.mvvm.viewmodel.CalculatorHandler" />
 
         <variable
-            name="grandTotalSign"
-            type="ua.bios.mvvm.viewmodel.GrandTotalViewModel" />
+            name="calculatorViewModel"
+            type="ua.bios.mvvm.viewmodel.CalculatorViewModel" />
     </data>
 
     <LinearLayout
@@ -26,7 +26,7 @@
                 style="@style/button_teal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:clickable="@{grandTotalSign.GTActivate}"
+                android:clickable="@{calculatorViewModel.GTActivate}"
                 android:onClick="@{keyboard.onClickGrandTotal}"
                 android:text="GT" />
 

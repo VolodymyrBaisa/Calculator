@@ -63,7 +63,7 @@
     </style>
 
     <style name="padding_text">
-        <item name="android:padding">5dp</item>
+        <item name="android:padding">10dp</item>
     </style>
 
     <style name="text_header" parent="padding_text">
@@ -80,8 +80,9 @@
     </style>
 
     <style name="about_text" parent="padding_text">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:gravity">top</item>
+        <item name="android:textColor">@color/aboutTextColor</item>
     </style>
 
 </resources>

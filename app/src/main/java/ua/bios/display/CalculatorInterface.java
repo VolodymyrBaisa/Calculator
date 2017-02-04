@@ -17,8 +17,6 @@ public interface CalculatorInterface {
 
     char getCharAt(int i);
 
-    CharSequence getSubSequence();
-
     void clear();
 
     void delete();

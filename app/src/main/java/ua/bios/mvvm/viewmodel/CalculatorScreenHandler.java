@@ -13,11 +13,11 @@ public class CalculatorScreenHandler {
 
     private void activateGTSign() {
         GrandTotalData grandTotalData = GrandTotalData.getInstance();
-        GrandTotalViewModel grandTotalViewModel = GrandTotalViewModel.getInstance();
+        CalculatorViewModel calculatorViewModel = CalculatorViewModel.getInstance();
         if (grandTotalData.getSize() > 0) {
-            grandTotalViewModel.setGTActivate(true);
+            calculatorViewModel.setGTActivate(true);
         } else {
-            grandTotalViewModel.setGTActivate(false);
+            calculatorViewModel.setGTActivate(false);
         }
     }
 }

@@ -119,8 +119,8 @@ public class CalculatorHandler {
         String taxRate = getNumberAtCursorPosition(calculatorScreenCommunication);
         taxRate = taxRate != "" ? taxRate : "0";
 
-        TaxRateViewModel taxRateViewModel = TaxRateViewModel.getInstance();
-        taxRateViewModel.setValue(taxRate);
+        CalculatorViewModel taxRateViewModel = CalculatorViewModel.getInstance();
+        taxRateViewModel.setTaxRateValue(taxRate);
 
         TaxRateData taxRateData = TaxRateData.getInstance();
         taxRateData.setTax(taxRate);
@@ -270,13 +270,13 @@ public class CalculatorHandler {
 
     private void activateMemorySign(){
         MemoryData memoryData = MemoryData.getInstance();
-        MemoryViewModel memoryViewModel = MemoryViewModel.getInstance();
+        CalculatorViewModel memoryViewModel = CalculatorViewModel.getInstance();
         if(memoryData.getLength() > 0){
             memoryViewModel.setMemoryActivate(true);
-            memoryViewModel.setGetSize(memoryData.getLength());
+            memoryViewModel.setMemorySize(memoryData.getLength());
         } else {
             memoryViewModel.setMemoryActivate(false);
-            memoryViewModel.setGetSize(memoryData.getLength());
+            memoryViewModel.setMemorySize(memoryData.getLength());
         }
     }
 

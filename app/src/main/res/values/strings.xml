@@ -7,11 +7,14 @@
 
     <string name="app_about_version">Version:</string>
     <string name="app_about_code">Code:</string>
-    <string name="app_about_copyright">Copyright: 2017 Volodymyr Baisa</string>
+    <string name="app_about_copyright">Copyright: 2017\n Volodymyr Baisa</string>
     <string name="app_about_text"><b>Thank you for using the Easy Calculator.</b>
-        \nIf you have any questions or have found a bug, please report it at <a href="https://github.com/VolodymyrBaisa/Calculator/issues">Issue Tracker</a>
-        \nThe list of known bugs is available <a href="https://github.com/VolodymyrBaisa/Calculator/issues">here</a>
-    \nThis software is provided <b>AS-IS</b> with no warranty of any kind.
-    \nEasy Calculator is distributed under the GNU Lesser General Public License as published by the Free Software Foundation. See license-lgpl-3.0.txt for details.</string>
+        \nIf you have any questions or have found a bug, please report it at <a href="https://github.com/VolodymyrBaisa/Calculator/issues">Issue Tracker</a>.
+        \nThe list of known bugs is available <a href="https://github.com/VolodymyrBaisa/Calculator/issues">here</a>.
+        \n\n<b>Disclaimer</b>
+        \nThis software is provided <b>AS-IS</b> with no warranty of any kind.
+        \n\n<b>License</b>
+        \nEasy Calculator is distributed under the GNU Lesser General Public License as published by the Free Software Foundation.
+        \nSee <a href="https://github.com/VolodymyrBaisa/Calculator/blob/master/licenses/gpl.text">license-lgpl-3.0.txt</a> for details.</string>
     <string name="app_about_back_button">Back</string>
 </resources>

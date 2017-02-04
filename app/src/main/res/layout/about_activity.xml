@@ -1,47 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="aboutHandler"
+            type="ua.bios.mvvm.viewmodel.AboutHandler"/>
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/about_text_header"
-            style="@style/text_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name" />
-
-        <TextView
-            android:id="@+id/about_text_app_description"
-            style="@style/about_text_app_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/app_about_version"/>
-
-        <TextView
-            android:id="@+id/about_text"
-            style="@style/about_text"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/app_about_text"/>
-    </LinearLayout>
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:gravity="center|bottom">
+            <TextView
+                android:id="@+id/about_text_header"
+                style="@style/text_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name" />
 
-        <Button
-            style="@style/button_indigo"
+            <TextView
+                android:id="@+id/about_text_app_description"
+                style="@style/about_text_app_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{@string/app_about_version + `1\n` + @string/app_about_code +`1\n`+ @string/app_about_copyright}" />
+
+            <TextView
+                android:id="@+id/about_text"
+                style="@style/about_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/app_about_text" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/app_about_back_button" />
+            android:layout_weight="0"
+            android:gravity="center|bottom">
+
+            <Button
+                style="@style/button_indigo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_about_back_button"
+                android:onClick="@{aboutHandler.onClickBack}"/>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</layout>

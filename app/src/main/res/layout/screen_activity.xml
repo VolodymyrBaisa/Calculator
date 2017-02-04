@@ -4,16 +4,8 @@
 
     <data>
         <variable
-            name="grandTotalSign"
-            type="ua.bios.mvvm.viewmodel.GrandTotalViewModel" />
-
-        <variable
-            name="taxRateSign"
-            type="ua.bios.mvvm.viewmodel.TaxRateViewModel" />
-
-        <variable
-            name="memorySign"
-            type="ua.bios.mvvm.viewmodel.MemoryViewModel" />
+            name="calculatorViewModel"
+            type="ua.bios.mvvm.viewmodel.CalculatorViewModel" />
 
         <variable
             name="calculatorScreenHandler"
@@ -39,21 +31,21 @@
                 style="@style/sign"
                 android:layout_width="20dip"
                 android:layout_height="match_parent"
-                android:text="@{grandTotalSign.GTActivate ? @string/app_gt_sign : ``}" />
+                android:text="@{calculatorViewModel.GTActivate ? @string/app_gt_sign : ``}" />
 
             <TextView
                 android:id="@+id/rateSign"
                 style="@style/sign"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@{@string/app_tax_rate_sign + `(` + taxRateSign.value +`)`}" />
+                android:text="@{@string/app_tax_rate_sign + `(` + calculatorViewModel.taxRateValue +`)`}" />
 
                 <TextView
                     android:id="@+id/memSign"
                     style="@style/sign"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="@{memorySign.memoryActivate ? @string/app_memory_sign + ` ` + memorySign.getSize : ``}" />
+                    android:text="@{calculatorViewModel.memoryActivate ? @string/app_memory_sign + ` ` + calculatorViewModel.memorySize : ``}" />
             </LinearLayout>
 
             <ua.bios.display.CalculatorScreen
