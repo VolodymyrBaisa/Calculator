@@ -117,7 +117,7 @@ public class CalculatorHandler {
         CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
 
         String taxRate = getNumberAtCursorPosition(calculatorScreenCommunication);
-        taxRate = taxRate != "" ? taxRate : "0";
+        taxRate = !taxRate.equals("") ? taxRate : "0";
 
         CalculatorViewModel taxRateViewModel = CalculatorViewModel.getInstance();
         taxRateViewModel.setTaxRateValue(taxRate);
