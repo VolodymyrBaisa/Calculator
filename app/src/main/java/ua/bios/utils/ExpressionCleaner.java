@@ -3,6 +3,8 @@ package ua.bios.utils;
 import java.util.Arrays;
 import java.util.LinkedList;
 
+import ua.bios.mvvm.model.Messages;
+
 /**
  * Created by BIOS on 1/22/2017.
  */
@@ -28,6 +30,10 @@ public class ExpressionCleaner {
     }
 
     public static String clearMessageAfterEqual(String expression){
-        return expression.replaceAll("=\\D+", "");
+        String[] allMessages = Messages.getAllMessages();
+        for(String message : allMessages){
+            expression = expression.replaceAll(message, "");
+        }
+        return expression;
     }
 }

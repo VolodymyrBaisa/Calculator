@@ -4,20 +4,26 @@ package ua.bios.mvvm.model;
  * Created by BIOS on 1/8/2017.
  */
 
-class Messages {
-    private final static String ERROR = "Error";
-    private final static String ERROR_DIVISION_BY_ZERO = "Division by zero!";
-    private final static String NAN = "NaN";
+public class Messages {
+    private final static String[] msg = new String[]{"Error", "Division by zero!", "NaN"};
 
     private Messages() {
     }
 
-    public static String getError(){
-        return ERROR;
+    public static String getError() {
+        return msg[0];
     }
 
-    public static String getErrorDivisionByZero(){
-        return ERROR_DIVISION_BY_ZERO;
+    public static String getErrorDivisionByZero() {
+        return msg[1];
+    }
+
+    public static String getNaN(){
+        return msg[2];
+    }
+
+    public static String[] getAllMessages(){
+        return msg;
     }
 
 }

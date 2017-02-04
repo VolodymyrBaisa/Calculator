@@ -316,16 +316,16 @@ public class CalculatorHandler {
         calculatorScreenCommunication.clear();
 
         expression = clearMessageAfterEqual(expression);
+        LinkedList<String> cleanedExpression = removeResultFromExpression(expression);
 
         Calculator calculator = new Calculator();
-        StringBuilder expressionWithResults = calculateAllExpressionGroup(expression, calculator);
+        String expressionWithResults = calculateAllExpressionGroup(cleanedExpression, calculator);
         clearResultStorage();
         setResultsForGrandTotal(expressionWithResults.toString());
         calculatorScreenCommunication.addText(expressionWithResults.toString());
     }
 
-    private StringBuilder calculateAllExpressionGroup(String expression, Calculator calculator) {
-        LinkedList<String> cleanedExpression = removeResultFromExpression(expression);
+    private String calculateAllExpressionGroup(LinkedList<String> cleanedExpression, Calculator calculator) {
         StringBuilder processedExpression = new StringBuilder();
         for (String expr : cleanedExpression) {
             if (ExpressionTest.isExpression(expr)) {
@@ -335,7 +335,7 @@ public class CalculatorHandler {
                 processedExpression.append(expr).append("\n");
             }
         }
-        return processedExpression;
+        return processedExpression.toString();
     }
 
     private void setResultsForGrandTotal(String expression) {
