@@ -1,4 +1,4 @@
-package ua.bios.mvvm.viewmodel;
+package ua.bios.calculatormethods;
 
 import ua.bios.mvvm.model.Operators;
 
@@ -6,7 +6,7 @@ import ua.bios.mvvm.model.Operators;
  * Created by BIOS on 1/2/2017.
  */
 
-class ValidationArguments {
+public class ValidationArguments {
     public boolean validate(String value, String nextValue) {
         if (!value.isEmpty()) {
 

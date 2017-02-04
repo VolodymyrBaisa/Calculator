@@ -1,6 +1,8 @@
-package ua.bios.utils;
+package ua.bios.calculatormethods;
 
 import java.util.LinkedList;
+
+import ua.bios.utils.Parser;
 
 /**
  * Created by BIOS on 1/23/2017.

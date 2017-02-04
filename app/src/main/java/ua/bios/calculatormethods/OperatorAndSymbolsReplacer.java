@@ -1,9 +1,10 @@
-package ua.bios.utils;
+package ua.bios.calculatormethods;
 
 import java.util.LinkedList;
 
 import ua.bios.mvvm.model.MathSymbols;
 import ua.bios.mvvm.model.Operators;
+import ua.bios.utils.Parser;
 
 /**
  * Created by BIOS on 1/21/2017.

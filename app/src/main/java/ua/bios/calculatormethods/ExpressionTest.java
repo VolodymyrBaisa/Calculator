@@ -1,4 +1,4 @@
-package ua.bios.utils;
+package ua.bios.calculatormethods;
 
 /**
  * Created by BIOS on 1/31/2017.

@@ -7,6 +7,7 @@ import android.widget.ImageButton;
 
 import java.util.LinkedList;
 
+import ua.bios.calculatormethods.ValidationArguments;
 import ua.bios.mvvm.model.Calculator;
 import ua.bios.mvvm.model.CalculatorScreenCommunication;
 import ua.bios.mvvm.model.GrandTotalData;
@@ -14,9 +15,9 @@ import ua.bios.mvvm.model.IOperator;
 import ua.bios.mvvm.model.MemoryData;
 import ua.bios.mvvm.model.Operators;
 import ua.bios.mvvm.model.TaxRateData;
-import ua.bios.utils.ExpressionCleaner;
-import ua.bios.utils.ExpressionParser;
-import ua.bios.utils.ExpressionTest;
+import ua.bios.calculatormethods.ExpressionCleaner;
+import ua.bios.calculatormethods.ExpressionParser;
+import ua.bios.calculatormethods.ExpressionTest;
 
 /**
  * Created by BIOS on 1/10/2017.
@@ -376,9 +377,7 @@ public class CalculatorHandler {
             if (charAt == '=') {
                 wasEqual = true;
             }
-
         }
-
         return value;
     }
 

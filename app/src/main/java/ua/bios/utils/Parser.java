@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
  * Created by BIOS on 12/11/2016.
  */
 
-class Parser {
+public class Parser {
 
 
     private Parser() {

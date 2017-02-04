@@ -1,27 +1,27 @@
 package ua.bios.mvvm.view;
 
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.LinkMovementMethod;
-import android.util.Log;
 
 import ua.bios.R;
+import ua.bios.about.AboutInterface;
 import ua.bios.databinding.AboutActivityBinding;
+import ua.bios.mvvm.model.AboutCommunication;
 import ua.bios.mvvm.viewmodel.AboutHandler;
 import ua.bios.mvvm.viewmodel.AboutViewModel;
+import ua.bios.utils.PackageInformation;
 
 /**
  * Created by BIOS on 12/26/2016.
  */
 
-public class AboutActivity extends AppCompatActivity {
+public class AboutActivity extends AppCompatActivity implements AboutInterface {
     private AboutActivityBinding aboutActivityBinding;
     private AboutViewModel aboutViewModel;
-    private static final String TAG = "Easy Calculator";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,14 +30,22 @@ public class AboutActivity extends AppCompatActivity {
         setAboutHandler();
         setAboutViewModel();
         setLinkClickable();
-        getVersionAndCodeInfo();
+        AboutCommunication.init(this);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        PackageInformation packageInformation = new PackageInformation(this);
+        aboutViewModel.setVersionName(packageInformation.getVersionName());
+        aboutViewModel.setVersionNumber(packageInformation.getVersionNumber());
     }
 
     private void setAboutHandler() {
         aboutActivityBinding.setAboutHandler(new AboutHandler());
     }
 
-    private void setAboutViewModel(){
+    private void setAboutViewModel() {
         aboutViewModel = AboutViewModel.getInstance();
         aboutActivityBinding.setAboutViewModel(aboutViewModel);
     }
@@ -46,13 +54,8 @@ public class AboutActivity extends AppCompatActivity {
         aboutActivityBinding.aboutText.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
-    private void getVersionAndCodeInfo() {
-        try {
-            PackageInfo pinfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-            aboutViewModel.setVersionNumber(pinfo.versionCode);
-            aboutViewModel.setVersionName(pinfo.versionName);
-        } catch (PackageManager.NameNotFoundException e) {
-            Log.e(TAG, e.getMessage());
-        }
+    @Override
+    public Context getContext() {
+        return getApplicationContext();
     }
 }

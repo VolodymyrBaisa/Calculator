@@ -5,7 +5,7 @@ import net.objecthunter.exp4j.ExpressionBuilder;
 import net.objecthunter.exp4j.function.Function;
 
 import ua.bios.utils.Formatter;
-import ua.bios.utils.OperatorAndSymbolsReplacer;
+import ua.bios.calculatormethods.OperatorAndSymbolsReplacer;
 
 /**
  * Created by BIOS on 12/8/2016.
