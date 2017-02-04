@@ -88,7 +88,6 @@ public class CalculatorHandler {
         equals();
     }
 
-    //============================Set Validated Value===============================================
     private void addAndCheckValue(String value) {
         CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
 
@@ -114,9 +113,6 @@ public class CalculatorHandler {
         return validationArguments.validate(value, nextValue) && validationArguments.validate(twoChar, nextValue);
     }
 
-    //==============================================================================================
-
-    //============================TAX===============================================================
     private void setRate() {
         CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
 
@@ -166,9 +162,7 @@ public class CalculatorHandler {
         calculatorScreenCommunication.addText("Tax=".concat(tax).concat("\n"));
         calculatorScreenCommunication.addText("Total=".concat(total).concat("\n"));
     }
-    //==============================================================================================
 
-    //============================Grand Total=======================================================
     private void grandTotal() {
         StringBuilder expression = getGTExpression();
         setCursorToEndOfLine();
@@ -203,9 +197,6 @@ public class CalculatorHandler {
         calculatorScreenCommunication.addText("GT=".concat(result).concat("\n"));
     }
 
-    //==============================================================================================
-
-    //============================Clear=============================================================
     private void clear() {
         clearResultStorage();
         clearResultAndReset();
@@ -222,17 +213,11 @@ public class CalculatorHandler {
         grandTotalData.clear();
     }
 
-    //==============================================================================================
-
-    //============================Backspace=========================================================
     private void Backspace() {
         CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
         calculatorScreenCommunication.delete();
     }
 
-    //==============================================================================================
-
-    //============================Memory============================================================
     private void memoryClear() {
         MemoryData memoryData = MemoryData.getInstance();
         memoryData.clear();
@@ -295,9 +280,6 @@ public class CalculatorHandler {
         }
     }
 
-    //==============================================================================================
-
-    //============================IOperator To Opposite==============================================
     private void changeOperatorToOpposite() {
         CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
         int cursorPosition = calculatorScreenCommunication.getCursorPosition();
@@ -326,9 +308,6 @@ public class CalculatorHandler {
         calculatorScreenCommunication.delete(indexCursorPosition, end);
         calculatorScreenCommunication.insertText(indexCursorPosition, value);
     }
-    //==============================================================================================
-
-    //============================Equals============================================================
 
     private void equals() {
         CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
@@ -375,9 +354,7 @@ public class CalculatorHandler {
     private String clearMessageAfterEqual(String expression) {
         return ExpressionCleaner.clearMessageAfterEqual(expression);
     }
-    //==============================================================================================
 
-    //============================Auxiliary Working Methods With Calculator Screen==================
     private String getResultAtCursorPosition(CalculatorScreenCommunication calculatorScreenCommunication) {
         int cursorPosition = calculatorScreenCommunication.getCursorPosition();
         String value = "";

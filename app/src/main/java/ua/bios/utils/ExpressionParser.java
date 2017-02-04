@@ -10,7 +10,7 @@ public class ExpressionParser {
     private ExpressionParser(){}
 
     public static LinkedList<String> getExpressionAsGroupedList(String expression) {
-        return Parser.findElement(expression);
+        return Parser.findElement(expression, "[\\d.+-÷×()√%=]+");
     }
 
     public static LinkedList<String> getResultsList(String expression) {

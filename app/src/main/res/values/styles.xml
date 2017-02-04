@@ -39,6 +39,7 @@
         <item name="android:textSize">20sp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:textColor">@color/buttonColor</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="button_teal" parent="button">
@@ -47,7 +48,6 @@
 
     <style name="button_blue_grey" parent="button">
         <item name="android:background">@drawable/blue_grey_button_selector</item>
-        <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="button_deep_orange" parent="button">
@@ -60,6 +60,28 @@
 
     <style name="button_black" parent="button">
         <item name="android:background">@drawable/black_button_selector</item>
+    </style>
+
+    <style name="padding_text">
+        <item name="android:padding">5dp</item>
+    </style>
+
+    <style name="text_header" parent="padding_text">
+        <item name="android:textColor">@color/headerColor</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center|top</item>
+    </style>
+
+    <style name="about_text_app_description" parent="padding_text">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center|top</item>
+    </style>
+
+    <style name="about_text" parent="padding_text">
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">top</item>
     </style>
 
 </resources>

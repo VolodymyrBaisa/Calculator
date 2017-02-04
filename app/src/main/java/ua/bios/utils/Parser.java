@@ -14,10 +14,10 @@ class Parser {
     private Parser() {
     }
 
-    public static LinkedList<String> findElement(String exp) {
+    public static LinkedList<String> findElement(String exp, String regex) {
         LinkedList<String> elementList = new LinkedList<>();
 
-        Matcher matcher = Pattern.compile("[\\d.+-÷×()√%=]+").matcher(exp);
+        Matcher matcher = Pattern.compile(regex).matcher(exp);
         while (matcher.find()) {
             elementList.add(matcher.group());
         }
