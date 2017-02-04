@@ -5,6 +5,10 @@
         <variable
             name="aboutHandler"
             type="ua.bios.mvvm.viewmodel.AboutHandler"/>
+
+        <variable
+            name="aboutViewModel"
+            type="ua.bios.mvvm.viewmodel.AboutViewModel"/>
     </data>
 
     <LinearLayout
@@ -30,7 +34,7 @@
                 style="@style/about_text_app_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{@string/app_about_version + `1\n` + @string/app_about_code +`1\n`+ @string/app_about_copyright}" />
+                android:text="@{@string/app_about_version + aboutViewModel.versionName + `\n` + @string/app_about_code + aboutViewModel.versionNumber +`\n`+ @string/app_about_copyright}" />
 
             <TextView
                 android:id="@+id/about_text"

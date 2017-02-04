@@ -12,6 +12,7 @@ import android.util.Log;
 import ua.bios.R;
 import ua.bios.databinding.AboutActivityBinding;
 import ua.bios.mvvm.viewmodel.AboutHandler;
+import ua.bios.mvvm.viewmodel.AboutViewModel;
 
 /**
  * Created by BIOS on 12/26/2016.
@@ -19,6 +20,7 @@ import ua.bios.mvvm.viewmodel.AboutHandler;
 
 public class AboutActivity extends AppCompatActivity {
     private AboutActivityBinding aboutActivityBinding;
+    private AboutViewModel aboutViewModel;
     private static final String TAG = "Easy Calculator";
 
     @Override
@@ -26,12 +28,18 @@ public class AboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         aboutActivityBinding = DataBindingUtil.setContentView(this, R.layout.about_activity);
         setAboutHandler();
+        setAboutViewModel();
         setLinkClickable();
         getVersionAndCodeInfo();
     }
 
     private void setAboutHandler() {
         aboutActivityBinding.setAboutHandler(new AboutHandler());
+    }
+
+    private void setAboutViewModel(){
+        aboutViewModel = AboutViewModel.getInstance();
+        aboutActivityBinding.setAboutViewModel(aboutViewModel);
     }
 
     private void setLinkClickable() {
@@ -41,8 +49,8 @@ public class AboutActivity extends AppCompatActivity {
     private void getVersionAndCodeInfo() {
         try {
             PackageInfo pinfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-            int versionNumber = pinfo.versionCode;
-            String versionName = pinfo.versionName;
+            aboutViewModel.setVersionNumber(pinfo.versionCode);
+            aboutViewModel.setVersionName(pinfo.versionName);
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(TAG, e.getMessage());
         }
