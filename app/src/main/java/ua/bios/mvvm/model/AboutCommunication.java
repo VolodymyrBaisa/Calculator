@@ -2,7 +2,7 @@ package ua.bios.mvvm.model;
 
 import android.content.Context;
 
-import ua.bios.about.AboutInterface;
+import ua.bios.about.IAbout;
 
 /**
  * Created by BIOS on 2/4/2017.
@@ -10,15 +10,15 @@ import ua.bios.about.AboutInterface;
 
 public class AboutCommunication {
     private static volatile AboutCommunication aboutCommunication;
-    private AboutInterface aboutInterface;
+    private IAbout iAbout;
 
-    private AboutCommunication(AboutInterface aboutInterface){
-        this.aboutInterface = aboutInterface;
+    private AboutCommunication(IAbout iAbout){
+        this.iAbout = iAbout;
     }
 
-    public static void init(AboutInterface aboutInterface){
+    public static void init(IAbout iAbout){
         synchronized (AboutCommunication.class) {
-            aboutCommunication = new AboutCommunication(aboutInterface);
+            aboutCommunication = new AboutCommunication(iAbout);
         }
     }
 
@@ -27,6 +27,6 @@ public class AboutCommunication {
     }
 
     public Context getContext(){
-        return aboutInterface.getContext();
+        return iAbout.getContext();
     }
 }

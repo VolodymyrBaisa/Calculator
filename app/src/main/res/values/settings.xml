@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_pref_expression_settings">expression_settings</string>
+    <string name="app_pref_cursor_position_settings">cursor_position_settings</string>
+    <string name="app_pref_tax_rate_settings">tax_rate_settings</string>
+
+    <string name="app_pref_vibration_settings">vibration_settings</string>
+    <string name="app_pref_vibration_length_settings">vibration_length_settings</string>
+
+    <string name="app_pref_screen_font_color_settings">font_color_settings</string>
+    <string name="app_pref_screen_font_size_settings">font_size_settings</string>
+    <string name="app_pref_screen_keep_on_settings">keep_screen_settings</string>
+
+    <string name="app_pref_keyboard_font_size_settings">font_size_settings</string>
+</resources>

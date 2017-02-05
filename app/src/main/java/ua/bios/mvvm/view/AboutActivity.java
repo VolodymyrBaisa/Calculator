@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.method.LinkMovementMethod;
 
 import ua.bios.R;
-import ua.bios.about.AboutInterface;
+import ua.bios.about.IAbout;
 import ua.bios.databinding.AboutActivityBinding;
 import ua.bios.mvvm.model.AboutCommunication;
 import ua.bios.mvvm.viewmodel.AboutHandler;
@@ -19,7 +19,7 @@ import ua.bios.utils.PackageInformation;
  * Created by BIOS on 12/26/2016.
  */
 
-public class AboutActivity extends AppCompatActivity implements AboutInterface {
+public class AboutActivity extends AppCompatActivity implements IAbout {
     private AboutActivityBinding aboutActivityBinding;
     private AboutViewModel aboutViewModel;
 

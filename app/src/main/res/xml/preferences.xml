@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/app_pref_category_vibration">
+        <CheckBoxPreference
+            android:title="@string/app_pref_vibration"
+            android:key="@string/app_pref_vibration_settings"
+            android:defaultValue="true" />
+
+        <EditTextPreference
+            android:title="@string/app_pref_vibration_length"
+            android:key="@string/app_pref_vibration_length_settings"
+            android:dialogMessage="@string/app_pref_vibration_length_dialog_message"
+            android:defaultValue="20" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/app_pref_category_screen">
+        <ListPreference
+            android:title="@string/app_pref_screen_font_color"
+            android:key="@string/app_pref_screen_font_color_settings"
+            android:entries="@array/app_pref_array_screen_color"
+            android:entryValues="@array/app_pref_array_screen_color_alias"
+            android:defaultValue="1"/>
+
+        <EditTextPreference
+            android:title="@string/app_pref_screen_font_size"
+            android:key="@string/app_pref_screen_font_size_settings"
+            android:defaultValue="40" />
+
+        <SwitchPreference
+            android:title="@string/app_pref_screen_keep_off_on"
+            android:key="@string/app_pref_screen_keep_off_on_settings"
+            android:defaultValue="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/app_pref_category_keyboard">
+        <EditTextPreference
+            android:title="@string/app_pref_keyboard_font_size"
+            android:key="@string/app_pref_keyboard_font_size_settings"
+            android:defaultValue="20" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

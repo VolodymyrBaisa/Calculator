@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="app_pref_array_screen_color">
+        <item>@string/app_pref_screen_font_color_black</item>
+        <item>@string/app_pref_screen_font_color_blue</item>
+        <item>@string/app_pref_screen_font_color_gray</item>
+        <item>@string/app_pref_screen_font_color_purple</item>
+        <item>@string/app_pref_screen_font_color_green</item>
+        <item>@string/app_pref_screen_font_color_orange</item>
+        <item>@string/app_pref_screen_font_color_pink</item>
+        <item>@string/app_pref_screen_font_color_light_green</item>
+        <item>@string/app_pref_screen_font_color_ruby_red</item>
+    </string-array>
+
+    <string-array name="app_pref_array_screen_color_alias">
+        <item>#000000</item>
+        <item>#2196F3</item>
+        <item>#9E9E9E</item>
+        <item>#9C27B0</item>
+        <item>#4CAF50</item>
+        <item>#FF9800</item>
+        <item>#E91E63</item>
+        <item>#8BC34A</item>
+        <item>#C4150C</item>
+    </string-array>
+</resources>

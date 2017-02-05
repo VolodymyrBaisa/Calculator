@@ -1,6 +1,6 @@
 package ua.bios.mvvm.model;
 
-import ua.bios.display.CalculatorInterface;
+import ua.bios.display.ICalculator;
 
 /**
  * Created by BIOS on 1/21/2017.
@@ -8,64 +8,72 @@ import ua.bios.display.CalculatorInterface;
 
 public class CalculatorScreenCommunication {
     private static volatile CalculatorScreenCommunication calculatorScreenCommunication;
-    private final CalculatorInterface calculatorInterface;
+    private final ICalculator iCalculator;
 
-    private CalculatorScreenCommunication(CalculatorInterface calculatorInterface) {
-        this.calculatorInterface = calculatorInterface;
+    private CalculatorScreenCommunication(ICalculator iCalculator) {
+        this.iCalculator = iCalculator;
     }
 
     public static CalculatorScreenCommunication getInstance() {
         return calculatorScreenCommunication;
     }
 
-    public static void init(CalculatorInterface calculatorInterface) {
+    public static void init(ICalculator iCalculator) {
         synchronized (CalculatorScreenCommunication.class) {
-            calculatorScreenCommunication = new CalculatorScreenCommunication(calculatorInterface);
+            calculatorScreenCommunication = new CalculatorScreenCommunication(iCalculator);
         }
     }
 
     @Override
     public String toString() {
-        return calculatorInterface.getText();
+        return iCalculator.getText();
     }
 
     public void addText(String value) {
-        calculatorInterface.addText(value);
+        iCalculator.addText(value);
+    }
+
+    public void setText(String value) {
+        iCalculator.setText(value);
+    }
+
+    public String getText() {
+        return iCalculator.getText();
     }
 
     public void insertText(int cursor, String value) {
-        calculatorInterface.insertText(cursor, value);
+        iCalculator.insertText(cursor, value);
     }
 
     public int getSize() {
-        return calculatorInterface.getText().length();
+        return iCalculator.getText().length();
     }
 
     public boolean isEmpty() {
-        return calculatorInterface.getText().isEmpty();
+        return iCalculator.getText().isEmpty();
     }
 
     public int getCursorPosition() {
-        return calculatorInterface.getCursorPosition();
+        return iCalculator.getCursorPosition();
     }
 
     public void setCursorPosition(int value) {
-        calculatorInterface.setCursorPosition(value);
+        iCalculator.setCursorPosition(value);
     }
 
     public char getCharAt(int i) {
-        return calculatorInterface.getCharAt(i);
+        return iCalculator.getCharAt(i);
     }
 
     public void delete() {
-        calculatorInterface.delete();
+        iCalculator.delete();
     }
 
     public void delete(int start, int end) {
-        calculatorInterface.delete(start, end);
+        iCalculator.delete(start, end);
     }
 
     public void clear() {
-        calculatorInterface.clear();
+        iCalculator.clear();
     }
 }

@@ -4,10 +4,12 @@ package ua.bios.display;
  * Created by BIOS on 1/12/2017.
  */
 
-public interface CalculatorInterface {
+public interface ICalculator {
     String getText();
 
     void addText(String value);
+
+    void setText(String value);
 
     void insertText(int cursor, String value);
 

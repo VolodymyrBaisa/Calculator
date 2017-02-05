@@ -322,8 +322,8 @@ public class CalculatorHandler {
         Calculator calculator = new Calculator();
         String expressionWithResults = calculateAllExpressionGroup(cleanedExpression, calculator);
         clearResultStorage();
-        setResultsForGrandTotal(expressionWithResults.toString());
-        calculatorScreenCommunication.addText(expressionWithResults.toString());
+        setResultsForGrandTotal(expressionWithResults);
+        calculatorScreenCommunication.addText(expressionWithResults);
     }
 
     private String calculateAllExpressionGroup(LinkedList<String> cleanedExpression, Calculator calculator) {
