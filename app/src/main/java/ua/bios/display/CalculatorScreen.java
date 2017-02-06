@@ -1,6 +1,7 @@
 package ua.bios.display;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -37,6 +38,10 @@ public class CalculatorScreen extends EditText {
         this.setTypeface(fontsStyle, Typeface.NORMAL);
     }
 
+    public void setTextColor(String color){
+        super.setTextColor(Color.parseColor(color));
+    }
+
     public void addText(String value) {
         super.getText().insert(getSelectionStart(), value);
     }
@@ -47,10 +52,6 @@ public class CalculatorScreen extends EditText {
 
     public char getCharAt(int i){
         return super.getText().charAt(i);
-    }
-
-    public CharSequence getSubSequence(){
-        return super.getText().subSequence(getSelectionStart(), getSelectionEnd());
     }
 
     public void delete() {

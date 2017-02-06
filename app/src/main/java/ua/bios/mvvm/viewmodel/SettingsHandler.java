@@ -37,5 +37,8 @@ public class SettingsHandler implements IObserver {
 
         TaxRateData taxRateData = TaxRateData.getInstance();
         taxRateData.setTax(taxRate);
+
+        calculatorScreenCommunication.setTextColor(settingsModel.getScreenFontColor());
+        calculatorScreenCommunication.setTextSize(settingsModel.getScreenFontSize());
     }
 }

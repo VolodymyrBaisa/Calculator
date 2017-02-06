@@ -38,7 +38,7 @@
     <string name="app_pref_screen_font_color_ruby_red">Ruby red</string>
 
     <string name="app_pref_screen_font_size">Font size</string>
-    <string name="app_pref_screen_keep_on">Keep screen</string>
+    <string name="app_pref_screen_keep_on">Keep screen enable</string>
     
     <string name="app_pref_category_keyboard">Keyboard settings</string>
     <string name="app_pref_keyboard_font_size">Font size</string>

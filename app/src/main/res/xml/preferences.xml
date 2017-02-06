@@ -19,7 +19,7 @@
             android:key="@string/app_pref_screen_font_color_settings"
             android:entries="@array/app_pref_array_screen_color"
             android:entryValues="@array/app_pref_array_screen_color_alias"
-            android:defaultValue="1"/>
+            android:defaultValue="@string/app_pref_screen_font_color_default_value_settings"/>
 
         <EditTextPreference
             android:title="@string/app_pref_screen_font_size"
@@ -27,8 +27,8 @@
             android:defaultValue="40" />
 
         <SwitchPreference
-            android:title="@string/app_pref_screen_keep_off_on"
-            android:key="@string/app_pref_screen_keep_off_on_settings"
+            android:title="@string/app_pref_screen_keep_on"
+            android:key="@string/app_pref_screen_keep_on_settings"
             android:defaultValue="false" />
     </PreferenceCategory>
 

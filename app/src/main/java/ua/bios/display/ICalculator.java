@@ -5,6 +5,11 @@ package ua.bios.display;
  */
 
 public interface ICalculator {
+
+    void setTextColor(String color);
+
+    void setTextSize(float size);
+
     String getText();
 
     void addText(String value);

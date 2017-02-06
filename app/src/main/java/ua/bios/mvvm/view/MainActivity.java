@@ -103,6 +103,16 @@ public class MainActivity extends AppCompatActivity implements ICalculator, ISet
     }
 
     @Override
+    public void setTextColor(String color) {
+        mainLayoutBinding.screenActivity.screen.setTextColor(color);
+    }
+
+    @Override
+    public void setTextSize(float size) {
+        mainLayoutBinding.screenActivity.screen.setTextSize(size);
+    }
+
+    @Override
     public String getText() {
         return mainLayoutBinding.screenActivity.screen.getText().toString();
     }

@@ -29,6 +29,14 @@ public class CalculatorScreenCommunication {
         return iCalculator.getText();
     }
 
+    public void setTextColor(String color) {
+        iCalculator.setTextColor(color);
+    }
+
+    public void setTextSize(float size) {
+        iCalculator.setTextSize(size);
+    }
+
     public void addText(String value) {
         iCalculator.addText(value);
     }
