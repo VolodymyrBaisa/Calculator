@@ -1,6 +1,6 @@
 package ua.bios.mvvm.model;
 
-import ua.bios.display.ICalculator;
+import ua.bios.display.ICalculatorScreen;
 
 /**
  * Created by BIOS on 1/21/2017.
@@ -8,80 +8,88 @@ import ua.bios.display.ICalculator;
 
 public class CalculatorScreenCommunication {
     private static volatile CalculatorScreenCommunication calculatorScreenCommunication;
-    private final ICalculator iCalculator;
+    private final ICalculatorScreen iCalculatorScreen;
 
-    private CalculatorScreenCommunication(ICalculator iCalculator) {
-        this.iCalculator = iCalculator;
+    private CalculatorScreenCommunication(ICalculatorScreen iCalculatorScreen) {
+        this.iCalculatorScreen = iCalculatorScreen;
     }
 
     public static CalculatorScreenCommunication getInstance() {
         return calculatorScreenCommunication;
     }
 
-    public static void init(ICalculator iCalculator) {
+    public static void init(ICalculatorScreen iCalculatorScreen) {
         synchronized (CalculatorScreenCommunication.class) {
-            calculatorScreenCommunication = new CalculatorScreenCommunication(iCalculator);
+            calculatorScreenCommunication = new CalculatorScreenCommunication(iCalculatorScreen);
         }
     }
 
     @Override
     public String toString() {
-        return iCalculator.getText();
+        return iCalculatorScreen.getText();
+    }
+
+    public void setScreenAlwaysOn(boolean flag) {
+        iCalculatorScreen.setScreenAlwaysOn(flag);
     }
 
     public void setTextColor(String color) {
-        iCalculator.setTextColor(color);
+        iCalculatorScreen.setTextColor(color);
+    }
+
+    public void setTextLines(int count){
+        iCalculatorScreen.setTextLines(count);
     }
 
     public void setTextSize(float size) {
-        iCalculator.setTextSize(size);
+        iCalculatorScreen.setTextSize(size);
     }
 
     public void addText(String value) {
-        iCalculator.addText(value);
+        iCalculatorScreen.addText(value);
     }
 
     public void setText(String value) {
-        iCalculator.setText(value);
+        iCalculatorScreen.setText(value);
     }
 
     public String getText() {
-        return iCalculator.getText();
+        return iCalculatorScreen.getText();
     }
 
     public void insertText(int cursor, String value) {
-        iCalculator.insertText(cursor, value);
+        iCalculatorScreen.insertText(cursor, value);
     }
 
     public int getSize() {
-        return iCalculator.getText().length();
+        return iCalculatorScreen.getText().length();
     }
 
     public boolean isEmpty() {
-        return iCalculator.getText().isEmpty();
+        return iCalculatorScreen.getText().isEmpty();
     }
 
     public int getCursorPosition() {
-        return iCalculator.getCursorPosition();
+        return iCalculatorScreen.getCursorPosition();
     }
 
     public void setCursorPosition(int value) {
-        iCalculator.setCursorPosition(value);
+        iCalculatorScreen.setCursorPosition(value);
     }
 
     public char getCharAt(int i) {
-        return iCalculator.getCharAt(i);
+        return iCalculatorScreen.getCharAt(i);
     }
 
     public void delete() {
-        iCalculator.delete();
+        iCalculatorScreen.delete();
     }
 
     public void delete(int start, int end) {
-        iCalculator.delete(start, end);
+        iCalculatorScreen.delete(start, end);
     }
 
     public void clear() {
-        iCalculator.clear();
+        iCalculatorScreen.clear();
     }
 }

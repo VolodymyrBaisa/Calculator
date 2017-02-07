@@ -26,6 +26,11 @@
             android:key="@string/app_pref_screen_font_size_settings"
             android:defaultValue="40" />
 
+        <EditTextPreference
+            android:title="@string/app_pref_screen_text_lines"
+            android:key="@string/app_pref_screen_text_lines_settings"
+            android:defaultValue="2" />
+
         <SwitchPreference
             android:title="@string/app_pref_screen_keep_on"
             android:key="@string/app_pref_screen_keep_on_settings"

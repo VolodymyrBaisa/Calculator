@@ -1,10 +1,12 @@
 package ua.bios.display;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.WindowManager;
 import android.widget.EditText;
 
 /**
@@ -33,24 +35,37 @@ public class CalculatorScreen extends EditText {
         super.setVerticalFadingEdgeEnabled(true);
     }
 
+    public void setScreenAlwaysOn(boolean flag){
+        if(flag) {
+            ((Activity) context).getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        } else {
+            ((Activity) context).getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        }
+    }
+
     public void setFont(String fontPath) {
         Typeface fontsStyle = Typeface.createFromAsset(context.getAssets(), fontPath);
         this.setTypeface(fontsStyle, Typeface.NORMAL);
     }
 
-    public void setTextColor(String color){
+    public void setTextColor(String color) {
         super.setTextColor(Color.parseColor(color));
+    }
+
+    public void setTextLines(int count) {
+        super.setMinLines(count);
+        super.setMaxLines(count);
     }
 
     public void addText(String value) {
         super.getText().insert(getSelectionStart(), value);
     }
 
-    public void insertText(int cursor, String value){
+    public void insertText(int cursor, String value) {
         super.getText().insert(cursor, value);
     }
 
-    public char getCharAt(int i){
+    public char getCharAt(int i) {
         return super.getText().charAt(i);
     }
 
@@ -61,7 +76,7 @@ public class CalculatorScreen extends EditText {
         }
     }
 
-    public void delete(int start, int end){
+    public void delete(int start, int end) {
         super.getText().delete(start, end);
     }
 

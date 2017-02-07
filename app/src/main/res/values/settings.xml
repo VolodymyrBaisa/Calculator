@@ -9,6 +9,7 @@
 
     <string name="app_pref_screen_font_color_settings">font_screen_color_settings</string>
     <string name="app_pref_screen_font_color_default_value_settings">#000000</string>
+    <string name="app_pref_screen_text_lines_settings">text_screen_lines</string>
     <string name="app_pref_screen_font_size_settings">font_screen_size_settings</string>
     <string name="app_pref_screen_keep_on_settings">keep_screen_settings</string>
 

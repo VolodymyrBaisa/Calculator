@@ -13,7 +13,9 @@ import android.view.MenuItem;
 import ua.bios.R;
 import ua.bios.SettingsObserver.Subject;
 import ua.bios.databinding.MainLayoutBinding;
-import ua.bios.display.ICalculator;
+import ua.bios.display.ICalculatorScreen;
+import ua.bios.keyboard.ICalculatorButton;
+import ua.bios.mvvm.model.CalculatorButtonCommunication;
 import ua.bios.mvvm.model.CalculatorScreenCommunication;
 import ua.bios.mvvm.model.SettingsModel;
 import ua.bios.mvvm.viewmodel.CalculatorHandler;
@@ -26,7 +28,7 @@ import ua.bios.settings.ISettings;
  * Created by BIOS on 12/26/2016.
  */
 
-public class MainActivity extends AppCompatActivity implements ICalculator, ISettings {
+public class MainActivity extends AppCompatActivity implements ICalculatorScreen, ICalculatorButton, ISettings {
     private MainLayoutBinding mainLayoutBinding;
     private final Subject settingsSubject = new Subject();
     private final SettingsHandler settingsHandler = new SettingsHandler();
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements ICalculator, ISet
         setCalculatorViewModel();
         setCalculatorScreenHandler();
         CalculatorScreenCommunication.init(this);
+        CalculatorButtonCommunication.init(this);
         SettingsModel.init(this);
     }
 
@@ -103,8 +106,18 @@ public class MainActivity extends AppCompatActivity implements ICalculator, ISet
     }
 
     @Override
+    public void setScreenAlwaysOn(boolean flag) {
+        mainLayoutBinding.screenActivity.screen.setScreenAlwaysOn(flag);
+    }
+
+    @Override
     public void setTextColor(String color) {
         mainLayoutBinding.screenActivity.screen.setTextColor(color);
+    }
+
+    @Override
+    public void setTextLines(int count) {
+        mainLayoutBinding.screenActivity.screen.setTextLines(count);
     }
 
     @Override
@@ -165,5 +178,10 @@ public class MainActivity extends AppCompatActivity implements ICalculator, ISet
     @Override
     public Context getContext() {
         return this.getApplicationContext();
+    }
+
+    @Override
+    public void setButtonFontSize(float size) {
+
     }
 }

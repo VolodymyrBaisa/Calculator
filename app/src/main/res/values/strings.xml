@@ -37,6 +37,7 @@
     <string name="app_pref_screen_font_color_light_green">Light green</string>
     <string name="app_pref_screen_font_color_ruby_red">Ruby red</string>
 
+    <string name="app_pref_screen_text_lines">Lines</string>
     <string name="app_pref_screen_font_size">Font size</string>
     <string name="app_pref_screen_keep_on">Keep screen enable</string>
     

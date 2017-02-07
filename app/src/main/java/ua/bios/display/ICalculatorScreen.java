@@ -4,9 +4,13 @@ package ua.bios.display;
  * Created by BIOS on 1/12/2017.
  */
 
-public interface ICalculator {
+public interface ICalculatorScreen {
+
+    void setScreenAlwaysOn(boolean flag);
 
     void setTextColor(String color);
+
+    void setTextLines(int count);
 
     void setTextSize(float size);
 

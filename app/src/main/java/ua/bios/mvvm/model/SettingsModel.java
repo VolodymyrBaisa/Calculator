@@ -62,8 +62,10 @@ public class SettingsModel {
         return sharedPreferences.getBoolean(getResourceString(R.string.app_pref_vibration_settings), false);
     }
 
-    public int getVibrationLenght(){
-        return sharedPreferences.getInt(getResourceString(R.string.app_pref_vibration_length_settings), 0);
+    public int getVibrationLength(){
+        String defaultValue = "0";
+        String length = sharedPreferences.getString(getResourceString(R.string.app_pref_vibration_length_settings), defaultValue);
+        return Integer.parseInt(length.isEmpty() ? defaultValue : length) ;
     }
 
     public String getScreenFontColor(){
@@ -76,12 +78,20 @@ public class SettingsModel {
        return Float.parseFloat(fontSize.isEmpty() ? defaultValue : fontSize);
     }
 
+    public int getScreenLines(){
+        String defaultValue = "2";
+        String lines = sharedPreferences.getString(getResourceString(R.string.app_pref_screen_text_lines_settings), defaultValue);
+        return Integer.parseInt(lines.isEmpty() ? defaultValue : lines);
+    }
+
     public Boolean getScreenKeepOn(){
         return sharedPreferences.getBoolean(getResourceString(R.string.app_pref_screen_keep_on_settings), false);
     }
 
     public float getKeyboardFontSize(){
-        return sharedPreferences.getFloat(getResourceString(R.string.app_pref_keyboard_font_size_settings), 20);
+        String defaultValue = "20";
+        String fontSize = sharedPreferences.getString(getResourceString(R.string.app_pref_keyboard_font_size_settings), defaultValue);
+        return Float.parseFloat(fontSize.isEmpty() ? defaultValue : fontSize);
     }
 
     private String getResourceString(int id){
