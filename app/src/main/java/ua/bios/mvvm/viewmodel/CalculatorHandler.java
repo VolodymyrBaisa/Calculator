@@ -28,8 +28,6 @@ public class CalculatorHandler {
     public void onClickButton(View v) {
         if (v instanceof Button) {
             addAndCheckValue(((Button) v).getText().toString());
-        } else if (v instanceof ImageButton) {
-            addAndCheckValue(v.getContentDescription().toString());
         }
     }
 

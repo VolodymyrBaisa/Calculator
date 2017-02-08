@@ -3,4 +3,8 @@
     <declare-styleable name="CalculatorScreen">
         <attr name="setFont" format="string" />
     </declare-styleable>
+
+    <declare-styleable name="CalculatorButton">
+        <attr name="setFontSize" format="float" />
+    </declare-styleable>
 </resources>

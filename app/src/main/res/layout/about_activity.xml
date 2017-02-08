@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
             name="aboutHandler"
             type="ua.bios.mvvm.viewmodel.AboutHandler"/>
+
+        <variable
+            name="calculatorButton"
+            type="ua.bios.mvvm.viewmodel.ButtonViewModel" />
 
         <variable
             name="aboutViewModel"
@@ -50,12 +55,13 @@
             android:layout_weight="0"
             android:gravity="center|bottom">
 
-            <Button
+            <ua.bios.keyboard.CalculatorButton
                 style="@style/button_indigo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/app_about_back_button"
-                android:onClick="@{aboutHandler.onClickBack}"/>
+                android:onClick="@{aboutHandler.onClickBack}"
+                app:setFontSize="@{calculatorButton.fontSize}"/>
         </LinearLayout>
     </LinearLayout>
 </layout>

@@ -2,7 +2,6 @@ package ua.bios.mvvm.viewmodel;
 
 import ua.bios.SettingsObserver.IObserver;
 import ua.bios.mvvm.model.CalculatorScreenCommunication;
-import ua.bios.mvvm.model.CalculatorButtonCommunication;
 import ua.bios.mvvm.model.SettingsModel;
 import ua.bios.mvvm.model.TaxRateData;
 
@@ -33,8 +32,8 @@ public class SettingsHandler implements IObserver {
         calculatorScreenCommunication.setCursorPosition(settingsModel.getCursorPosition());
 
         String taxRate = settingsModel.getTaxRate();
-        CalculatorViewModel taxRateViewModel = CalculatorViewModel.getInstance();
-        taxRateViewModel.setTaxRateValue(taxRate);
+        CalculatorViewModel calculatorViewModel = CalculatorViewModel.getInstance();
+        calculatorViewModel.setTaxRateValue(taxRate);
 
         TaxRateData taxRateData = TaxRateData.getInstance();
         taxRateData.setTax(taxRate);
@@ -44,7 +43,7 @@ public class SettingsHandler implements IObserver {
         calculatorScreenCommunication.setTextLines(settingsModel.getScreenLines());
         calculatorScreenCommunication.setScreenAlwaysOn(settingsModel.getScreenKeepOn());
 
-        CalculatorButtonCommunication calculatorButtonCommunication = CalculatorButtonCommunication.getInstance();
-        calculatorButtonCommunication.setFontSize(settingsModel.getKeyboardFontSize());
+        ButtonViewModel buttonViewModel = ButtonViewModel.getInstance();
+        buttonViewModel.setFontSize(settingsModel.getKeyboardFontSize());
     }
 }

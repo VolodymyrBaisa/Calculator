@@ -13,6 +13,7 @@ import ua.bios.databinding.AboutActivityBinding;
 import ua.bios.mvvm.model.AboutCommunication;
 import ua.bios.mvvm.viewmodel.AboutHandler;
 import ua.bios.mvvm.viewmodel.AboutViewModel;
+import ua.bios.mvvm.viewmodel.ButtonViewModel;
 import ua.bios.utils.PackageInformation;
 
 /**
@@ -30,6 +31,7 @@ public class AboutActivity extends AppCompatActivity implements IAbout {
         setAboutHandler();
         setAboutViewModel();
         setLinkClickable();
+        setButtonViewModel();
         AboutCommunication.init(this);
     }
 
@@ -52,6 +54,11 @@ public class AboutActivity extends AppCompatActivity implements IAbout {
 
     private void setLinkClickable() {
         aboutActivityBinding.aboutText.setMovementMethod(LinkMovementMethod.getInstance());
+    }
+
+    private void setButtonViewModel() {
+        ButtonViewModel buttonViewModel = ButtonViewModel.getInstance();
+        aboutActivityBinding.setCalculatorButton(buttonViewModel);
     }
 
     @Override

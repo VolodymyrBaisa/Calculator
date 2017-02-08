@@ -14,10 +14,9 @@ import ua.bios.R;
 import ua.bios.SettingsObserver.Subject;
 import ua.bios.databinding.MainLayoutBinding;
 import ua.bios.display.ICalculatorScreen;
-import ua.bios.keyboard.ICalculatorButton;
-import ua.bios.mvvm.model.CalculatorButtonCommunication;
 import ua.bios.mvvm.model.CalculatorScreenCommunication;
 import ua.bios.mvvm.model.SettingsModel;
+import ua.bios.mvvm.viewmodel.ButtonViewModel;
 import ua.bios.mvvm.viewmodel.CalculatorHandler;
 import ua.bios.mvvm.viewmodel.CalculatorScreenHandler;
 import ua.bios.mvvm.viewmodel.CalculatorViewModel;
@@ -28,7 +27,7 @@ import ua.bios.settings.ISettings;
  * Created by BIOS on 12/26/2016.
  */
 
-public class MainActivity extends AppCompatActivity implements ICalculatorScreen, ICalculatorButton, ISettings {
+public class MainActivity extends AppCompatActivity implements ICalculatorScreen, ISettings {
     private MainLayoutBinding mainLayoutBinding;
     private final Subject settingsSubject = new Subject();
     private final SettingsHandler settingsHandler = new SettingsHandler();
@@ -40,8 +39,8 @@ public class MainActivity extends AppCompatActivity implements ICalculatorScreen
         setKeyboardHandler();
         setCalculatorViewModel();
         setCalculatorScreenHandler();
+        setButtonViewModel();
         CalculatorScreenCommunication.init(this);
-        CalculatorButtonCommunication.init(this);
         SettingsModel.init(this);
     }
 
@@ -67,18 +66,23 @@ public class MainActivity extends AppCompatActivity implements ICalculatorScreen
         settingsSubject.unregister(settingsHandler);
     }
 
-    private void setCalculatorScreenHandler() {
-        mainLayoutBinding.screenActivity.setCalculatorScreenHandler(new CalculatorScreenHandler());
-    }
-
     private void setCalculatorViewModel() {
         CalculatorViewModel calculatorViewModel = CalculatorViewModel.getInstance();
         mainLayoutBinding.screenActivity.setCalculatorViewModel(calculatorViewModel);
         mainLayoutBinding.keyboardActivity.setCalculatorViewModel(calculatorViewModel);
     }
 
+    private void setCalculatorScreenHandler() {
+        mainLayoutBinding.screenActivity.setCalculatorScreenHandler(new CalculatorScreenHandler());
+    }
+
+    private void setButtonViewModel() {
+        ButtonViewModel buttonViewModel = ButtonViewModel.getInstance();
+        mainLayoutBinding.keyboardActivity.setCalculatorButton(buttonViewModel);
+    }
+
     private void setKeyboardHandler() {
-        mainLayoutBinding.keyboardActivity.setKeyboard(new CalculatorHandler());
+        mainLayoutBinding.keyboardActivity.setCalculatorHandler(new CalculatorHandler());
     }
 
     @Override
@@ -178,10 +182,5 @@ public class MainActivity extends AppCompatActivity implements ICalculatorScreen
     @Override
     public Context getContext() {
         return this.getApplicationContext();
-    }
-
-    @Override
-    public void setButtonFontSize(float size) {
-
     }
 }
