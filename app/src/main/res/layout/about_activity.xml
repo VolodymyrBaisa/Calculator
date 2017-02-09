@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="aboutHandler"
-            type="ua.bios.mvvm.viewmodel.AboutHandler"/>
+            type="ua.bios.mvvm.viewmodel.AboutHandler" />
 
         <variable
             name="calculatorButton"
@@ -13,7 +14,7 @@
 
         <variable
             name="aboutViewModel"
-            type="ua.bios.mvvm.viewmodel.AboutViewModel"/>
+            type="ua.bios.mvvm.viewmodel.AboutViewModel" />
     </data>
 
     <LinearLayout
@@ -59,9 +60,10 @@
                 style="@style/button_indigo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/app_about_back_button"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{aboutHandler.onClickBack}"
-                app:setFontSize="@{calculatorButton.fontSize}"/>
+                android:text="@string/app_about_back_button"
+                app:setTextSize="@{calculatorButton.textSize}" />
         </LinearLayout>
     </LinearLayout>
 </layout>

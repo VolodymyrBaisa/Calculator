@@ -5,7 +5,6 @@
     <string name="app_pref_tax_rate_settings">tax_rate_settings</string>
 
     <string name="app_pref_vibration_settings">vibration_settings</string>
-    <string name="app_pref_vibration_length_settings">vibration_length_settings</string>
 
     <string name="app_pref_screen_font_color_settings">font_screen_color_settings</string>
     <string name="app_pref_screen_font_color_default_value_settings">#000000</string>

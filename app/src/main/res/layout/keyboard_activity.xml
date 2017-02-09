@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="calculatorHandler"
             type="ua.bios.mvvm.viewmodel.CalculatorHandler" />
@@ -32,36 +33,40 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="@{calculatorViewModel.GTActivate}"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickGrandTotal}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="GT" />
+                android:text="GT"
+                app:setTextSize="@{calculatorButton.textSize}" />
 
             <ua.bios.keyboard.CalculatorButton
                 android:id="@+id/rate"
                 style="@style/button_teal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickRate}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="RATE" />
+                android:text="RATE"
+                app:setTextSize="@{calculatorButton.textSize}" />
 
             <ua.bios.keyboard.CalculatorButton
                 android:id="@+id/tax_minus"
                 style="@style/button_teal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickTaxMinus}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="TAX-" />
+                android:text="TAX-"
+                app:setTextSize="@{calculatorButton.textSize}" />
 
             <ua.bios.keyboard.CalculatorButton
                 android:id="@+id/tax_plus"
                 style="@style/button_teal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickTaxPlus}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="TAX+" />
+                android:text="TAX+"
+                app:setTextSize="@{calculatorButton.textSize}" />
         </LinearLayout>
 
         <LinearLayout
@@ -74,18 +79,20 @@
                 style="@style/button_blue_grey"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickPercentage}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="%" />
+                android:text="%"
+                app:setTextSize="@{calculatorButton.textSize}" />
 
             <ua.bios.keyboard.CalculatorButton
                 android:id="@+id/square_root"
                 style="@style/button_blue_grey"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickSquareRoot}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="√x" />
+                android:text="√x"
+                app:setTextSize="@{calculatorButton.textSize}" />
 
             <ImageButton
                 android:id="@+id/backspace"
@@ -94,6 +101,7 @@
                 android:layout_height="match_parent"
                 android:contentDescription="backspace"
                 android:gravity="center"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickBackspace}"
                 android:padding="10dp"
                 android:scaleType="fitCenter"
@@ -104,9 +112,10 @@
                 style="@style/button_deep_orange"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickClear}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="C" />
+                android:text="C"
+                app:setTextSize="@{calculatorButton.textSize}" />
         </LinearLayout>
 
         <LinearLayout
@@ -119,36 +128,40 @@
                 style="@style/button_indigo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickMemoryClear}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="MC" />
+                android:text="MC"
+                app:setTextSize="@{calculatorButton.textSize}" />
 
             <ua.bios.keyboard.CalculatorButton
                 android:id="@+id/mr"
                 style="@style/button_indigo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickMemoryRecall}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="MR" />
+                android:text="MR"
+                app:setTextSize="@{calculatorButton.textSize}" />
 
             <ua.bios.keyboard.CalculatorButton
                 android:id="@+id/m_minus"
                 style="@style/button_indigo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickMemorySubtract}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="M-" />
+                android:text="M-"
+                app:setTextSize="@{calculatorButton.textSize}" />
 
             <ua.bios.keyboard.CalculatorButton
                 android:id="@+id/m_plus"
                 style="@style/button_indigo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickMemoryAdd}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="M+" />
+                android:text="M+"
+                app:setTextSize="@{calculatorButton.textSize}" />
         </LinearLayout>
 
         <LinearLayout
@@ -161,36 +174,40 @@
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="7" />
+                android:text="7"
+                app:setTextSize="@{calculatorButton.textSize}" />
 
             <ua.bios.keyboard.CalculatorButton
                 android:id="@+id/eight"
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="8" />
+                android:text="8"
+                app:setTextSize="@{calculatorButton.textSize}" />
 
             <ua.bios.keyboard.CalculatorButton
                 android:id="@+id/nine"
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="9" />
+                android:text="9"
+                app:setTextSize="@{calculatorButton.textSize}" />
 
             <ua.bios.keyboard.CalculatorButton
                 android:id="@+id/divide"
                 style="@style/button_blue_grey"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="÷" />
+                android:text="÷"
+                app:setTextSize="@{calculatorButton.textSize}" />
         </LinearLayout>
 
         <LinearLayout
@@ -203,36 +220,40 @@
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="4" />
+                android:text="4"
+                app:setTextSize="@{calculatorButton.textSize}" />
 
             <ua.bios.keyboard.CalculatorButton
                 android:id="@+id/five"
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="5" />
+                android:text="5"
+                app:setTextSize="@{calculatorButton.textSize}" />
 
             <ua.bios.keyboard.CalculatorButton
                 android:id="@+id/six"
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="6" />
+                android:text="6"
+                app:setTextSize="@{calculatorButton.textSize}" />
 
             <ua.bios.keyboard.CalculatorButton
                 android:id="@+id/multiply"
                 style="@style/button_blue_grey"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="×" />
+                android:text="×"
+                app:setTextSize="@{calculatorButton.textSize}" />
         </LinearLayout>
 
         <LinearLayout
@@ -245,9 +266,10 @@
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="1" />
+                android:text="1"
+                app:setTextSize="@{calculatorButton.textSize}" />
 
 
             <ua.bios.keyboard.CalculatorButton
@@ -255,27 +277,30 @@
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="2" />
+                android:text="2"
+                app:setTextSize="@{calculatorButton.textSize}" />
 
             <ua.bios.keyboard.CalculatorButton
                 android:id="@+id/tree"
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="3" />
+                android:text="3"
+                app:setTextSize="@{calculatorButton.textSize}" />
 
             <ua.bios.keyboard.CalculatorButton
                 android:id="@+id/subtract"
                 style="@style/button_blue_grey"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="-" />
+                android:text="-"
+                app:setTextSize="@{calculatorButton.textSize}" />
         </LinearLayout>
 
         <LinearLayout
@@ -288,36 +313,40 @@
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="." />
+                android:text="."
+                app:setTextSize="@{calculatorButton.textSize}" />
 
             <ua.bios.keyboard.CalculatorButton
                 android:id="@+id/zero"
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="0" />
+                android:text="0"
+                app:setTextSize="@{calculatorButton.textSize}" />
 
             <ua.bios.keyboard.CalculatorButton
                 android:id="@+id/equal"
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickEquals}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="=" />
+                android:text="="
+                app:setTextSize="@{calculatorButton.textSize}" />
 
             <ua.bios.keyboard.CalculatorButton
                 android:id="@+id/plus"
                 style="@style/button_blue_grey"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="+" />
+                android:text="+"
+                app:setTextSize="@{calculatorButton.textSize}" />
         </LinearLayout>
 
         <LinearLayout
@@ -330,36 +359,40 @@
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickOpposite}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="+/-" />
+                android:text="+/-"
+                app:setTextSize="@{calculatorButton.textSize}" />
 
             <ua.bios.keyboard.CalculatorButton
                 android:id="@+id/double_zero"
                 style="@style/button_black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="00" />
+                android:text="00"
+                app:setTextSize="@{calculatorButton.textSize}" />
 
             <ua.bios.keyboard.CalculatorButton
                 android:id="@+id/left_parenthesis"
                 style="@style/button_blue_grey"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text="(" />
+                android:text="("
+                app:setTextSize="@{calculatorButton.textSize}" />
 
             <ua.bios.keyboard.CalculatorButton
                 android:id="@+id/right_parenthesis"
                 style="@style/button_blue_grey"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
-                app:setFontSize="@{calculatorButton.fontSize}"
-                android:text=")" />
+                android:text=")"
+                app:setTextSize="@{calculatorButton.textSize}" />
         </LinearLayout>
     </LinearLayout>
 </layout>

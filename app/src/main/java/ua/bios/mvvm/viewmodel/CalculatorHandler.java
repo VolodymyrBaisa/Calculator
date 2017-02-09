@@ -1,6 +1,7 @@
 package ua.bios.mvvm.viewmodel;
 
 import android.support.annotation.NonNull;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -27,64 +28,83 @@ public class CalculatorHandler {
 
     public void onClickButton(View v) {
         if (v instanceof Button) {
+            setPerformHapticFeedback(v);
             addAndCheckValue(((Button) v).getText().toString());
         }
     }
 
     public void onClickGrandTotal(View v) {
         grandTotal();
+        setPerformHapticFeedback(v);
     }
 
     public void onClickRate(View v) {
         setRate();
+        setPerformHapticFeedback(v);
     }
 
     public void onClickTaxPlus(View v) {
         taxPlus();
+        setPerformHapticFeedback(v);
     }
 
     public void onClickTaxMinus(View v) {
         taxMinus();
+        setPerformHapticFeedback(v);
     }
 
     public void onClickClear(View v) {
         clear();
+        setPerformHapticFeedback(v);
     }
 
     public void onClickBackspace(View v) {
         Backspace();
+        setPerformHapticFeedback(v);
     }
 
     public void onClickPercentage(View v) {
         addAndCheckValue("%");
+        setPerformHapticFeedback(v);
     }
 
     public void onClickSquareRoot(View v) {
         addAndCheckValue("√");
+        setPerformHapticFeedback(v);
     }
 
     public void onClickMemoryClear(View v) {
         memoryClear();
+        setPerformHapticFeedback(v);
     }
 
     public void onClickMemoryRecall(View v) {
         memoryRecall();
+        setPerformHapticFeedback(v);
     }
 
     public void onClickMemorySubtract(View v) {
         memorySubtract();
+        setPerformHapticFeedback(v);
     }
 
     public void onClickMemoryAdd(View v) {
         memoryAdd();
+        setPerformHapticFeedback(v);
     }
 
     public void onClickOpposite(View v) {
         changeOperatorToOpposite();
+        setPerformHapticFeedback(v);
     }
 
     public void onClickEquals(View v) {
         equals();
+        setPerformHapticFeedback(v);
+    }
+
+    private void setPerformHapticFeedback(View v) {
+        v.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS,HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
     }
 
     private void addAndCheckValue(String value) {

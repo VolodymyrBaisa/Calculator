@@ -14,7 +14,8 @@ public class CalculatorButton extends Button {
         super(context, attrs);
     }
 
-    public void setFontSize(float size) {
+    @Override
+    public void setTextSize(float size) {
         super.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
     }
 }

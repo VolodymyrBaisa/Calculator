@@ -22,8 +22,6 @@
 
     <string name="app_pref_category_vibration">Vibration settings</string>
     <string name="app_pref_vibration">Vibration</string>
-    <string name="app_pref_vibration_length">Vibration length</string>
-    <string name="app_pref_vibration_length_dialog_message">Value in milliseconds</string>
 
     <string name="app_pref_category_screen">Screen settings</string>
     <string name="app_pref_screen_font_color">Font color</string>

@@ -11,7 +11,8 @@ import com.android.databinding.library.baseAdapters.BR;
 
 public class ButtonViewModel extends BaseObservable {
     private static volatile ButtonViewModel buttonViewModel;
-    private float fontSize = 20;
+    private float textSize = 20;
+    private boolean isVibrationOn = false;
 
     private ButtonViewModel() {
     }
@@ -27,12 +28,22 @@ public class ButtonViewModel extends BaseObservable {
     }
 
     @Bindable
-    public float getFontSize() {
-        return fontSize;
+    public float getTextSize() {
+        return textSize;
     }
 
-    public void setFontSize(float fontSize) {
-        this.fontSize = fontSize;
-        notifyPropertyChanged(BR.fontSize);
+    public void setTextSize(float textSize) {
+        this.textSize = textSize;
+        notifyPropertyChanged(BR.textSize);
+    }
+
+    @Bindable
+    public boolean isVibrationOn() {
+        return isVibrationOn;
+    }
+
+    public void setVibrationOn(boolean vibrationOn) {
+        isVibrationOn = vibrationOn;
+        notifyPropertyChanged(BR.vibrationOn);
     }
 }

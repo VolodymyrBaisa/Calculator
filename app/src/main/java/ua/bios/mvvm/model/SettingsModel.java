@@ -62,12 +62,6 @@ public class SettingsModel {
         return sharedPreferences.getBoolean(getResourceString(R.string.app_pref_vibration_settings), false);
     }
 
-    public int getVibrationLength(){
-        String defaultValue = "0";
-        String length = sharedPreferences.getString(getResourceString(R.string.app_pref_vibration_length_settings), defaultValue);
-        return Integer.parseInt(length.isEmpty() ? defaultValue : length) ;
-    }
-
     public String getScreenFontColor(){
         return sharedPreferences.getString(getResourceString(R.string.app_pref_screen_font_color_settings), "#000000");
     }

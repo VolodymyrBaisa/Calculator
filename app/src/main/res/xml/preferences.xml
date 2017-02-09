@@ -5,12 +5,6 @@
             android:title="@string/app_pref_vibration"
             android:key="@string/app_pref_vibration_settings"
             android:defaultValue="true" />
-
-        <EditTextPreference
-            android:title="@string/app_pref_vibration_length"
-            android:key="@string/app_pref_vibration_length_settings"
-            android:dialogMessage="@string/app_pref_vibration_length_dialog_message"
-            android:defaultValue="20" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/app_pref_category_screen">
@@ -24,11 +18,13 @@
         <EditTextPreference
             android:title="@string/app_pref_screen_font_size"
             android:key="@string/app_pref_screen_font_size_settings"
+            android:inputType="number"
             android:defaultValue="40" />
 
         <EditTextPreference
             android:title="@string/app_pref_screen_text_lines"
             android:key="@string/app_pref_screen_text_lines_settings"
+            android:inputType="number"
             android:defaultValue="2" />
 
         <SwitchPreference
@@ -41,6 +37,7 @@
         <EditTextPreference
             android:title="@string/app_pref_keyboard_font_size"
             android:key="@string/app_pref_keyboard_font_size_settings"
+            android:inputType="number"
             android:defaultValue="20" />
     </PreferenceCategory>
 
