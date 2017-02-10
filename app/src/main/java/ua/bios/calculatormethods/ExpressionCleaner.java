@@ -3,7 +3,6 @@ package ua.bios.calculatormethods;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-import ua.bios.calculatormethods.ExpressionTest;
 import ua.bios.mvvm.model.Messages;
 
 /**

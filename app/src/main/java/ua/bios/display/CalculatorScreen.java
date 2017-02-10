@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.text.InputType;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.WindowManager;
@@ -23,20 +24,18 @@ public class CalculatorScreen extends EditText {
     }
 
     private void init() {
-        styles();
-        addText("0");
-    }
-
-    private void styles() {
+        super.setRawInputType(InputType.TYPE_CLASS_TEXT);
         super.setTextIsSelectable(true);
+        super.setCursorVisible(true);
         super.setAllCaps(false);
         super.setGravity(Gravity.CENTER);
         super.setTextAlignment(TEXT_ALIGNMENT_TEXT_END);
         super.setVerticalFadingEdgeEnabled(true);
+        addText("0");
     }
 
-    public void setScreenAlwaysOn(boolean flag){
-        if(flag) {
+    public void setScreenAlwaysOn(boolean flag) {
+        if (flag) {
             ((Activity) context).getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         } else {
             ((Activity) context).getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);

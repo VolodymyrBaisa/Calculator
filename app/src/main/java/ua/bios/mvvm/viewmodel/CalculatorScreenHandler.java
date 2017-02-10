@@ -7,7 +7,7 @@ import ua.bios.mvvm.model.GrandTotalData;
  */
 
 public class CalculatorScreenHandler {
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
         activateGTSign();
     }
 

@@ -59,7 +59,7 @@ public class SettingsModel {
     }
 
     public Boolean getVibration(){
-        return sharedPreferences.getBoolean(getResourceString(R.string.app_pref_vibration_settings), false);
+        return sharedPreferences.getBoolean(getResourceString(R.string.app_pref_vibration_settings), true);
     }
 
     public String getScreenFontColor(){

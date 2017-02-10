@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="@string/app_pref_category_vibration">
-        <CheckBoxPreference
-            android:title="@string/app_pref_vibration"
-            android:key="@string/app_pref_vibration_settings"
-            android:defaultValue="true" />
-    </PreferenceCategory>
-
     <PreferenceCategory android:title="@string/app_pref_category_screen">
         <ListPreference
             android:title="@string/app_pref_screen_font_color"
@@ -34,11 +27,17 @@
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/app_pref_category_keyboard">
+        <CheckBoxPreference
+            android:title="@string/app_pref_vibration"
+            android:key="@string/app_pref_vibration_settings"
+            android:defaultValue="true" />
+
         <EditTextPreference
             android:title="@string/app_pref_keyboard_font_size"
             android:key="@string/app_pref_keyboard_font_size_settings"
             android:inputType="number"
             android:defaultValue="20" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

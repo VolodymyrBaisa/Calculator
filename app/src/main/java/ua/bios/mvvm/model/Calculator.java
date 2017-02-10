@@ -4,8 +4,8 @@ import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
 import net.objecthunter.exp4j.function.Function;
 
-import ua.bios.utils.Formatter;
 import ua.bios.calculatormethods.OperatorAndSymbolsReplacer;
+import ua.bios.utils.Formatter;
 
 /**
  * Created by BIOS on 12/8/2016.

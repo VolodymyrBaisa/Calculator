@@ -2,6 +2,7 @@ package ua.bios.mvvm.viewmodel;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+
 import com.android.databinding.library.baseAdapters.BR;
 
 /**

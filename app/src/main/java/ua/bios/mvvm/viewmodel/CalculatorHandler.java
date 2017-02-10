@@ -4,10 +4,12 @@ import android.support.annotation.NonNull;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 import java.util.LinkedList;
 
+import ua.bios.calculatormethods.ExpressionCleaner;
+import ua.bios.calculatormethods.ExpressionParser;
+import ua.bios.calculatormethods.ExpressionTest;
 import ua.bios.calculatormethods.ValidationArguments;
 import ua.bios.mvvm.model.Calculator;
 import ua.bios.mvvm.model.CalculatorScreenCommunication;
@@ -16,9 +18,6 @@ import ua.bios.mvvm.model.IOperator;
 import ua.bios.mvvm.model.MemoryData;
 import ua.bios.mvvm.model.Operators;
 import ua.bios.mvvm.model.TaxRateData;
-import ua.bios.calculatormethods.ExpressionCleaner;
-import ua.bios.calculatormethods.ExpressionParser;
-import ua.bios.calculatormethods.ExpressionTest;
 
 /**
  * Created by BIOS on 1/10/2017.

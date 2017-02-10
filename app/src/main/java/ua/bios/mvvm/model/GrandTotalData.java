@@ -1,7 +1,6 @@
 package ua.bios.mvvm.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by BIOS on 1/26/2017.
