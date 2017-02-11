@@ -24,9 +24,6 @@ public class CalculatorScreen extends EditText {
     }
 
     private void init() {
-        super.setRawInputType(InputType.TYPE_CLASS_TEXT);
-        super.setTextIsSelectable(true);
-        super.setCursorVisible(true);
         super.setAllCaps(false);
         super.setGravity(Gravity.CENTER);
         super.setTextAlignment(TEXT_ALIGNMENT_TEXT_END);

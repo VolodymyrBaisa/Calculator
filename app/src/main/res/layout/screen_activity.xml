@@ -54,6 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:onTextChanged="@{calculatorScreenHandler.onTextChanged}"
+                android:onTouch="@{calculatorScreenHandler.onTouch}"
                 app:setFont="@{`fonts/Calculator.otf`}" />
         </FrameLayout>
     </LinearLayout>

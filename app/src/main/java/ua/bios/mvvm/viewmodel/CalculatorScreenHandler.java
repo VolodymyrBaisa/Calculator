@@ -1,5 +1,9 @@
 package ua.bios.mvvm.viewmodel;
 
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.EditText;
+
 import ua.bios.mvvm.model.GrandTotalData;
 
 /**
@@ -7,7 +11,18 @@ import ua.bios.mvvm.model.GrandTotalData;
  */
 
 public class CalculatorScreenHandler {
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
+    public boolean onTouch(View v, MotionEvent event) {
+        setCursorPosition((EditText) v, event);
+        return true;
+    }
+
+    private void setCursorPosition(EditText v, MotionEvent event) {
+        EditText screen = v;
+        int click_position = screen.getOffsetForPosition(event.getX(), event.getY());
+        screen.setSelection(click_position);
+    }
+
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
         activateGTSign();
     }
 
