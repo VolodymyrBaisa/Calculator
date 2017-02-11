@@ -62,6 +62,7 @@
                 android:layout_height="wrap_content"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{aboutHandler.onClickBack}"
+                android:onTouch="@{aboutHandler.onTouch}"
                 android:text="@string/app_about_back_button"
                 app:setTextSize="@{calculatorButton.textSize}" />
         </LinearLayout>

@@ -1,7 +1,7 @@
 package ua.bios.mvvm.viewmodel;
 
 import android.support.annotation.NonNull;
-import android.view.HapticFeedbackConstants;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -11,6 +11,7 @@ import ua.bios.calculatormethods.ExpressionCleaner;
 import ua.bios.calculatormethods.ExpressionParser;
 import ua.bios.calculatormethods.ExpressionTest;
 import ua.bios.calculatormethods.ValidationArguments;
+import ua.bios.keyboard.ButtonHapticFeedback;
 import ua.bios.mvvm.model.Calculator;
 import ua.bios.mvvm.model.CalculatorScreenCommunication;
 import ua.bios.mvvm.model.GrandTotalData;
@@ -25,86 +26,75 @@ import ua.bios.mvvm.model.TaxRateData;
 
 public class CalculatorHandler {
 
+    public boolean onTouch(View v, MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            ButtonHapticFeedback.setPerformHapticFeedback(v);
+        }
+        return false;
+    }
+
     public void onClickButton(View v) {
         if (v instanceof Button) {
-            setPerformHapticFeedback(v);
             addAndCheckValue(((Button) v).getText().toString());
         }
     }
 
     public void onClickGrandTotal(View v) {
         grandTotal();
-        setPerformHapticFeedback(v);
     }
 
     public void onClickRate(View v) {
         setRate();
-        setPerformHapticFeedback(v);
     }
 
     public void onClickTaxPlus(View v) {
         taxPlus();
-        setPerformHapticFeedback(v);
     }
 
     public void onClickTaxMinus(View v) {
         taxMinus();
-        setPerformHapticFeedback(v);
     }
 
     public void onClickClear(View v) {
         clear();
-        setPerformHapticFeedback(v);
     }
 
     public void onClickBackspace(View v) {
         Backspace();
-        setPerformHapticFeedback(v);
     }
 
     public void onClickPercentage(View v) {
         addAndCheckValue("%");
-        setPerformHapticFeedback(v);
     }
 
     public void onClickSquareRoot(View v) {
         addAndCheckValue("√");
-        setPerformHapticFeedback(v);
     }
 
     public void onClickMemoryClear(View v) {
         memoryClear();
-        setPerformHapticFeedback(v);
     }
 
     public void onClickMemoryRecall(View v) {
         memoryRecall();
-        setPerformHapticFeedback(v);
     }
 
     public void onClickMemorySubtract(View v) {
         memorySubtract();
-        setPerformHapticFeedback(v);
     }
 
     public void onClickMemoryAdd(View v) {
         memoryAdd();
-        setPerformHapticFeedback(v);
     }
 
     public void onClickOpposite(View v) {
         changeOperatorToOpposite();
-        setPerformHapticFeedback(v);
     }
 
     public void onClickEquals(View v) {
         equals();
-        setPerformHapticFeedback(v);
     }
 
-    private void setPerformHapticFeedback(View v) {
-        v.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS,HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
-    }
 
     private void addAndCheckValue(String value) {
         CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
@@ -259,7 +249,7 @@ public class CalculatorHandler {
     @NonNull
     private String getExpressionFromMemoryData(MemoryData memoryData) {
         StringBuilder stringBuilder = new StringBuilder();
-        for(int index = 0; index < memoryData.getLength(); index++){
+        for (int index = 0; index < memoryData.getLength(); index++) {
             stringBuilder.append(memoryData.get(index));
         }
         return stringBuilder.toString();
@@ -279,17 +269,17 @@ public class CalculatorHandler {
         CalculatorScreenCommunication calculatorScreenCommunication = CalculatorScreenCommunication.getInstance();
         CharSequence value = getNumberAtCursorPosition(calculatorScreenCommunication);
         MemoryData memoryData = MemoryData.getInstance();
-        if(memoryData.getLength() > 0){
+        if (memoryData.getLength() > 0) {
             memoryData.add(operator.toString().concat(value.toString()));
         } else {
             memoryData.add(value.toString());
         }
     }
 
-    private void activateMemorySign(){
+    private void activateMemorySign() {
         MemoryData memoryData = MemoryData.getInstance();
         CalculatorViewModel memoryViewModel = CalculatorViewModel.getInstance();
-        if(memoryData.getLength() > 0){
+        if (memoryData.getLength() > 0) {
             memoryViewModel.setMemoryActivate(true);
             memoryViewModel.setMemorySize(memoryData.getLength());
         } else {

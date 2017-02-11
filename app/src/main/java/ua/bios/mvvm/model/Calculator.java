@@ -4,6 +4,8 @@ import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
 import net.objecthunter.exp4j.function.Function;
 
+import java.util.EmptyStackException;
+
 import ua.bios.calculatormethods.OperatorAndSymbolsReplacer;
 import ua.bios.utils.Formatter;
 
@@ -25,7 +27,7 @@ public class Calculator {
             } else {
                 return Messages.getError();
             }
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException | EmptyStackException e) {
             return Messages.getError();
         }
     }

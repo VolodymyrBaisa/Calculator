@@ -35,6 +35,7 @@
                 android:clickable="@{calculatorViewModel.GTActivate}"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickGrandTotal}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="GT"
                 app:setTextSize="@{calculatorButton.textSize}" />
 
@@ -45,6 +46,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickRate}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="RATE"
                 app:setTextSize="@{calculatorButton.textSize}" />
 
@@ -55,6 +57,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickTaxMinus}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="TAX-"
                 app:setTextSize="@{calculatorButton.textSize}" />
 
@@ -114,6 +117,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickClear}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="C"
                 app:setTextSize="@{calculatorButton.textSize}" />
         </LinearLayout>
@@ -130,6 +134,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickMemoryClear}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="MC"
                 app:setTextSize="@{calculatorButton.textSize}" />
 
@@ -140,6 +145,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickMemoryRecall}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="MR"
                 app:setTextSize="@{calculatorButton.textSize}" />
 
@@ -150,6 +156,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickMemorySubtract}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="M-"
                 app:setTextSize="@{calculatorButton.textSize}" />
 
@@ -160,6 +167,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickMemoryAdd}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="M+"
                 app:setTextSize="@{calculatorButton.textSize}" />
         </LinearLayout>
@@ -176,6 +184,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="7"
                 app:setTextSize="@{calculatorButton.textSize}" />
 
@@ -186,6 +195,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="8"
                 app:setTextSize="@{calculatorButton.textSize}" />
 
@@ -196,6 +206,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="9"
                 app:setTextSize="@{calculatorButton.textSize}" />
 
@@ -206,6 +217,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="÷"
                 app:setTextSize="@{calculatorButton.textSize}" />
         </LinearLayout>
@@ -222,6 +234,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="4"
                 app:setTextSize="@{calculatorButton.textSize}" />
 
@@ -232,6 +245,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="5"
                 app:setTextSize="@{calculatorButton.textSize}" />
 
@@ -242,6 +256,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="6"
                 app:setTextSize="@{calculatorButton.textSize}" />
 
@@ -252,6 +267,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="×"
                 app:setTextSize="@{calculatorButton.textSize}" />
         </LinearLayout>
@@ -268,6 +284,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="1"
                 app:setTextSize="@{calculatorButton.textSize}" />
 
@@ -279,6 +296,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="2"
                 app:setTextSize="@{calculatorButton.textSize}" />
 
@@ -289,6 +307,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="3"
                 app:setTextSize="@{calculatorButton.textSize}" />
 
@@ -299,6 +318,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="-"
                 app:setTextSize="@{calculatorButton.textSize}" />
         </LinearLayout>
@@ -315,6 +335,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="."
                 app:setTextSize="@{calculatorButton.textSize}" />
 
@@ -325,6 +346,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="0"
                 app:setTextSize="@{calculatorButton.textSize}" />
 
@@ -335,6 +357,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickEquals}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="="
                 app:setTextSize="@{calculatorButton.textSize}" />
 
@@ -345,6 +368,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="+"
                 app:setTextSize="@{calculatorButton.textSize}" />
         </LinearLayout>
@@ -361,6 +385,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickOpposite}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="+/-"
                 app:setTextSize="@{calculatorButton.textSize}" />
 
@@ -371,6 +396,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="00"
                 app:setTextSize="@{calculatorButton.textSize}" />
 
@@ -381,6 +407,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text="("
                 app:setTextSize="@{calculatorButton.textSize}" />
 
@@ -391,6 +418,7 @@
                 android:layout_height="match_parent"
                 android:hapticFeedbackEnabled="@{calculatorButton.vibrationOn}"
                 android:onClick="@{calculatorHandler.onClickButton}"
+                android:onTouch="@{calculatorHandler.onTouch}"
                 android:text=")"
                 app:setTextSize="@{calculatorButton.textSize}" />
         </LinearLayout>
