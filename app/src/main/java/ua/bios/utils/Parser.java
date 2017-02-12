@@ -14,6 +14,8 @@ public class Parser {
     private Parser() {
     }
 
+    // may be findElements()
+    // rename parameter exp
     public static LinkedList<String> findElement(String exp, String regex) {
         LinkedList<String> elementList = new LinkedList<>();
 
@@ -24,6 +26,7 @@ public class Parser {
         return elementList;
     }
 
+    // rename parameter exp
     public static LinkedList<String> findGroupElement(String exp, String regex) {
         LinkedList<String> elementList = new LinkedList<>();
 

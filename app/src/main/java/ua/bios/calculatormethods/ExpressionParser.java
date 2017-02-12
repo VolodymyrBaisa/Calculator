@@ -11,10 +11,12 @@ import ua.bios.utils.Parser;
 public class ExpressionParser {
     private ExpressionParser(){}
 
+    // may be getExpressionList()
     public static LinkedList<String> getExpressionAsGroupedList(String expression) {
         return Parser.findElement(expression, "[\\d.+-÷×()√%=]+");
     }
 
+    // may be getResults()
     public static LinkedList<String> getResultsList(String expression) {
         return Parser.findGroupElement(expression, "=([-\\d.]+)");
     }

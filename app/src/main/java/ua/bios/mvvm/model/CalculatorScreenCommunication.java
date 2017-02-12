@@ -8,7 +8,7 @@ import ua.bios.display.ICalculatorScreen;
 
 public class CalculatorScreenCommunication {
     private static volatile CalculatorScreenCommunication calculatorScreenCommunication;
-    private final ICalculatorScreen iCalculatorScreen;
+    private final ICalculatorScreen iCalculatorScreen; // Don't name your variable iCalculator, find a good name
 
     private CalculatorScreenCommunication(ICalculatorScreen iCalculatorScreen) {
         this.iCalculatorScreen = iCalculatorScreen;

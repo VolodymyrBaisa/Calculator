@@ -52,6 +52,7 @@ public class ValidationArguments {
         return value.equals("0");
     }
 
+    // may be isLastIndexOfDot
     private boolean ifLastIndexIsDot(String value) {
         return !value.isEmpty() && String.valueOf(value.charAt(value.length() - 1)).equals(".");
     }

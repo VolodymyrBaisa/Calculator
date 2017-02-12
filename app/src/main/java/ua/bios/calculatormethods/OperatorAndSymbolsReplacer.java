@@ -15,6 +15,8 @@ public class OperatorAndSymbolsReplacer {
     }
 
     public static String replaceOperatorAndSymbols(String expression) {
+
+        // May be switch looks more clean
         if (expression.contains(Operators.DIVIDE.toString())) {
             expression = expression.replaceAll(Operators.DIVIDE.toString(), "/");
         }
@@ -43,6 +45,7 @@ public class OperatorAndSymbolsReplacer {
 
     private static String percentageReplacer(String expression) {
         String[] splitExpression = expression.split("(?<=%)(\\D)");
+        // What is expr
         for (String expr : splitExpression) {
             if (expr.contains(MathSymbols.PERCENTAGE.toString())) {
                 LinkedList<String> splitExpressionWithPercentage = Parser.findGroupElement(expr, "([\\d.%]+)");

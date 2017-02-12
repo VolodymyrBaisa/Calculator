@@ -14,6 +14,7 @@ import android.widget.EditText;
  * Created by BIOS on 1/2/2017.
  */
 
+// May be EditTextCalculator or CalculatorEditText
 public class CalculatorScreen extends EditText {
     private final Context context;
 
