@@ -10,12 +10,19 @@ import ua.bios.mvvm.model.Messages;
  */
 
 public class ExpressionCleaner {
+
+    // Because Everything is static, you do not need the constructor below
     private ExpressionCleaner() {
     }
 
+    // The method name is not telling its intention
     public static LinkedList<String> removeResultFromExpression(LinkedList<String> groupedExpression) {
+
+        // Hard to understand clearExpressionOfEqual, may be cleanExpressionOfEqual
         LinkedList<String> clearExpressionOfEqual = new LinkedList<>();
         for (String value : groupedExpression) {
+
+            // ExpressionTest.isExpression should be in this class only if this class is using ExpressionTest.isExpression
             if (ExpressionTest.isExpression(value)) {
                 if (!value.matches("^.*=[\\d.]+$") && !value.matches("^[-\\d.]+$")) {
                     clearExpressionOfEqual.addAll(Arrays.asList(value.split("=")));

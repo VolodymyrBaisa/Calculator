@@ -10,7 +10,7 @@ import ua.bios.about.IAbout;
 
 public class AboutCommunication {
     private static volatile AboutCommunication aboutCommunication;
-    private IAbout iAbout;
+    private IAbout iAbout; // call it about
 
     private AboutCommunication(IAbout iAbout){
         this.iAbout = iAbout;

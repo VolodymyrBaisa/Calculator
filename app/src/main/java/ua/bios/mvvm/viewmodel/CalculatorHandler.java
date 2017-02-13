@@ -23,7 +23,7 @@ import ua.bios.mvvm.model.TaxRateData;
 /**
  * Created by BIOS on 1/10/2017.
  */
-
+// CalculatoHandler is doing too much work: too much responsability
 public class CalculatorHandler {
 
     public boolean onTouch(View v, MotionEvent event) {
